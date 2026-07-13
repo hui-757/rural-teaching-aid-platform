@@ -65,57 +65,59 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Trophy size={14} />
                 竞赛
               </Link>
-              <button
-                onClick={() => navigate('/select-grade')}
-                className="px-3 py-1.5 text-wall-gold-light/80 hover:text-wall-gold-light font-serif tracking-wider text-xs transition-colors rounded hover:bg-white/5 flex items-center gap-1 border border-wall-gold/20"
-              >
-                <GraduationCap size={12} />
-                {gradeLabel}
-              </button>
             </nav>
           )}
 
-          {/* User Menu */}
-          <div className="relative">
-            {user ? (
+          {/* Right side: Grade Switch + User Menu */}
+          <div className="flex items-center gap-2">
+            {/* Grade Switch — always visible when user logged in */}
+            {user && (
               <button
-                onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center gap-2 text-wall-paper/90 hover:text-wall-gold-light transition-colors"
+                onClick={() => navigate('/select-grade')}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-wall-gold-light/90 hover:text-wall-gold-light font-serif text-sm transition-colors rounded hover:bg-white/10 border border-wall-gold/30"
+                title="切换年级"
               >
-                <div className="w-8 h-8 bg-wall-brick border border-wall-gold rounded-full flex items-center justify-center">
-                  <User size={14} className="text-wall-gold-light" />
-                </div>
-                <span className="font-serif text-sm hidden sm:block">{user.nickname}</span>
-                <ChevronDown size={14} />
+                <GraduationCap size={14} />
+                <span className="hidden sm:inline">{gradeLabel}</span>
+                <span className="sm:hidden">{currentGrade ? `${currentGrade}年级` : '年级'}</span>
               </button>
-            ) : (
-              <Link to="/login" className="seal-stamp text-sm">
-                登录
-              </Link>
             )}
 
-            {showUserMenu && user && (
-              <div className="absolute right-0 mt-2 w-48 bg-wall-paper border-2 border-wall-brick-dark rounded shadow-xl z-50 animate-fade-in-up">
-                <div className="p-3 border-b border-wall-border">
-                  <p className="font-serif text-wall-text font-medium">{user.nickname}</p>
-                  <p className="text-xs text-wall-text-muted">教师账号</p>
+            {/* User Menu */}
+            <div className="relative">
+              {user ? (
+                <button
+                  onClick={() => setShowUserMenu(!showUserMenu)}
+                  className="flex items-center gap-2 text-wall-paper/90 hover:text-wall-gold-light transition-colors"
+                >
+                  <div className="w-8 h-8 bg-wall-brick border border-wall-gold rounded-full flex items-center justify-center">
+                    <User size={14} className="text-wall-gold-light" />
+                  </div>
+                  <span className="font-serif text-sm hidden sm:block">{user.nickname}</span>
+                  <ChevronDown size={14} />
+                </button>
+              ) : (
+                <Link to="/login" className="seal-stamp text-sm">
+                  登录
+                </Link>
+              )}
+
+              {showUserMenu && user && (
+                <div className="absolute right-0 mt-2 w-48 bg-wall-paper border-2 border-wall-brick-dark rounded shadow-xl z-50 animate-fade-in-up">
+                  <div className="p-3 border-b border-wall-border">
+                    <p className="font-serif text-wall-text font-medium">{user.nickname}</p>
+                    <p className="text-xs text-wall-text-muted">教师账号</p>
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full px-4 py-2 text-left text-wall-brick-dark hover:bg-wall-bg-deep font-serif text-sm flex items-center gap-2 transition-colors"
+                  >
+                    <LogOut size={14} />
+                    退出登录
+                  </button>
                 </div>
-                <button
-                  onClick={() => { setShowUserMenu(false); navigate('/select-grade') }}
-                  className="w-full px-4 py-2 text-left text-wall-brick-dark hover:bg-wall-bg-deep font-serif text-sm flex items-center gap-2 transition-colors"
-                >
-                  <GraduationCap size={14} />
-                  切换年级
-                </button>
-                <button
-                  onClick={handleLogout}
-                  className="w-full px-4 py-2 text-left text-wall-brick-dark hover:bg-wall-bg-deep font-serif text-sm flex items-center gap-2 transition-colors"
-                >
-                  <LogOut size={14} />
-                  退出登录
-                </button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </header>
