@@ -7,13 +7,13 @@ import { SealButton, SealBadge } from '../components/ui/SealButton'
 import { BookOpen, Calculator, Loader2, Printer, MessageCircle, Download, FileText } from 'lucide-react'
 
 const TEXTBOOK_MAP: Record<number, string> = {
-  1: '/textbook/一_万以上数的认识.pdf',
-  2: '/textbook/二_角的度量.pdf',
-  3: '/textbook/三_多位数乘两位数.pdf',
-  4: '/textbook/四_加法模型和乘法模型.pdf',
-  5: '/textbook/五_平行四边形和梯形.pdf',
-  6: '/textbook/六_条形统计图.pdf',
-  7: '/textbook/七_复习与关联.pdf',
+  2: '/textbook/一_万以上数的认识.pdf',
+  3: '/textbook/二_角的度量.pdf',
+  4: '/textbook/三_多位数乘两位数.pdf',
+  5: '/textbook/四_加法模型和乘法模型.pdf',
+  6: '/textbook/五_平行四边形和梯形.pdf',
+  7: '/textbook/六_条形统计图.pdf',
+  8: '/textbook/七_复习与关联.pdf',
 }
 
 export default function TeachPage() {
@@ -30,10 +30,11 @@ export default function TeachPage() {
 
   const fetchUnitData = async () => {
     setLoading(true)
+    const id = Number(unitId)
     const { data: unitData } = await supabase
       .from('unit')
       .select('*')
-      .eq('unit_id', unitId)
+      .eq('unit_id', id)
       .single()
 
     if (unitData) {
@@ -41,11 +42,10 @@ export default function TeachPage() {
       const { data: qData } = await supabase
         .from('question')
         .select('*')
-        .eq('unit_id', unitId)
+        .eq('unit_id', id)
 
       if (qData) {
         setQuestions(qData as Question[])
-        // Random 5 questions for practice
         const shuffled = [...qData].sort(() => Math.random() - 0.5)
         setPracticeQuestions(shuffled.slice(0, 5) as Question[])
       }
