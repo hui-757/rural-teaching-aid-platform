@@ -4,7 +4,17 @@ import { supabase } from '../lib/supabase'
 import type { Unit, Question } from '../types'
 import { ScrollPanel, GreatWallDivider } from '../components/ui/BrickCard'
 import { SealButton, SealBadge } from '../components/ui/SealButton'
-import { BookOpen, Calculator, Loader2, Printer, MessageCircle } from 'lucide-react'
+import { BookOpen, Calculator, Loader2, Printer, MessageCircle, Download, FileText } from 'lucide-react'
+
+const TEXTBOOK_MAP: Record<number, string> = {
+  1: '/textbook/一_万以上数的认识.pdf',
+  2: '/textbook/二_角的度量.pdf',
+  3: '/textbook/三_多位数乘两位数.pdf',
+  4: '/textbook/四_加法模型和乘法模型.pdf',
+  5: '/textbook/五_平行四边形和梯形.pdf',
+  6: '/textbook/六_条形统计图.pdf',
+  7: '/textbook/七_复习与关联.pdf',
+}
 
 export default function TeachPage() {
   const { unitId } = useParams<{ unitId: string }>()
@@ -52,7 +62,6 @@ export default function TeachPage() {
         <style>body{font-family:serif;max-width:800px;margin:40px auto;line-height:2} h1{text-align:center} .q{margin:20px 0} .page-break{page-break-after:always}</style>
         </head><body>
         <h1>${unit?.unit_name} - 基础测试</h1>
-        <p style="text-align:center;color:#666">生成时间：${new Date().toLocaleString()}</p>
         <p style="text-align:center;color:#666">生成时间：${new Date().toLocaleString()}</p>
         ${calcQuestions.map((q, i) => `<div class="q">${i + 1}. ${q.content}</div>`).join('')}
         <div class="page-break"></div>
@@ -120,19 +129,42 @@ export default function TeachPage() {
       {/* Tab Content */}
       <div className="min-h-[400px]">
         {activeTab === 'content' && (
-          <ScrollPanel title="教材内容">
-            <div className="space-y-4 text-wall-text leading-relaxed">
-              <p className="font-serif text-lg">本单元主要内容包括：</p>
-              <div className="bg-wall-bg-deep p-4 rounded border border-wall-border">
-                <p>{unit.unit_desc}</p>
+          <div className="bg-wall-paper border-2 border-wall-border rounded-lg overflow-hidden">
+            <div className="flex items-center justify-between px-5 py-3 bg-wall-bg-deep border-b border-wall-border">
+              <div className="flex items-center gap-2">
+                <FileText size={18} className="text-wall-brick" />
+                <span className="font-serif text-wall-text font-medium">教材 PDF</span>
               </div>
-              <p className="text-wall-text-muted text-sm">
-                请教师根据教材内容为学生进行讲解，可使用本页面辅助教学。
-              </p>
+              <div className="flex gap-2">
+                {TEXTBOOK_MAP[unit.unit_id] && (
+                  <a
+                    href={TEXTBOOK_MAP[unit.unit_id]}
+                    download
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-wall-brick/10 text-wall-brick-dark font-serif text-sm rounded border border-wall-brick/30 hover:bg-wall-brick/20 transition-colors"
+                  >
+                    <Download size={14} />
+                    下载
+                  </a>
+                )}
+              </div>
             </div>
-          </ScrollPanel>
+            {TEXTBOOK_MAP[unit.unit_id] ? (
+              <div className="w-full" style={{ height: 'calc(100vh - 280px)', minHeight: '500px' }}>
+                <iframe
+                  src={TEXTBOOK_MAP[unit.unit_id]}
+                  className="w-full h-full border-0"
+                  title={`${unit.unit_name} 教材`}
+                />
+              </div>
+            ) : (
+              <div className="p-12 text-center text-wall-text-muted">
+                <FileText size={48} className="mx-auto mb-3 opacity-30" />
+                <p className="font-serif">本单元暂无教材文件</p>
+                <p className="text-sm mt-1">请等待管理员上传教材</p>
+              </div>
+            )}
+          </div>
         )}
-
         {activeTab === 'test' && (
           <ScrollPanel title="基础测试">
             {calcQuestions.length > 0 ? (
