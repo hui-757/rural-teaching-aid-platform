@@ -5,10 +5,10 @@
 ## 技术栈
 
 - **后端 BaaS**: [Supabase](https://supabase.com)（PostgreSQL + Auth + RLS + Realtime）
-- **前端框架**: React 18+ / Vue 3+（TypeScript 可选，不强制严格模式）
-- **状态管理**: 外包团队自选
-- **UI 组件**: 允许第三方组件库（Ant Design / Element Plus / Material UI 等）
-- **动画库**: 允许第三方动画库（Framer Motion / GSAP 等）
+- **前端框架**: React 18 + TypeScript + Vite + Tailwind CSS v4
+- **状态管理**: Zustand
+- **路由**: React Router v7
+- **图标**: Lucide React
 - **部署**: 静态前端 + Supabase Edge Functions
 
 ## 项目结构
@@ -19,16 +19,21 @@ rural-teaching-aid-platform/
 │   ├── 需求设计文档.md
 │   ├── 详细设计文档（Supabase版）.docx
 │   └── 接口协议文档_模块拆分与对接规范.docx
+├── rural-teaching-aid-frontend/   # 前端源码（React + TypeScript）
+│   ├── src/
+│   │   ├── pages/                 # 页面组件
+│   │   ├── components/            # UI 组件（长城风格）
+│   │   ├── store/                 # Zustand 状态管理
+│   │   ├── lib/                   # Supabase 客户端 + 工具
+│   │   └── types/                 # TypeScript 类型定义
+│   ├── .env.example               # 前端环境变量模板
+│   └── package.json
 ├── supabase/
 │   ├── migrations/                # 数据库迁移脚本
 │   ├── functions/                 # Edge Functions
 │   └── seed.sql                   # 初始数据
-├── src/                           # 前端源码（模块A）
-├── packages/
-│   ├── game-components/           # 模块E：闯关游戏组件库
-│   └── export-service/            # 模块C：导出服务
-├── assets/                        # 模块D：教材内容（Markdown + 配图）
-├── data/                          # 模块B：题库数据（JSON/CSV）
+├── assets/                        # 教材内容（Markdown + 配图）
+├── data/                          # 题库数据（JSON/CSV）
 ├── .env.example                   # 环境变量模板（真实值不提交）
 ├── .gitignore
 └── README.md
@@ -44,21 +49,22 @@ rural-teaching-aid-platform/
 cp .env.example .env
 ```
 
-### 2. 安装依赖
+### 前端开发
 
 ```bash
+cd rural-teaching-aid-frontend
 npm install
-# 或
-pnpm install
-```
-
-### 3. 启动开发服务器
-
-```bash
 npm run dev
 ```
 
-### 4. 数据库迁移（Supabase CLI）
+前端环境变量（`rural-teaching-aid-frontend/.env`）：
+
+```
+VITE_SUPABASE_URL=https://kcavasttvezmhaixuvmd.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+### 数据库迁移（Supabase CLI）
 
 ```bash
 supabase db push
