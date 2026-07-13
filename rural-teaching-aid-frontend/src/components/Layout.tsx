@@ -1,20 +1,27 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/useAuthStore'
-import { BookOpen, Trophy, User, LogOut, ChevronDown } from 'lucide-react'
+import { useAppStore } from '../store/useAppStore'
+import { BookOpen, Trophy, User, LogOut, ChevronDown, GraduationCap } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { user, signOut } = useAuthStore()
+  const { currentGrade, setGrade } = useAppStore()
   const navigate = useNavigate()
   const location = useLocation()
   const [showUserMenu, setShowUserMenu] = useState(false)
 
   const handleLogout = async () => {
     await signOut()
+    setGrade(0) // 清除年级选择（localStorage 会保留，但 store 重置为 null 需要特殊处理，这里用 navigate 后页面会重新加载）
+    localStorage.removeItem('rta_selected_grade')
     navigate('/login')
+    window.location.reload()
   }
 
   const isHome = location.pathname === '/'
+
+  const gradeLabel = currentGrade ? `${['一','二','三','四','五','六'][currentGrade - 1]}年级` : '未选择年级'
 
   return (
     <div className="min-h-screen wall-texture flex flex-col">
@@ -29,12 +36,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-wall-paper font-serif text-lg tracking-widest">乡村教学辅助平台</h1>
-              <p className="text-wall-gold-light text-xs tracking-wider -mt-1">四年级 · 数学</p>
+              <p className="text-wall-gold-light text-xs tracking-wider -mt-1">
+                {currentGrade ? `${gradeLabel} · 数学` : '请选择年级'}
+              </p>
             </div>
           </Link>
 
           {/* Nav Links */}
-          {user && !isHome && (
+          {user && !isHome && currentGrade && (
             <nav className="hidden md:flex items-center gap-1">
               <Link
                 to="/"
@@ -56,6 +65,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Trophy size={14} />
                 竞赛
               </Link>
+              <button
+                onClick={() => navigate('/select-grade')}
+                className="px-3 py-1.5 text-wall-gold-light/80 hover:text-wall-gold-light font-serif tracking-wider text-xs transition-colors rounded hover:bg-white/5 flex items-center gap-1 border border-wall-gold/20"
+              >
+                <GraduationCap size={12} />
+                {gradeLabel}
+              </button>
             </nav>
           )}
 
@@ -84,6 +100,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <p className="font-serif text-wall-text font-medium">{user.nickname}</p>
                   <p className="text-xs text-wall-text-muted">教师账号</p>
                 </div>
+                <button
+                  onClick={() => { setShowUserMenu(false); navigate('/select-grade') }}
+                  className="w-full px-4 py-2 text-left text-wall-brick-dark hover:bg-wall-bg-deep font-serif text-sm flex items-center gap-2 transition-colors"
+                >
+                  <GraduationCap size={14} />
+                  切换年级
+                </button>
                 <button
                   onClick={handleLogout}
                   className="w-full px-4 py-2 text-left text-wall-brick-dark hover:bg-wall-bg-deep font-serif text-sm flex items-center gap-2 transition-colors"

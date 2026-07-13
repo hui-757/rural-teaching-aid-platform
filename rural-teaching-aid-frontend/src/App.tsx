@@ -1,9 +1,11 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useAuthStore } from './store/useAuthStore'
+import { useAppStore } from './store/useAppStore'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
+import GradeSelectPage from './pages/GradeSelectPage'
 import UnitSelectPage from './pages/UnitSelectPage'
 import TeachPage from './pages/TeachPage'
 import CompetitionPage from './pages/CompetitionPage'
@@ -26,6 +28,21 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
 
+function GradeGuard({ children }: { children: React.ReactNode }) {
+  const { user } = useAuthStore()
+  const { currentGrade } = useAppStore()
+  const location = useLocation()
+
+  if (!user) return <Navigate to="/login" replace />
+
+  // 未选择年级且当前不在选择年级页面，则跳转
+  if (currentGrade === null && location.pathname !== '/select-grade') {
+    return <Navigate to="/select-grade" replace />
+  }
+
+  return <>{children}</>
+}
+
 function AppContent() {
   const { fetchUser } = useAuthStore()
 
@@ -38,11 +55,14 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/select-grade" element={<GradeSelectPage />} />
         <Route
           path="/units"
           element={
             <ProtectedRoute>
-              <UnitSelectPage />
+              <GradeGuard>
+                <UnitSelectPage />
+              </GradeGuard>
             </ProtectedRoute>
           }
         />
@@ -50,7 +70,9 @@ function AppContent() {
           path="/teach/:unitId"
           element={
             <ProtectedRoute>
-              <TeachPage />
+              <GradeGuard>
+                <TeachPage />
+              </GradeGuard>
             </ProtectedRoute>
           }
         />
@@ -58,7 +80,9 @@ function AppContent() {
           path="/competition"
           element={
             <ProtectedRoute>
-              <CompetitionPage />
+              <GradeGuard>
+                <CompetitionPage />
+              </GradeGuard>
             </ProtectedRoute>
           }
         />

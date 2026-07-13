@@ -1,12 +1,18 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/useAuthStore'
-import { BookOpen, Trophy, Shield, Scroll } from 'lucide-react'
+import { useAppStore } from '../store/useAppStore'
+import { BookOpen, Trophy, Shield, Scroll, GraduationCap } from 'lucide-react'
 import { SealButton, GoldBadge } from '../components/ui/SealButton'
 import { GreatWallDivider } from '../components/ui/BrickCard'
 
 export default function HomePage() {
   const { user } = useAuthStore()
+  const { currentGrade } = useAppStore()
   const navigate = useNavigate()
+
+  const gradeLabel = currentGrade
+    ? `${['一','二','三','四','五','六'][currentGrade - 1]}年级`
+    : '未选择年级'
 
   return (
     <div className="min-h-[calc(100vh-64px-88px)] flex flex-col items-center justify-center px-4 py-12 relative">
@@ -20,7 +26,17 @@ export default function HomePage() {
       {/* Hero Section */}
       <div className="text-center mb-12 relative z-10 animate-fade-in-up">
         <div className="inline-flex items-center gap-2 mb-4">
-          <GoldBadge>四年级 · 数学</GoldBadge>
+          {currentGrade ? (
+            <GoldBadge>{gradeLabel} · 数学</GoldBadge>
+          ) : (
+            <button
+              onClick={() => navigate('/select-grade')}
+              className="inline-flex items-center gap-1 px-3 py-1 bg-wall-brick/10 text-wall-brick-dark font-serif text-sm border border-wall-brick/30 rounded hover:bg-wall-brick/20 transition-colors"
+            >
+              <GraduationCap size={14} />
+              选择年级
+            </button>
+          )}
           <span className="text-wall-text-muted text-sm">|</span>
           <GoldBadge>人教版</GoldBadge>
         </div>
@@ -43,7 +59,7 @@ export default function HomePage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full relative z-10">
         {/* Teach Entry */}
         <div
-          onClick={() => navigate('/units')}
+          onClick={() => currentGrade ? navigate('/units') : navigate('/select-grade')}
           className="group cursor-pointer bg-wall-paper border-2 border-wall-border rounded-lg p-8 brick-pattern hover:border-wall-brick transition-all duration-300 hover:shadow-xl hover:-translate-y-2 relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-wall-brick" />
@@ -55,17 +71,16 @@ export default function HomePage() {
             <p className="text-wall-text-soft text-sm mb-4">
               教材内容讲述 · 基础测试生成 · 课堂互动练习
             </p>
-            <SealButton variant="outline" size="sm" onClick={(e) => { e.stopPropagation(); navigate('/units') }}>
-              进入授课
+            <SealButton variant="outline" size="sm" onClick={(e) => { e.stopPropagation(); currentGrade ? navigate('/units') : navigate('/select-grade') }}>
+              {currentGrade ? '进入授课' : '先选择年级'}
             </SealButton>
           </div>
-          {/* Corner decoration */}
           <div className="absolute bottom-0 right-0 w-12 h-12 border-t-2 border-l-2 border-wall-border/40 rounded-tl-xl" />
         </div>
 
         {/* Competition Entry */}
         <div
-          onClick={() => navigate('/competition')}
+          onClick={() => currentGrade ? navigate('/competition') : navigate('/select-grade')}
           className="group cursor-pointer bg-wall-paper border-2 border-wall-border rounded-lg p-8 brick-pattern hover:border-wall-gold transition-all duration-300 hover:shadow-xl hover:-translate-y-2 relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-wall-gold" />
@@ -77,8 +92,8 @@ export default function HomePage() {
             <p className="text-wall-text-soft text-sm mb-4">
               闯关挑战 · 难度定级 · 排行展示 · 错题记录
             </p>
-            <SealButton variant="gold" size="sm" onClick={(e) => { e.stopPropagation(); navigate('/competition') }}>
-              开始闯关
+            <SealButton variant="gold" size="sm" onClick={(e) => { e.stopPropagation(); currentGrade ? navigate('/competition') : navigate('/select-grade') }}>
+              {currentGrade ? '开始闯关' : '先选择年级'}
             </SealButton>
           </div>
           <div className="absolute bottom-0 right-0 w-12 h-12 border-t-2 border-l-2 border-wall-border/40 rounded-tl-xl" />
@@ -93,7 +108,7 @@ export default function HomePage() {
         </div>
         <div className="flex items-center gap-2">
           <Scroll size={16} className="text-wall-brick" />
-          <span>当前年级：四年级</span>
+          <span>当前年级：{gradeLabel}</span>
         </div>
       </div>
     </div>
