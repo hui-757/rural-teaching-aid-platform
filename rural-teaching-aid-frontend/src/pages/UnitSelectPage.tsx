@@ -18,11 +18,12 @@ export default function UnitSelectPage() {
 
   const fetchUnits = async () => {
     setLoading(true)
+    const grade = currentGrade || '四年级上'
     const { data, error } = await supabase
       .from('unit')
       .select('*')
-      .eq('grade', currentGrade)
-      .order('unit_number')
+      .eq('grade', grade)
+      .order('unit_id')
 
     if (!error && data) {
       setUnits(data as Unit[])
@@ -43,7 +44,6 @@ export default function UnitSelectPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Page Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
           <BookOpen size={24} className="text-wall-brick" />
@@ -52,19 +52,18 @@ export default function UnitSelectPage() {
         <p className="text-wall-text-muted">请选择要授课或闯关的单元</p>
       </div>
 
-      {/* Unit Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {units.map((unit) => (
           <BrickCard
-            key={unit.id}
-            title={unit.title}
-            subtitle={unit.description}
-            accent={unit.has_calculations ? 'brick' : 'stone'}
+            key={unit.unit_id}
+            title={unit.unit_name}
+            subtitle={unit.unit_desc || ''}
+            accent={unit.has_test ? 'brick' : 'stone'}
             hover
           >
             <div className="flex items-center gap-2 mb-3">
-              <SealBadge>第 {unit.unit_number} 单元</SealBadge>
-              {unit.has_calculations && (
+              <SealBadge>第 {unit.unit_id} 单元</SealBadge>
+              {unit.has_test && (
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-wall-ink/10 text-wall-ink text-xs rounded border border-wall-ink/20">
                   <Calculator size={10} />
                   含计算题
@@ -77,7 +76,7 @@ export default function UnitSelectPage() {
                 variant="outline"
                 size="sm"
                 className="flex-1"
-                onClick={() => navigate(`/teach/${unit.id}`)}
+                onClick={() => navigate(`/teach/${unit.unit_id}`)}
               >
                 <BookOpen size={14} className="mr-1" />
                 授课
@@ -86,7 +85,7 @@ export default function UnitSelectPage() {
                 variant="solid"
                 size="sm"
                 className="flex-1"
-                onClick={() => navigate(`/competition?unit=${unit.id}`)}
+                onClick={() => navigate(`/competition?unit=${unit.unit_id}`)}
               >
                 <Users size={14} className="mr-1" />
                 闯关

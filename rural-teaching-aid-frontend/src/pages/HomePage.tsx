@@ -11,7 +11,7 @@ export default function HomePage() {
   const navigate = useNavigate()
 
   const gradeLabel = currentGrade
-    ? `${['一','二','三','四','五','六'][currentGrade - 1]}年级`
+    ? currentGrade.replace('上', '上册').replace('下', '下册')
     : '未选择年级'
 
   return (

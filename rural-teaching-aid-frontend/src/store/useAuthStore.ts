@@ -36,7 +36,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     if (error) return { error }
     if (data.user) {
       await supabase.from('teacher').insert({ id: data.user.id, nickname })
-      set({ user: { id: data.user.id, nickname, created_at: new Date().toISOString() }, session: data.session })
+      set({ user: { id: data.user.id, nickname, grade_selected: null, created_at: new Date().toISOString() }, session: data.session })
     }
     return { error: null }
   },

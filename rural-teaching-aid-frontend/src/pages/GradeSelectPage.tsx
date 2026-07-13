@@ -5,19 +5,19 @@ import { GoldBadge } from '../components/ui/SealButton'
 import { GraduationCap, ArrowRight } from 'lucide-react'
 
 const GRADES = [
-  { value: 1, label: '一年级', desc: '数学启蒙' },
-  { value: 2, label: '二年级', desc: '基础运算' },
-  { value: 3, label: '三年级', desc: '进阶计算' },
-  { value: 4, label: '四年级', desc: '当前主推' },
-  { value: 5, label: '五年级', desc: '综合应用' },
-  { value: 6, label: '六年级', desc: '小升初' },
+  { value: '一年级上', label: '一年级', desc: '数学启蒙', semester: '上册' },
+  { value: '二年级上', label: '二年级', desc: '基础运算', semester: '上册' },
+  { value: '三年级上', label: '三年级', desc: '进阶计算', semester: '上册' },
+  { value: '四年级上', label: '四年级', desc: '当前主推', semester: '上册' },
+  { value: '五年级上', label: '五年级', desc: '综合应用', semester: '上册' },
+  { value: '六年级上', label: '六年级', desc: '小升初', semester: '上册' },
 ]
 
 export default function GradeSelectPage() {
   const navigate = useNavigate()
   const { setGrade } = useAppStore()
 
-  const handleSelect = (grade: number) => {
+  const handleSelect = (grade: string) => {
     setGrade(grade)
     navigate('/')
   }
@@ -53,7 +53,8 @@ export default function GradeSelectPage() {
               />
             </div>
             <p className="text-wall-text-muted text-sm">{grade.desc}</p>
-            {grade.value === 4 && (
+            <p className="text-wall-text-muted/60 text-xs mt-1">{grade.semester}</p>
+            {grade.value === '四年级上' && (
               <GoldBadge className="absolute top-3 right-3 text-xs">当前开放</GoldBadge>
             )}
           </button>
@@ -61,7 +62,7 @@ export default function GradeSelectPage() {
       </div>
 
       <p className="text-wall-text-muted/60 text-sm mt-8 text-center">
-        目前仅四年级题库完善，其他年级正在建设中
+        目前仅四年级上册题库完善，其他年级正在建设中
       </p>
     </div>
   )

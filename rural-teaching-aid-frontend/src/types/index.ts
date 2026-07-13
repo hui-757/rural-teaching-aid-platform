@@ -1,38 +1,37 @@
 export interface Teacher {
   id: string
   nickname: string
+  grade_selected: string | null
   created_at: string
 }
 
 export interface Unit {
-  id: number
-  grade: number
-  unit_number: number
-  title: string
-  description: string
-  has_calculations: boolean
+  unit_id: number
+  unit_name: string
+  unit_desc: string | null
+  grade: string
+  has_test: boolean | null
   created_at: string
 }
 
 export interface Question {
-  id: number
+  question_id: number
   unit_id: number
-  type: string
   content: string
   answer: string
-  difficulty: number
+  type: string | null
+  difficulty: number | null
   created_at: string
 }
 
 export interface GameRecord {
-  id: number
+  record_id: number
   teacher_id: string
   student_name: string
   unit_id: number
-  level: number
-  score: number
+  score: number | null
+  level: number | null
   answers_json: AnswerItem[]
-  note: string
   created_at: string
 }
 
@@ -43,10 +42,10 @@ export interface AnswerItem {
 }
 
 export interface TestAnswer {
-  id: number
+  answer_id: number
   teacher_id: string
   unit_id: number
-  test_number: number
+  test_no: number
   answers_json: Record<string, string>
   created_at: string
 }
@@ -63,8 +62,8 @@ export interface GameState {
 }
 
 export interface LevelConfig {
-  timeLimit: number // seconds
-  targetAccuracy: number // 0-1
+  timeLimit: number
+  targetAccuracy: number
   consecutiveRequired: number
   questionCount: number
 }

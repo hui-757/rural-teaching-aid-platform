@@ -23,7 +23,7 @@ export default function TeachPage() {
     const { data: unitData } = await supabase
       .from('unit')
       .select('*')
-      .eq('id', unitId)
+      .eq('unit_id', unitId)
       .single()
 
     if (unitData) {
@@ -48,10 +48,11 @@ export default function TeachPage() {
     const printWindow = window.open('', '_blank')
     if (printWindow && calcQuestions.length > 0) {
       const html = `
-        <html><head><title>基础测试 - ${unit?.title}</title>
+        <html><head><title>基础测试 - ${unit?.unit_name}</title>
         <style>body{font-family:serif;max-width:800px;margin:40px auto;line-height:2} h1{text-align:center} .q{margin:20px 0} .page-break{page-break-after:always}</style>
         </head><body>
-        <h1>${unit?.title} - 基础测试</h1>
+        <h1>${unit?.unit_name} - 基础测试</h1>
+        <p style="text-align:center;color:#666">生成时间：${new Date().toLocaleString()}</p>
         <p style="text-align:center;color:#666">生成时间：${new Date().toLocaleString()}</p>
         ${calcQuestions.map((q, i) => `<div class="q">${i + 1}. ${q.content}</div>`).join('')}
         <div class="page-break"></div>
@@ -86,10 +87,10 @@ export default function TeachPage() {
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-2">
           <BookOpen size={24} className="text-wall-brick" />
-          <h1 className="text-2xl font-serif text-wall-text tracking-wider">{unit.title}</h1>
+          <h1 className="text-2xl font-serif text-wall-text tracking-wider">{unit.unit_name}</h1>
         </div>
-        <SealBadge>第 {unit.unit_number} 单元</SealBadge>
-        <p className="text-wall-text-muted mt-2">{unit.description}</p>
+        <SealBadge>第 {unit.unit_id} 单元</SealBadge>
+        <p className="text-wall-text-muted mt-2">{unit.unit_desc}</p>
       </div>
 
       <GreatWallDivider />
@@ -123,7 +124,7 @@ export default function TeachPage() {
             <div className="space-y-4 text-wall-text leading-relaxed">
               <p className="font-serif text-lg">本单元主要内容包括：</p>
               <div className="bg-wall-bg-deep p-4 rounded border border-wall-border">
-                <p>{unit.description}</p>
+                <p>{unit.unit_desc}</p>
               </div>
               <p className="text-wall-text-muted text-sm">
                 请教师根据教材内容为学生进行讲解，可使用本页面辅助教学。
@@ -147,7 +148,7 @@ export default function TeachPage() {
                 </div>
                 <div className="space-y-3">
                   {calcQuestions.map((q, i) => (
-                    <div key={q.id} className="bg-wall-bg-deep p-4 rounded border border-wall-border flex justify-between items-start">
+                    <div key={q.question_id} className="bg-wall-bg-deep p-4 rounded border border-wall-border flex justify-between items-start">
                       <span className="text-wall-text font-medium">{i + 1}. {q.content}</span>
                     </div>
                   ))}
@@ -171,7 +172,7 @@ export default function TeachPage() {
               <div className="space-y-4">
                 <p className="text-wall-text-muted text-sm">课堂互动环节，学生举手回答以下问题：</p>
                 {practiceQuestions.map((q, i) => (
-                  <div key={q.id} className="bg-wall-bg-deep p-4 rounded border border-wall-border">
+                  <div key={q.question_id} className="bg-wall-bg-deep p-4 rounded border border-wall-border">
                     <div className="flex items-start gap-3">
                       <span className="flex-shrink-0 w-7 h-7 bg-wall-brick text-wall-paper rounded flex items-center justify-center font-serif text-sm font-bold">
                         {i + 1}

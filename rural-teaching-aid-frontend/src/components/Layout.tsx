@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const handleLogout = async () => {
     await signOut()
-    setGrade(0) // 清除年级选择（localStorage 会保留，但 store 重置为 null 需要特殊处理，这里用 navigate 后页面会重新加载）
+    setGrade('')
     localStorage.removeItem('rta_selected_grade')
     navigate('/login')
     window.location.reload()
@@ -21,7 +21,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const isHome = location.pathname === '/'
 
-  const gradeLabel = currentGrade ? `${['一','二','三','四','五','六'][currentGrade - 1]}年级` : '未选择年级'
+  const gradeLabel = currentGrade ? currentGrade.replace('上', '·上册').replace('下', '·下册') : '未选择年级'
 
   return (
     <div className="min-h-screen wall-texture flex flex-col">

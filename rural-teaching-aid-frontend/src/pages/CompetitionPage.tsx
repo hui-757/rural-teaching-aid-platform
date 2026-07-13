@@ -62,7 +62,7 @@ export default function CompetitionPage() {
   }, [isPlaying, timeLeft])
 
   const fetchUnits = async () => {
-    const { data } = await supabase.from('unit').select('*').eq('grade', 4).order('unit_number')
+    const { data } = await supabase.from('unit').select('*').eq('grade', '四年级上').order('unit_id')
     if (data) setUnits(data as Unit[])
     setLoading(false)
   }
@@ -71,7 +71,7 @@ export default function CompetitionPage() {
     const { data } = await supabase.from('unit').select('*').eq('id', id).single()
     if (data) {
       setSelectedUnit(data as Unit)
-      loadQuestions(data.id)
+      loadQuestions(data.unit_id)
     }
   }
 
@@ -87,8 +87,8 @@ export default function CompetitionPage() {
     // Filter questions by difficulty for this level
     const levelQuestions = questions
       .filter((q) => {
-        if (level <= 3) return q.difficulty <= 1
-        if (level <= 6) return q.difficulty <= 2
+        if (level <= 3) return (q.difficulty ?? 0) <= 1
+        if (level <= 6) return (q.difficulty ?? 0) <= 2
         return true
       })
       .sort(() => Math.random() - 0.5)
@@ -119,7 +119,7 @@ export default function CompetitionPage() {
 
     const correct = currentAnswer.trim() === q.answer.trim()
     const newAnswer: AnswerItem = {
-      question_id: q.id,
+      question_id: q.question_id,
       student_answer: currentAnswer.trim(),
       correct,
     }
@@ -140,8 +140,8 @@ export default function CompetitionPage() {
     const config = LEVEL_CONFIG[gameState.currentLevel - 1] || LEVEL_CONFIG[0]
     return questions
       .filter((q) => {
-        if (gameState.currentLevel <= 3) return q.difficulty <= 1
-        if (gameState.currentLevel <= 6) return q.difficulty <= 2
+        if (gameState.currentLevel <= 3) return (q.difficulty ?? 0) <= 1
+        if (gameState.currentLevel <= 6) return (q.difficulty ?? 0) <= 2
         return true
       })
       .slice(0, config.questionCount)
@@ -180,7 +180,7 @@ export default function CompetitionPage() {
     await supabase.from('record').insert({
       teacher_id: user.id,
       student_name: studentName || '匿名学生',
-      unit_id: selectedUnit.id,
+      unit_id: selectedUnit.unit_id,
       level: gameState.currentLevel,
       score,
       answers_json: answers,
@@ -195,7 +195,7 @@ export default function CompetitionPage() {
     setShowResult(false)
     setShowNameInput(false)
     setNote('')
-    fetchRankings(selectedUnit.id)
+    fetchRankings(selectedUnit.unit_id)
   }
 
   const fetchRankings = async (unitId: number) => {
@@ -239,18 +239,18 @@ export default function CompetitionPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {units.map((unit) => (
             <BrickCard
-              key={unit.id}
-              title={unit.title}
-              subtitle={unit.description}
+              key={unit.unit_id}
+              title={unit.unit_name}
+              subtitle={unit.unit_desc || ''}
               accent="gold"
               hover
               onClick={() => {
                 setSelectedUnit(unit)
-                loadQuestions(unit.id)
+                loadQuestions(unit.unit_id)
               }}
             >
               <div className="flex items-center gap-2">
-                <GoldBadge>第 {unit.unit_number} 单元</GoldBadge>
+                <GoldBadge>第 {unit.unit_id} 单元</GoldBadge>
                 <SealBadge>10 关卡</SealBadge>
               </div>
             </BrickCard>
@@ -318,10 +318,10 @@ export default function CompetitionPage() {
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-2">
             <Trophy size={24} className="text-wall-gold" />
-            <h1 className="text-2xl font-serif text-wall-text tracking-wider">{selectedUnit.title} - 闯关</h1>
+            <h1 className="text-2xl font-serif text-wall-text tracking-wider">{selectedUnit.unit_name} - 闯关</h1>
           </div>
           <div className="flex items-center gap-2">
-            <GoldBadge>第 {selectedUnit.unit_number} 单元</GoldBadge>
+            <GoldBadge>第 {selectedUnit.unit_id} 单元</GoldBadge>
             <SealButton variant="outline" size="sm" onClick={resetLevelProgress}>
               <RotateCcw size={12} className="mr-1" />
               重置进度
@@ -376,7 +376,7 @@ export default function CompetitionPage() {
             <div className="space-y-2">
               {rankings.map((r, i) => (
                 <div
-                  key={r.id as number}
+                  key={r.record_id as number}
                   className="flex items-center justify-between p-3 bg-wall-bg-deep rounded border border-wall-border"
                 >
                   <div className="flex items-center gap-3">
@@ -500,7 +500,7 @@ export default function CompetitionPage() {
 
             <div className="bg-wall-bg-deep rounded p-3 mb-4 space-y-2">
               {answers.map((a, i) => {
-                const q = currentQuestions.find((q) => q.id === a.question_id)
+                const q = currentQuestions.find((q) => q.question_id === a.question_id)
                 return (
                   <div key={i} className="flex items-center gap-2 text-sm">
                     {a.correct ? (

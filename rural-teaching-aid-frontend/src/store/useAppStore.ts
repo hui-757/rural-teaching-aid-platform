@@ -2,9 +2,9 @@ import { create } from 'zustand'
 import type { Unit, GameState } from '../types'
 
 interface AppState {
-  currentGrade: number | null
+  currentGrade: string | null
   units: Unit[]
-  setGrade: (grade: number) => void
+  setGrade: (grade: string) => void
   setUnits: (units: Unit[]) => void
   gameState: GameState
   setGameState: (state: Partial<GameState>) => void
@@ -15,7 +15,7 @@ interface AppState {
 const STORAGE_KEY = 'rta_selected_grade'
 
 const savedGrade = localStorage.getItem(STORAGE_KEY)
-const initialGrade: number | null = savedGrade ? Number(savedGrade) : null
+const initialGrade: string | null = savedGrade || null
 
 const defaultGameState: GameState = {
   unitId: null,
@@ -32,7 +32,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   currentGrade: initialGrade,
   units: [],
   setGrade: (grade) => {
-    localStorage.setItem(STORAGE_KEY, String(grade))
+    localStorage.setItem(STORAGE_KEY, grade)
     set({ currentGrade: grade })
   },
   setUnits: (units) => set({ units }),
