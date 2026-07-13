@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
 import { useAuthStore } from './store/useAuthStore'
 import { useAppStore } from './store/useAppStore'
 import Layout from './components/Layout'
@@ -44,12 +43,8 @@ function GradeGuard({ children }: { children: React.ReactNode }) {
 }
 
 function AppContent() {
-  const { fetchUser } = useAuthStore()
-
-  useEffect(() => {
-    fetchUser()
-  }, [])
-
+  // store 初始化时已经自动恢复 session，无需额外 useEffect 调用 fetchUser
+  // 避免与 store 初始化竞态
   return (
     <Layout>
       <Routes>
