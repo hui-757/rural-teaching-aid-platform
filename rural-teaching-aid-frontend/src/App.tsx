@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 import { useAuthStore } from './store/useAuthStore'
 import { useAppStore } from './store/useAppStore'
 import Layout from './components/Layout'
@@ -11,6 +12,14 @@ import CompetitionPage from './pages/CompetitionPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuthStore()
+  const loggedRef = useRef(false)
+
+  useEffect(() => {
+    if (!loggedRef.current) {
+      loggedRef.current = true
+      console.log('[ProtectedRoute] mounted, loading=', loading, 'user=', user?.nickname ?? null)
+    }
+  }, [loading, user])
 
   if (loading) {
     return (
@@ -23,7 +32,10 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     )
   }
 
-  if (!user) return <Navigate to="/login" replace />
+  if (!user) {
+    console.log('[ProtectedRoute] no user, redirect to /login')
+    return <Navigate to="/login" replace />
+  }
   return <>{children}</>
 }
 

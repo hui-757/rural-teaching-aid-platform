@@ -12,14 +12,37 @@ interface AuthState {
   signOut: () => Promise<void>
 }
 
-async function fetchTeacherData(userId: string) {
+async function fetchTeacherData(userId: string): Promise<Teacher | null> {
   const { data, error } = await supabase
     .from('teacher')
     .select('*')
     .eq('id', userId)
     .single()
+  if (error) {
+    console.warn('[Auth] fetchTeacherData error:', error.message)
+  }
   if (error || !data) return null
   return data as Teacher
+}
+
+async function ensureTeacherRecord(userId: string, nickname?: string): Promise<Teacher | null> {
+  // 先查
+  let teacher = await fetchTeacherData(userId)
+  if (teacher) return teacher
+
+  // 查不到则自动创建兜底记录（从 auth 用户 metadata 取昵称，或生成默认昵称）
+  console.log('[Auth] Teacher record not found, creating fallback for', userId)
+  const fallbackNickname = nickname || '教师' + userId.slice(0, 6)
+  const { error: insertError } = await supabase
+    .from('teacher')
+    .insert({ id: userId, nickname: fallbackNickname })
+
+  if (insertError) {
+    console.error('[Auth] Failed to create teacher record:', insertError.message)
+    return null
+  }
+
+  return fetchTeacherData(userId)
 }
 
 export const useAuthStore = create<AuthState>((set) => {
@@ -30,7 +53,7 @@ export const useAuthStore = create<AuthState>((set) => {
     }
 
     if (session?.user) {
-      const teacher = await fetchTeacherData(session.user.id)
+      const teacher = await ensureTeacherRecord(session.user.id)
       if (teacher) {
         console.log('[Auth] Session restored for', teacher.nickname)
         set({ user: teacher, session, loading: false, initialized: true })
@@ -44,7 +67,7 @@ export const useAuthStore = create<AuthState>((set) => {
       console.warn('[Auth] getUser error:', userError.message)
     }
     if (authUser) {
-      const teacher = await fetchTeacherData(authUser.id)
+      const teacher = await ensureTeacherRecord(authUser.id)
       if (teacher) {
         console.log('[Auth] User validated via getUser for', teacher.nickname)
         set({ user: teacher, session: null, loading: false, initialized: true })
@@ -61,7 +84,7 @@ export const useAuthStore = create<AuthState>((set) => {
     console.log('[Auth] onAuthStateChange event:', event)
     if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION') {
       if (session?.user) {
-        const teacher = await fetchTeacherData(session.user.id)
+        const teacher = await ensureTeacherRecord(session.user.id)
         set({ user: teacher, session })
       }
     } else if (event === 'SIGNED_OUT') {
@@ -88,7 +111,8 @@ export const useAuthStore = create<AuthState>((set) => {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) return { error }
       if (data.user) {
-        const teacher = await fetchTeacherData(data.user.id)
+        const teacher = await ensureTeacherRecord(data.user.id)
+        console.log('[Auth] signIn result, user=', teacher?.nickname ?? 'null')
         set({ user: teacher, session: data.session, loading: false, initialized: true })
       }
       return { error: null }
