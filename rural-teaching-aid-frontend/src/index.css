@@ -76,16 +76,16 @@
     background-image: repeating-linear-gradient(
       90deg,
       transparent,
-      transparent 48px,
-      rgba(160, 140, 120, 0.08) 48px,
-      rgba(160, 140, 120, 0.08) 50px
+      transparent 31px,
+      rgba(160, 140, 120, 0.08) 31px,
+      rgba(160, 140, 120, 0.08) 32px
     ),
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 22px,
-      rgba(160, 140, 120, 0.08) 22px,
-      rgba(160, 140, 120, 0.08) 24px
+      transparent 31px,
+      rgba(160, 140, 120, 0.08) 31px,
+      rgba(160, 140, 120, 0.08) 32px
     );
   }
 

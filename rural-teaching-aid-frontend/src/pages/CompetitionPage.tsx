@@ -94,7 +94,7 @@ const checkPass = (answers: AnswerItem[], config: typeof LEVEL_CONFIG[0]) => {
   return accuracy >= config.targetAccuracy && maxConsecutive >= config.consecutiveRequired
 }
 
-// 交互式竖式组件：每个 blank 是一个输入框
+// 交互式竖式组件：每个字符/blank 严格对齐到 32×32 背景方格
 const VerticalInputs = ({
   raw,
   values,
@@ -104,24 +104,42 @@ const VerticalInputs = ({
   values: string[]
   onChange: (idx: number, val: string) => void
 }) => {
+  // 从第一行推导总列数（text 字符数 + blank 数）
+  const firstLine = raw.lines[0] || []
+  const totalCols = firstLine.reduce((sum, item) => {
+    if (item.type === 'text') return sum + item.text.length
+    if (item.type === 'blank') return sum + 1
+    return sum
+  }, 0)
+
   let blankIdx = 0
+
   return (
-    <div className="flex flex-col items-center gap-0 font-mono text-2xl leading-relaxed py-8 select-none">
-      {raw.lines.map((line, li) => (
-        <div key={li} className="flex items-center h-10">
-          {line.map((item, ii) => {
-            if (item.type === 'text') {
-              return (
-                <span key={ii} className="whitespace-pre text-wall-text">
-                  {item.text}
-                </span>
-              )
-            }
-            if (item.type === 'blank') {
-              const idx = blankIdx++
-              return (
+    <div className="flex flex-col items-center font-mono text-2xl select-none py-2">
+      {raw.lines.map((line, li) => {
+        const cells: { key: string; content: React.ReactNode }[] = []
+        let colCount = 0
+
+        line.forEach((item, ii) => {
+          if (item.type === 'text') {
+            const chars = item.text.split('')
+            chars.forEach((ch, ci) => {
+              cells.push({
+                key: `t-${li}-${ii}-${ci}`,
+                content: (
+                  <span className="text-wall-text">
+                    {ch === ' ' ? '\u00A0' : ch}
+                  </span>
+                ),
+              })
+              colCount++
+            })
+          } else if (item.type === 'blank') {
+            const idx = blankIdx++
+            cells.push({
+              key: `b-${li}-${ii}`,
+              content: (
                 <input
-                  key={ii}
                   type="text"
                   inputMode="numeric"
                   maxLength={1}
@@ -129,14 +147,36 @@ const VerticalInputs = ({
                   onChange={(e) =>
                     onChange(idx, e.target.value.replace(/[^0-9]/g, '').slice(0, 1))
                   }
-                  className="w-8 h-9 mx-0.5 text-center border-b-2 border-wall-border bg-transparent text-wall-text focus:border-wall-gold outline-none transition-colors"
+                  className="w-7 h-7 text-center border-b-2 border-wall-border bg-transparent text-wall-text focus:border-wall-gold outline-none transition-colors"
                 />
-              )
-            }
-            return null
-          })}
-        </div>
-      ))}
+              ),
+            })
+            colCount++
+          }
+        })
+
+        // 尾部补空格到统一宽度
+        while (colCount < totalCols) {
+          cells.push({
+            key: `pad-${li}-${colCount}`,
+            content: <span className="text-wall-text">{'\u00A0'}</span>,
+          })
+          colCount++
+        }
+
+        return (
+          <div key={li} className="flex items-center">
+            {cells.map((c) => (
+              <div
+                key={c.key}
+                className="w-8 h-8 flex items-center justify-center"
+              >
+                {c.content}
+              </div>
+            ))}
+          </div>
+        )
+      })}
     </div>
   )
 }
