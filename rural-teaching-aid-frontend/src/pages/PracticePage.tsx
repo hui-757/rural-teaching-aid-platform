@@ -2,27 +2,26 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuthStore } from '../store/useAuthStore'
-import type { Unit, CalcQuestion } from '../types'
+import type { Unit, Question, VerticalContent } from '../types'
 import { ScrollPanel, GreatWallDivider } from '../components/ui/BrickCard'
 import { SealButton, SealBadge } from '../components/ui/SealButton'
 import {
   MessageCircle, Check, X, SkipForward, ArrowLeft, ArrowRight,
-  Loader2, Calculator, ChevronLeft
+  Loader2, BookOpen, ChevronLeft, PlusCircle
 } from 'lucide-react'
 
-const CALC_CATEGORIES = [
-  '口算乘法',
-  '不进位笔算乘法',
-  '连续进位笔算乘法',
-  '中间有0的乘法',
-  '末尾有0的乘法',
-  '积的变化规律',
-  '乘法估算与数学文化',
-  '口算除法',
-  '笔算除法竖式',
-]
-
 const PRACTICE_QUESTION_COUNT = 10
+
+const formatVertical = (raw: VerticalContent | null) => {
+  if (!raw) return ''
+  return raw.lines.map(line =>
+    line.map(item => {
+      if (item.type === 'text') return item.text
+      if (item.type === 'blank') return '□'.repeat(item.answer?.length || 1)
+      return ''
+    }).join('')
+  ).join('\n')
+}
 
 export default function PracticePage() {
   const { unitId } = useParams<{ unitId: string }>()
@@ -30,8 +29,7 @@ export default function PracticePage() {
   const { user } = useAuthStore()
 
   const [unit, setUnit] = useState<Unit | null>(null)
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [questions, setQuestions] = useState<CalcQuestion[]>([])
+  const [questions, setQuestions] = useState<Question[]>([])
   const [currentIdx, setCurrentIdx] = useState(0)
   const [studentNumber, setStudentNumber] = useState('')
   const [sessionId, setSessionId] = useState<string | null>(null)
@@ -40,35 +38,33 @@ export default function PracticePage() {
   const [creating, setCreating] = useState(false)
 
   useEffect(() => {
-    if (unitId) fetchUnit()
+    if (unitId) {
+      fetchUnit()
+      loadQuestions()
+    }
   }, [unitId])
 
   const fetchUnit = async () => {
-    setLoading(true)
     const id = Number(unitId)
     const { data } = await supabase.from('unit').select('*').eq('unit_id', id).single()
     if (data) setUnit(data as Unit)
-    setLoading(false)
   }
 
-  const loadQuestions = async (category: string) => {
+  const loadQuestions = async () => {
     setLoading(true)
+    const id = Number(unitId)
     const { data } = await supabase
-      .from('calc_question')
+      .from('question')
       .select('*')
-      .eq('category', category)
-      .eq('grade', '四年级上')
+      .eq('unit_id', id)
 
-    if (data) {
+    if (data && data.length > 0) {
       const shuffled = [...data].sort(() => Math.random() - 0.5)
-      setQuestions(shuffled.slice(0, PRACTICE_QUESTION_COUNT) as CalcQuestion[])
+      setQuestions(shuffled.slice(0, PRACTICE_QUESTION_COUNT) as Question[])
+    } else {
+      setQuestions([])
     }
     setLoading(false)
-  }
-
-  const selectCategory = async (category: string) => {
-    setSelectedCategory(category)
-    await loadQuestions(category)
   }
 
   const ensureSession = async (): Promise<string | null> => {
@@ -77,7 +73,7 @@ export default function PracticePage() {
     setCreating(true)
     const now = new Date()
     const weekdays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
-    const label = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')} ${weekdays[now.getDay()]} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} ${unit.unit_name} · ${selectedCategory}`
+    const label = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')} ${weekdays[now.getDay()]} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} ${unit.unit_name} · 一起练`
 
     const { data, error } = await supabase
       .from('practice_session')
@@ -104,14 +100,14 @@ export default function PracticePage() {
     await supabase.from('practice_answer').insert({
       session_id: sid,
       student_number: studentNumber.trim(),
-      question_id: q.id,
+      question_id: q.question_id,
       is_correct: isCorrect,
     })
 
     setAnswers((prev) => {
       const key = studentNumber.trim()
       const existing = prev[key] || []
-      return { ...prev, [key]: [...existing, { student_number: key, is_correct: isCorrect, question_id: q.id }] }
+      return { ...prev, [key]: [...existing, { student_number: key, is_correct: isCorrect, question_id: q.question_id }] }
     })
 
     setStudentNumber('')
@@ -128,19 +124,22 @@ export default function PracticePage() {
     correct: list.filter((a) => a.is_correct).length,
   }))
 
-  // Loading state
-  if (loading && !selectedCategory) {
+  // Loading
+  if (loading) {
     return (
       <div className="min-h-[calc(100vh-64px-88px)] flex items-center justify-center">
-        <Loader2 size={24} className="animate-spin text-wall-text-muted" />
+        <div className="flex items-center gap-3 text-wall-text-muted">
+          <Loader2 size={24} className="animate-spin" />
+          <span className="font-serif">加载授课题库...</span>
+        </div>
       </div>
     )
   }
 
   if (!unit) return <div className="p-8 text-center text-wall-text-muted">单元不存在</div>
 
-  // Category selection
-  if (!selectedCategory) {
+  // No questions
+  if (questions.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <button
@@ -152,70 +151,49 @@ export default function PracticePage() {
 
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-2">
-            <MessageCircle size={24} className="text-wall-gold" />
+            <BookOpen size={24} className="text-wall-gold" />
             <h1 className="text-2xl font-serif text-wall-text tracking-wider">
               {unit.unit_name} - 一起练
             </h1>
           </div>
           <SealBadge>第 {unit.unit_id} 单元</SealBadge>
-          <p className="text-wall-text-muted mt-2">请选择计算题类型开始课堂互动</p>
         </div>
 
         <GreatWallDivider />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-          {CALC_CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => selectCategory(cat)}
-              className="group bg-wall-paper border-2 border-wall-border rounded-lg p-6 hover:border-wall-gold transition-all duration-300 text-left"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 bg-wall-gold/10 border border-wall-gold rounded flex items-center justify-center">
-                  <Calculator size={20} className="text-wall-gold" />
-                </div>
-                <h3 className="font-serif text-lg text-wall-text">{cat}</h3>
-              </div>
-              <p className="text-wall-text-muted text-sm">点击开始练习</p>
-            </button>
-          ))}
+        <div className="mt-12 flex flex-col items-center justify-center text-center">
+          <div className="w-20 h-20 bg-wall-gold/10 border-2 border-wall-gold rounded-full flex items-center justify-center mb-6">
+            <PlusCircle size={36} className="text-wall-gold" />
+          </div>
+          <h2 className="text-xl font-serif text-wall-text mb-3">暂无授课题库</h2>
+          <p className="text-wall-text-muted max-w-md mb-6 leading-relaxed">
+            该单元尚未录入授课题目。请先在教师后台的"内容讲述"中上传资料或录入题目，
+            然后才能使用一起练功能。
+          </p>
+          <SealButton variant="gold" onClick={() => navigate('/teach')}>
+            前往授课端录入题目
+          </SealButton>
         </div>
       </div>
     )
   }
-
-  // Questions loading
-  if (loading) {
-    return (
-      <div className="min-h-[calc(100vh-64px-88px)] flex items-center justify-center">
-        <Loader2 size={24} className="animate-spin text-wall-text-muted" />
-      </div>
-    )
-  }
-
-  if (questions.length === 0) return <div className="p-8 text-center text-wall-text-muted">该类型暂无题目</div>
 
   const currentQ = questions[currentIdx]
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <button
-        onClick={() => {
-          setSelectedCategory(null)
-          setQuestions([])
-          setCurrentIdx(0)
-          setAnswers({})
-        }}
+        onClick={() => navigate('/teach/practice')}
         className="flex items-center gap-1 text-wall-text-muted hover:text-wall-brick-dark font-serif text-sm mb-4 transition-colors"
       >
-        <ArrowLeft size={14} /> 返回类型选择
+        <ChevronLeft size={14} /> 返回单元选择
       </button>
 
       <div className="mb-4">
         <div className="flex items-center gap-3 mb-2">
           <MessageCircle size={24} className="text-wall-gold" />
           <h1 className="text-2xl font-serif text-wall-text tracking-wider">
-            {unit.unit_name} - {selectedCategory}
+            {unit.unit_name} - 一起练
           </h1>
         </div>
         <SealBadge>第 {unit.unit_id} 单元</SealBadge>
@@ -233,8 +211,16 @@ export default function PracticePage() {
               {currentIdx + 1} / {questions.length}
             </div>
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-serif text-wall-text mb-6">{currentQ.content}</p>
-              <p className="text-wall-text-muted text-sm">答案：{currentQ.answer}{currentQ.answer_remainder ? ` … 余 ${currentQ.answer_remainder}` : ''}</p>
+              {currentQ.raw_content ? (
+                <pre className="text-2xl md:text-3xl font-mono text-wall-text text-center py-4 whitespace-pre-wrap">
+                  {formatVertical(currentQ.raw_content)}
+                </pre>
+              ) : (
+                <p className="text-3xl md:text-4xl font-serif text-wall-text mb-6">{currentQ.content}</p>
+              )}
+              <p className="text-wall-text-muted text-sm">
+                答案：{currentQ.answer}
+              </p>
             </div>
             <div className="flex gap-3 mt-8">
               <button
