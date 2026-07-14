@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+import { useAppStore } from '../store/useAppStore'
 import type { CalcQuestion } from '../types'
 import { ScrollPanel, GreatWallDivider } from '../components/ui/BrickCard'
 import { SealButton, SealBadge } from '../components/ui/SealButton'
@@ -23,19 +24,20 @@ const TEST_QUESTION_COUNT = 20
 export default function TestTeachPage() {
   const { category } = useParams<{ category: string }>()
   const navigate = useNavigate()
+  const { currentGrade } = useAppStore()
   const [questions, setQuestions] = useState<CalcQuestion[]>([])
   const [loading, setLoading] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(category || null)
 
   useEffect(() => {
-    if (selectedCategory) {
-      loadQuestions(selectedCategory)
+    if (selectedCategory && currentGrade) {
+      loadQuestions(selectedCategory, currentGrade)
     }
-  }, [selectedCategory])
+  }, [selectedCategory, currentGrade])
 
-  const loadQuestions = async (cat: string) => {
+  const loadQuestions = async (cat: string, grade: string) => {
     setLoading(true)
-    const { data } = await supabase.from('calc_question').select('*').eq('category', cat)
+    const { data } = await supabase.from('calc_question').select('*').eq('category', cat).eq('grade', grade)
     if (data) {
       const shuffled = [...data].sort(() => Math.random() - 0.5)
       setQuestions(shuffled.slice(0, TEST_QUESTION_COUNT) as CalcQuestion[])

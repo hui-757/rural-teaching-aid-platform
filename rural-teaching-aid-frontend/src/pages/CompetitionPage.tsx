@@ -66,7 +66,7 @@ export default function CompetitionPage() {
   const [searchParams] = useSearchParams()
   const categoryParam = searchParams.get('category')
   const { user } = useAuthStore()
-  const { gameState, setGameState } = useAppStore()
+  const { gameState, setGameState, currentGrade } = useAppStore()
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(categoryParam)
   const [questions, setQuestions] = useState<CalcQuestion[]>([])
@@ -116,12 +116,13 @@ export default function CompetitionPage() {
   }, [isPlaying, timeLeft, answers])
 
   const loadCompletedLevels = async (category: string) => {
-    if (!user) return
+    if (!user || !currentGrade) return
     const { data } = await supabase
       .from('record')
       .select('level, score')
       .eq('teacher_id', user.id)
       .eq('category', category)
+      .eq('grade', currentGrade)
 
     if (!data) return
     const passedLevels = data
@@ -136,7 +137,8 @@ export default function CompetitionPage() {
   }
 
   const loadQuestions = async (category: string) => {
-    const { data } = await supabase.from('calc_question').select('*').eq('category', category)
+    const grade = currentGrade || '四年级上'
+    const { data } = await supabase.from('calc_question').select('*').eq('category', category).eq('grade', grade)
     if (data) {
       const shuffled = [...data].sort(() => Math.random() - 0.5)
       setQuestions(shuffled as CalcQuestion[])
@@ -212,7 +214,7 @@ export default function CompetitionPage() {
   }
 
   const saveRecord = async () => {
-    if (!user || !selectedCategory) return
+    if (!user || !selectedCategory || !currentGrade) return
     setSaving(true)
 
     const correctCount = answers.filter(a => a.correct).length
@@ -222,6 +224,7 @@ export default function CompetitionPage() {
       teacher_id: user.id,
       student_name: studentName || '匿名学生',
       category: selectedCategory,
+      grade: currentGrade,
       level: gameState.currentLevel,
       score,
       answers_json: answers,
@@ -244,10 +247,12 @@ export default function CompetitionPage() {
   }
 
   const fetchRankings = async (category: string) => {
+    if (!currentGrade) return
     const { data } = await supabase
       .from('record')
       .select('*')
       .eq('category', category)
+      .eq('grade', currentGrade)
       .order('score', { ascending: false })
       .limit(20)
     if (data) setRankings(data)
