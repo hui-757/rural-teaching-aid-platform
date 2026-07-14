@@ -47,22 +47,6 @@ const formatVertical = (raw: VerticalContent | null) => {
   ).join('\n')
 }
 
-// 检测是否是逐位 blank 格式（每个 blank.answer 都是单字符）
-const isPerDigitBlank = (raw: VerticalContent | null) => {
-  if (!raw) return false
-  let hasBlank = false
-  for (const line of raw.lines) {
-    for (const item of line) {
-      if (item.type === 'blank') {
-        hasBlank = true
-        const len = item.answer?.length || 0
-        if (len !== 1) return false
-      }
-    }
-  }
-  return hasBlank
-}
-
 // 提取所有 blank 的 answer
 const getBlankAnswers = (raw: VerticalContent | null): string[] => {
   if (!raw) return []
@@ -94,7 +78,7 @@ const checkPass = (answers: AnswerItem[], config: typeof LEVEL_CONFIG[0]) => {
   return accuracy >= config.targetAccuracy && maxConsecutive >= config.consecutiveRequired
 }
 
-// 交互式竖式组件：每个字符/blank 严格对齐到 32×32 背景方格
+// 交互式竖式组件：blank 可含多位数字，按 answer 长度跨格对齐
 const VerticalInputs = ({
   raw,
   values,
@@ -104,11 +88,11 @@ const VerticalInputs = ({
   values: string[]
   onChange: (idx: number, val: string) => void
 }) => {
-  // 从第一行推导总列数（text 字符数 + blank 数）
+  // 从第一行推导总列数（text 字符数 + blank 占用格数 = answer 长度）
   const firstLine = raw.lines[0] || []
   const totalCols = firstLine.reduce((sum, item) => {
     if (item.type === 'text') return sum + item.text.length
-    if (item.type === 'blank') return sum + 1
+    if (item.type === 'blank') return sum + (item.answer?.length || 1)
     return sum
   }, 0)
 
@@ -117,63 +101,57 @@ const VerticalInputs = ({
   return (
     <div className="flex flex-col items-center font-mono text-2xl select-none py-2">
       {raw.lines.map((line, li) => {
-        const cells: { key: string; content: React.ReactNode }[] = []
+        const cells: React.ReactNode[] = []
         let colCount = 0
 
         line.forEach((item, ii) => {
           if (item.type === 'text') {
             const chars = item.text.split('')
             chars.forEach((ch, ci) => {
-              cells.push({
-                key: `t-${li}-${ii}-${ci}`,
-                content: (
+              cells.push(
+                <div key={`t-${li}-${ii}-${ci}`} className="w-8 h-8 flex items-center justify-center">
                   <span className="text-wall-text">
                     {ch === ' ' ? '\u00A0' : ch}
                   </span>
-                ),
-              })
+                </div>
+              )
               colCount++
             })
           } else if (item.type === 'blank') {
             const idx = blankIdx++
-            cells.push({
-              key: `b-${li}-${ii}`,
-              content: (
+            const len = item.answer?.length || 1
+            cells.push(
+              <div key={`b-${li}-${ii}`} className="h-8 flex items-center justify-center" style={{ width: `${len * 32}px` }}>
                 <input
                   type="text"
                   inputMode="numeric"
-                  maxLength={1}
+                  maxLength={len}
                   value={values[idx] || ''}
                   onChange={(e) =>
-                    onChange(idx, e.target.value.replace(/[^0-9]/g, '').slice(0, 1))
+                    onChange(idx, e.target.value.replace(/[^0-9]/g, '').slice(0, len))
                   }
-                  className="w-7 h-7 text-center border-b-2 border-wall-border bg-transparent text-wall-text focus:border-wall-gold outline-none transition-colors"
+                  className="h-7 text-center border-b-2 border-wall-border bg-transparent text-wall-text focus:border-wall-gold outline-none transition-colors"
+                  style={{ width: `${len * 32 - 8}px` }}
                 />
-              ),
-            })
-            colCount++
+              </div>
+            )
+            colCount += len
           }
         })
 
         // 尾部补空格到统一宽度
         while (colCount < totalCols) {
-          cells.push({
-            key: `pad-${li}-${colCount}`,
-            content: <span className="text-wall-text">{'\u00A0'}</span>,
-          })
+          cells.push(
+            <div key={`pad-${li}-${colCount}`} className="w-8 h-8 flex items-center justify-center">
+              <span className="text-wall-text">{'\u00A0'}</span>
+            </div>
+          )
           colCount++
         }
 
         return (
           <div key={li} className="flex items-center">
-            {cells.map((c) => (
-              <div
-                key={c.key}
-                className="w-8 h-8 flex items-center justify-center"
-              >
-                {c.content}
-              </div>
-            ))}
+            {cells}
           </div>
         )
       })}
@@ -209,7 +187,8 @@ export default function CompetitionPage() {
   const answerInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    if (isPlaying && !isPerDigitBlank(getCurrentQuestion()?.raw_content || null)) {
+    const q = getCurrentQuestion()
+    if (isPlaying && !(q?.type === 'vertical' && q?.raw_content && q?.category !== '笔算除法竖式')) {
       answerInputRef.current?.focus()
     }
   }, [currentQIndex, isPlaying])
@@ -317,8 +296,8 @@ export default function CompetitionPage() {
     const q = getCurrentQuestion()
     if (!q) return
 
-    // 逐位 blank 竖式（乘法新版）
-    if (q.type === 'vertical' && isPerDigitBlank(q.raw_content)) {
+    // 乘法竖式 blank 输入（多位数字一个空）
+    if (q.type === 'vertical' && q.raw_content && q.category !== '笔算除法竖式') {
       const correctAnswers = getBlankAnswers(q.raw_content)
       let allCorrect = true
       for (let i = 0; i < correctAnswers.length; i++) {
@@ -633,8 +612,8 @@ export default function CompetitionPage() {
   // Playing screen
   const currentQuestion = getCurrentQuestion()
   const isDivision = currentQuestion?.category === '笔算除法竖式'
-  const usePerDigitBlank = currentQuestion?.type === 'vertical' && isPerDigitBlank(currentQuestion.raw_content)
-  const blankAnswers = usePerDigitBlank ? getBlankAnswers(currentQuestion.raw_content) : []
+  const useVerticalInputs = currentQuestion?.type === 'vertical' && currentQuestion?.raw_content && !isDivision
+  const blankAnswers = useVerticalInputs ? getBlankAnswers(currentQuestion.raw_content) : []
   const allBlanksFilled = blankValues.length === blankAnswers.length && blankValues.every((v) => v !== undefined && v !== '')
   const config = LEVEL_CONFIG[gameState.currentLevel - 1] || LEVEL_CONFIG[0]
 
@@ -674,7 +653,7 @@ export default function CompetitionPage() {
           <SealBadge>{selectedCategory}</SealBadge>
         </div>
 
-        {usePerDigitBlank && currentQuestion?.raw_content ? (
+        {useVerticalInputs && currentQuestion?.raw_content ? (
           <VerticalInputs
             raw={currentQuestion.raw_content}
             values={blankValues}
@@ -691,7 +670,7 @@ export default function CompetitionPage() {
         )}
 
         {/* 逐位 blank 提交按钮 */}
-        {usePerDigitBlank && (
+        {useVerticalInputs && (
           <div className="mt-4 text-center">
             <SealButton
               variant="gold"
@@ -707,7 +686,7 @@ export default function CompetitionPage() {
       </div>
 
       {/* 除法或普通题的输入框 */}
-      {!usePerDigitBlank && (
+      {!useVerticalInputs && (
         <div className="flex gap-3 items-start">
           <div className="flex-1 flex flex-col gap-3">
             <input
