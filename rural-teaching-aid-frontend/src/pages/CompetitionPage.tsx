@@ -766,7 +766,7 @@ export default function CompetitionPage() {
                 {isPass ? ` · 用时 ${config.timeLimit - timeLeft} 秒` : ''}
               </p>
               <p className="text-wall-text-muted text-xs mt-1">
-                要求：正确率 ≥ {config.targetAccuracy * 100}% 且 连续正确 ≥ {config.consecutiveRequired} 题
+                要求：答够 {config.questionCount} 题 · 正确率 ≥ {config.targetAccuracy * 100}% · 连续正确 ≥ {config.consecutiveRequired} 题
               </p>
             </div>
 
