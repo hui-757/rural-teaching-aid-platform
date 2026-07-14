@@ -1,15 +1,27 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAppStore } from '../store/useAppStore'
 import { useAuthStore } from '../store/useAuthStore'
-import type { Unit, Question, AnswerItem } from '../types'
-import { BrickCard, ScrollPanel } from '../components/ui/BrickCard'
+import type { CalcQuestion, AnswerItem, VerticalContent } from '../types'
+import { ScrollPanel } from '../components/ui/BrickCard'
 import { SealButton, SealBadge, GoldBadge } from '../components/ui/SealButton'
 import {
   Trophy, Lock, Unlock, Timer, ArrowRight, CheckCircle, XCircle,
-  Loader2, Crown, RotateCcw, ChevronLeft, Save
+  Loader2, Crown, RotateCcw, ChevronLeft, Save, Calculator
 } from 'lucide-react'
+
+const CALC_CATEGORIES = [
+  '口算乘法',
+  '不进位笔算乘法',
+  '连续进位笔算乘法',
+  '中间有0的乘法',
+  '末尾有0的乘法',
+  '积的变化规律',
+  '乘法估算与数学文化',
+  '口算除法',
+  '笔算除法竖式',
+]
 
 const LEVEL_CONFIG = [
   { timeLimit: 60, targetAccuracy: 0.5, consecutiveRequired: 2, questionCount: 5 },
@@ -24,17 +36,43 @@ const LEVEL_CONFIG = [
   { timeLimit: 60, targetAccuracy: 1.0, consecutiveRequired: 5, questionCount: 10 },
 ]
 
+const formatVertical = (raw: VerticalContent | null) => {
+  if (!raw) return ''
+  return raw.lines.map(line =>
+    line.map(item =>
+      item.type === 'text' ? item.text : `(${item.answer || '?'})`
+    ).join('')
+  ).join('\n')
+}
+
+const checkPass = (answers: AnswerItem[], config: typeof LEVEL_CONFIG[0]) => {
+  if (answers.length < config.questionCount) return false
+  const correctCount = answers.filter(a => a.correct).length
+  const accuracy = correctCount / answers.length
+  let maxConsecutive = 0
+  let currentConsecutive = 0
+  for (const a of answers) {
+    if (a.correct) {
+      currentConsecutive++
+      maxConsecutive = Math.max(maxConsecutive, currentConsecutive)
+    } else {
+      currentConsecutive = 0
+    }
+  }
+  return accuracy >= config.targetAccuracy && maxConsecutive >= config.consecutiveRequired
+}
+
 export default function CompetitionPage() {
   const [searchParams] = useSearchParams()
-  const unitParam = searchParams.get('unit')
+  const categoryParam = searchParams.get('category')
   const { user } = useAuthStore()
   const { gameState, setGameState } = useAppStore()
 
-  const [units, setUnits] = useState<Unit[]>([])
-  const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null)
-  const [questions, setQuestions] = useState<Question[]>([])
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(categoryParam)
+  const [questions, setQuestions] = useState<CalcQuestion[]>([])
   const [currentQIndex, setCurrentQIndex] = useState(0)
   const [currentAnswer, setCurrentAnswer] = useState('')
+  const [currentRemainder, setCurrentRemainder] = useState('')
   const [answers, setAnswers] = useState<AnswerItem[]>([])
   const [timeLeft, setTimeLeft] = useState(60)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -46,141 +84,117 @@ export default function CompetitionPage() {
   const [saving, setSaving] = useState(false)
   const [studentName, setStudentName] = useState('')
   const [showNameInput, setShowNameInput] = useState(false)
-  const [completedLevels, setCompletedLevels] = useState<number[]>([])
+  const [completedLevels, setCompletedLevels] = useState<Record<string, number[]>>({})
+
+  const finishedRef = useRef(false)
 
   useEffect(() => {
-    fetchUnits()
-    if (unitParam) {
-      selectUnitById(Number(unitParam))
+    if (categoryParam) {
+      setSelectedCategory(categoryParam)
+      loadQuestions(categoryParam)
     }
-  }, [unitParam])
+    setLoading(false)
+  }, [categoryParam])
 
   useEffect(() => {
     if (!isPlaying || timeLeft <= 0) return
-    const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000)
+    const timer = setInterval(() => setTimeLeft(t => t - 1), 1000)
     return () => clearInterval(timer)
   }, [isPlaying, timeLeft])
 
-  const fetchUnits = async () => {
-    const { data } = await supabase.from('unit').select('*').eq('grade', '四年级上').order('unit_id')
-    if (data) setUnits(data as Unit[])
-    setLoading(false)
-  }
+  useEffect(() => {
+    if (isPlaying && timeLeft <= 0 && !finishedRef.current) {
+      finishLevel(answers)
+    }
+  }, [isPlaying, timeLeft, answers])
 
-  const selectUnitById = async (id: number) => {
-    const { data } = await supabase.from('unit').select('*').eq('id', id).single()
+  const loadQuestions = async (category: string) => {
+    const { data } = await supabase.from('calc_question').select('*').eq('category', category)
     if (data) {
-      setSelectedUnit(data as Unit)
-      loadQuestions(data.unit_id)
+      const shuffled = [...data].sort(() => Math.random() - 0.5)
+      setQuestions(shuffled as CalcQuestion[])
     }
   }
 
-  const loadQuestions = async (unitId: number) => {
-    const { data } = await supabase.from('question').select('*').eq('unit_id', unitId)
-    if (data) setQuestions(data as Question[])
-  }
-
   const startLevel = async (level: number) => {
-    if (!selectedUnit) return
+    if (!selectedCategory) return
     const config = LEVEL_CONFIG[level - 1] || LEVEL_CONFIG[0]
 
-    // Filter questions by difficulty for this level
-    const levelQuestions = questions
-      .filter((q) => {
-        if (level <= 3) return (q.difficulty ?? 0) <= 1
-        if (level <= 6) return (q.difficulty ?? 0) <= 2
-        return true
-      })
-      .sort(() => Math.random() - 0.5)
-      .slice(0, config.questionCount)
-
-    if (levelQuestions.length === 0) {
-      // Fallback to all questions
-      const fallback = [...questions].sort(() => Math.random() - 0.5).slice(0, config.questionCount)
-      if (fallback.length === 0) {
-        alert('暂无题目，请先录入题库')
-        return
-      }
-      levelQuestions.push(...fallback)
+    if (questions.length === 0) {
+      await loadQuestions(selectedCategory)
+    }
+    if (questions.length === 0) {
+      alert('该类型暂无题目')
+      return
     }
 
     setCurrentQIndex(0)
     setCurrentAnswer('')
+    setCurrentRemainder('')
     setAnswers([])
     setTimeLeft(config.timeLimit)
-    setIsPlaying(true)
+    setIsPlaying(false)
     setShowResult(false)
     setShowNameInput(true)
+    finishedRef.current = false
+  }
+
+  const getCurrentQuestion = () => {
+    if (questions.length === 0) return null
+    return questions[currentQIndex % questions.length]
   }
 
   const submitAnswer = () => {
-    const q = getCurrentQuestions()[currentQIndex]
+    const q = getCurrentQuestion()
     if (!q) return
 
-    const correct = currentAnswer.trim() === q.answer.trim()
+    let correct = currentAnswer.trim() === q.answer.trim()
+    if (q.category === '笔算除法竖式' && q.answer_remainder) {
+      correct = correct && currentRemainder.trim() === q.answer_remainder.trim()
+    }
+
     const newAnswer: AnswerItem = {
-      question_id: q.question_id,
-      student_answer: currentAnswer.trim(),
+      question_id: q.id,
+      student_answer: currentAnswer.trim() + (q.answer_remainder ? `...${currentRemainder.trim()}` : ''),
       correct,
     }
 
     const newAnswers = [...answers, newAnswer]
     setAnswers(newAnswers)
     setCurrentAnswer('')
+    setCurrentRemainder('')
 
-    const currentQuestions = getCurrentQuestions()
-    if (currentQIndex + 1 < currentQuestions.length) {
-      setCurrentQIndex(currentQIndex + 1)
-    } else {
-      finishLevel(newAnswers)
-    }
-  }
-
-  const getCurrentQuestions = () => {
     const config = LEVEL_CONFIG[gameState.currentLevel - 1] || LEVEL_CONFIG[0]
-    return questions
-      .filter((q) => {
-        if (gameState.currentLevel <= 3) return (q.difficulty ?? 0) <= 1
-        if (gameState.currentLevel <= 6) return (q.difficulty ?? 0) <= 2
-        return true
-      })
-      .slice(0, config.questionCount)
+    if (checkPass(newAnswers, config)) {
+      finishLevel(newAnswers)
+    } else {
+      setCurrentQIndex(prev => prev + 1)
+    }
   }
 
   const finishLevel = (finalAnswers: AnswerItem[]) => {
+    if (finishedRef.current) return
+    finishedRef.current = true
+
     const config = LEVEL_CONFIG[gameState.currentLevel - 1] || LEVEL_CONFIG[0]
-    const correctCount = finalAnswers.filter((a) => a.correct).length
-    const accuracy = correctCount / finalAnswers.length
+    const passed = checkPass(finalAnswers, config)
 
-    // Check consecutive correct
-    let maxConsecutive = 0
-    let currentConsecutive = 0
-    for (const a of finalAnswers) {
-      if (a.correct) {
-        currentConsecutive++
-        maxConsecutive = Math.max(maxConsecutive, currentConsecutive)
-      } else {
-        currentConsecutive = 0
-      }
-    }
-
-    const passed = accuracy >= config.targetAccuracy && maxConsecutive >= config.consecutiveRequired
     setIsPass(passed)
     setShowResult(true)
     setIsPlaying(false)
   }
 
   const saveRecord = async () => {
-    if (!user || !selectedUnit) return
+    if (!user || !selectedCategory) return
     setSaving(true)
 
-    const correctCount = answers.filter((a) => a.correct).length
-    const score = Math.round((correctCount / answers.length) * 100)
+    const correctCount = answers.filter(a => a.correct).length
+    const score = answers.length > 0 ? Math.round((correctCount / answers.length) * 100) : 0
 
     await supabase.from('record').insert({
       teacher_id: user.id,
       student_name: studentName || '匿名学生',
-      unit_id: selectedUnit.unit_id,
+      category: selectedCategory,
       level: gameState.currentLevel,
       score,
       answers_json: answers,
@@ -188,29 +202,33 @@ export default function CompetitionPage() {
     })
 
     if (isPass) {
-      setCompletedLevels((prev) => [...prev, gameState.currentLevel])
+      setCompletedLevels(prev => ({
+        ...prev,
+        [selectedCategory]: [...(prev[selectedCategory] || []), gameState.currentLevel]
+      }))
     }
 
     setSaving(false)
     setShowResult(false)
     setShowNameInput(false)
+    setIsPlaying(false)
     setNote('')
-    fetchRankings(selectedUnit.unit_id)
+    fetchRankings(selectedCategory)
   }
 
-  const fetchRankings = async (unitId: number) => {
+  const fetchRankings = async (category: string) => {
     const { data } = await supabase
       .from('record')
       .select('*')
-      .eq('unit_id', unitId)
+      .eq('category', category)
       .order('score', { ascending: false })
       .limit(20)
     if (data) setRankings(data)
   }
 
   const resetLevelProgress = () => {
-    setCompletedLevels([])
-    setGameState({ currentLevel: 1 })
+    if (!selectedCategory) return
+    setCompletedLevels(prev => ({ ...prev, [selectedCategory]: [] }))
   }
 
   if (loading) {
@@ -224,8 +242,8 @@ export default function CompetitionPage() {
     )
   }
 
-  // Unit selection screen
-  if (!selectedUnit) {
+  // Category selection
+  if (!selectedCategory) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
@@ -233,42 +251,42 @@ export default function CompetitionPage() {
             <Trophy size={24} className="text-wall-gold" />
             <h1 className="text-2xl font-serif text-wall-text tracking-wider">闯关竞赛</h1>
           </div>
-          <p className="text-wall-text-muted">请选择闯关单元</p>
+          <p className="text-wall-text-muted">请选择计算题类型进行闯关</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {units.map((unit) => (
-            <BrickCard
-              key={unit.unit_id}
-              title={unit.unit_name}
-              subtitle={unit.unit_desc || ''}
-              accent="gold"
-              hover
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {CALC_CATEGORIES.map((cat) => (
+            <button
+              key={cat}
               onClick={() => {
-                setSelectedUnit(unit)
-                loadQuestions(unit.unit_id)
+                setSelectedCategory(cat)
+                loadQuestions(cat)
               }}
+              className="group bg-wall-paper border-2 border-wall-border rounded-lg p-6 hover:border-wall-gold transition-all duration-300 text-left"
             >
-              <div className="flex items-center gap-2">
-                <GoldBadge>第 {unit.unit_id} 单元</GoldBadge>
-                <SealBadge>10 关卡</SealBadge>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 bg-wall-gold/10 border border-wall-gold rounded flex items-center justify-center">
+                  <Calculator size={20} className="text-wall-gold" />
+                </div>
+                <h3 className="font-serif text-lg text-wall-text">{cat}</h3>
               </div>
-            </BrickCard>
+              <p className="text-wall-text-muted text-sm">点击开始闯关</p>
+            </button>
           ))}
         </div>
       </div>
     )
   }
 
-  // Name input before starting
+  // Name input
   if (showNameInput && !isPlaying) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <button
-          onClick={() => setSelectedUnit(null)}
+          onClick={() => setSelectedCategory(null)}
           className="flex items-center gap-1 text-wall-text-muted hover:text-wall-text mb-4 text-sm"
         >
-          <ChevronLeft size={16} /> 返回单元选择
+          <ChevronLeft size={16} /> 返回类型选择
         </button>
         <div className="max-w-md mx-auto">
           <ScrollPanel title="学生信息">
@@ -304,24 +322,25 @@ export default function CompetitionPage() {
     )
   }
 
-  // Level selection screen
+  // Level selection
   if (!isPlaying && !showResult) {
+    const catLevels = completedLevels[selectedCategory] || []
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <button
-          onClick={() => setSelectedUnit(null)}
+          onClick={() => setSelectedCategory(null)}
           className="flex items-center gap-1 text-wall-text-muted hover:text-wall-text mb-4 text-sm"
         >
-          <ChevronLeft size={16} /> 返回单元选择
+          <ChevronLeft size={16} /> 返回类型选择
         </button>
 
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-2">
             <Trophy size={24} className="text-wall-gold" />
-            <h1 className="text-2xl font-serif text-wall-text tracking-wider">{selectedUnit.unit_name} - 闯关</h1>
+            <h1 className="text-2xl font-serif text-wall-text tracking-wider">{selectedCategory} - 闯关</h1>
           </div>
           <div className="flex items-center gap-2">
-            <GoldBadge>第 {selectedUnit.unit_id} 单元</GoldBadge>
+            <GoldBadge>计算题闯关</GoldBadge>
             <SealButton variant="outline" size="sm" onClick={resetLevelProgress}>
               <RotateCcw size={12} className="mr-1" />
               重置进度
@@ -329,11 +348,10 @@ export default function CompetitionPage() {
           </div>
         </div>
 
-        {/* Level Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
           {Array.from({ length: 10 }, (_, i) => i + 1).map((level) => {
-            const isCompleted = completedLevels.includes(level)
-            const isAvailable = level === 1 || completedLevels.includes(level - 1)
+            const isCompleted = catLevels.includes(level)
+            const isAvailable = level === 1 || catLevels.includes(level - 1)
             const config = LEVEL_CONFIG[level - 1]
 
             return (
@@ -341,7 +359,7 @@ export default function CompetitionPage() {
                 key={level}
                 disabled={!isAvailable}
                 onClick={() => {
-                  setGameState({ currentLevel: level })
+                  setGameState({ category: selectedCategory, currentLevel: level })
                   startLevel(level)
                 }}
                 className={`relative p-4 rounded-lg border-2 transition-all duration-200 ${
@@ -362,7 +380,7 @@ export default function CompetitionPage() {
                   )}
                   <p className="font-serif font-bold text-lg text-wall-text">第 {level} 关</p>
                   <p className="text-xs text-wall-text-muted mt-1">
-                    {config?.questionCount}题 · {config?.timeLimit}秒
+                    {config?.timeLimit}秒 · 正确率{config?.targetAccuracy * 100}%
                   </p>
                 </div>
               </button>
@@ -370,7 +388,6 @@ export default function CompetitionPage() {
           })}
         </div>
 
-        {/* Rankings */}
         <ScrollPanel title="闯关排行榜">
           {rankings.length > 0 ? (
             <div className="space-y-2">
@@ -406,18 +423,19 @@ export default function CompetitionPage() {
   }
 
   // Playing screen
-  const currentQuestions = getCurrentQuestions()
-  const currentQuestion = currentQuestions[currentQIndex]
+  const currentQuestion = getCurrentQuestion()
+  const isDivision = currentQuestion?.category === '笔算除法竖式'
+  const config = LEVEL_CONFIG[gameState.currentLevel - 1] || LEVEL_CONFIG[0]
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      {/* Header */}
       <div className="bg-wall-stone-dark text-wall-paper rounded-lg p-4 mb-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <SealBadge className="bg-wall-gold/20 text-wall-gold-light border-wall-gold/30">
             第 {gameState.currentLevel} 关
           </SealBadge>
           <span className="font-serif text-sm">{studentName}</span>
+          <span className="text-wall-text-muted text-xs">{selectedCategory}</span>
         </div>
         <div className={`flex items-center gap-2 font-mono text-lg font-bold ${
           timeLeft <= 10 ? 'text-red-400' : 'text-wall-gold-light'
@@ -427,51 +445,59 @@ export default function CompetitionPage() {
         </div>
       </div>
 
-      {/* Progress */}
       <div className="mb-4 flex gap-1">
-        {currentQuestions.map((_, i) => (
+        {answers.map((a, i) => (
           <div
             key={i}
-            className={`h-1.5 flex-1 rounded-full transition-all ${
-              i < currentQIndex
-                ? answers[i]?.correct
-                  ? 'bg-wall-ink'
-                  : 'bg-wall-brick'
-                : i === currentQIndex
-                ? 'bg-wall-gold'
-                : 'bg-wall-border'
-            }`}
+            className={`h-1.5 flex-1 rounded-full ${a.correct ? 'bg-wall-ink' : 'bg-wall-brick'}`}
           />
+        ))}
+        {Array.from({ length: Math.max(0, config.questionCount - answers.length) }, (_, i) => (
+          <div key={`empty-${i}`} className="h-1.5 flex-1 rounded-full bg-wall-border" />
         ))}
       </div>
 
-      {/* Question Card */}
       <div className="bg-wall-paper border-2 border-wall-border rounded-lg p-8 brick-pattern mb-6">
         <div className="flex items-center justify-between mb-4">
-          <span className="text-wall-text-muted text-sm">题目 {currentQIndex + 1} / {currentQuestions.length}</span>
-          <SealBadge>难度 {currentQuestion?.difficulty || 1}</SealBadge>
+          <span className="text-wall-text-muted text-sm">第 {currentQIndex + 1} 题</span>
+          <SealBadge>{selectedCategory}</SealBadge>
         </div>
-        <p className="text-2xl font-serif text-wall-text text-center py-8">
-          {currentQuestion?.content || '加载中...'}
-        </p>
+        <div className={`text-2xl font-serif text-wall-text text-center py-8 ${currentQuestion?.type === 'vertical' ? 'font-mono whitespace-pre-wrap' : ''}`}>
+          {currentQuestion?.type === 'vertical' ? formatVertical(currentQuestion.raw_content) : currentQuestion?.content || '加载中...'}
+        </div>
       </div>
 
-      {/* Answer Input */}
-      <div className="flex gap-3">
-        <input
-          type="text"
-          value={currentAnswer}
-          onChange={(e) => setCurrentAnswer(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && currentAnswer.trim() && submitAnswer()}
-          placeholder="请输入答案"
-          autoFocus
-          className="flex-1 px-4 py-3 bg-wall-paper border-2 border-wall-border rounded font-sans text-lg text-wall-text text-center placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors"
-        />
+      <div className="flex gap-3 items-start">
+        <div className="flex-1 flex flex-col gap-3">
+          <input
+            type="text"
+            value={currentAnswer}
+            onChange={(e) => setCurrentAnswer(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && currentAnswer.trim() && submitAnswer()}
+            placeholder={isDivision ? '请输入商' : '请输入答案'}
+            autoFocus
+            className="w-full px-4 py-3 bg-wall-paper border-2 border-wall-border rounded font-sans text-lg text-wall-text text-center placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors"
+          />
+          {isDivision && (
+            <div className="flex items-center gap-2">
+              <span className="text-wall-text-muted text-sm whitespace-nowrap">余数：</span>
+              <input
+                type="text"
+                value={currentRemainder}
+                onChange={(e) => setCurrentRemainder(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && currentAnswer.trim() && submitAnswer()}
+                placeholder="请输入余数（没有则填0）"
+                className="flex-1 px-4 py-2 bg-wall-paper border-2 border-wall-border rounded font-sans text-lg text-wall-text text-center placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors"
+              />
+            </div>
+          )}
+        </div>
         <SealButton
           variant="gold"
           size="md"
           onClick={submitAnswer}
           disabled={!currentAnswer.trim()}
+          className="self-start"
         >
           <ArrowRight size={18} />
         </SealButton>
@@ -494,13 +520,17 @@ export default function CompetitionPage() {
                 </>
               )}
               <p className="text-wall-text-muted mt-2">
-                答对 {answers.filter((a) => a.correct).length} / {answers.length} 题
+                答对 {answers.filter(a => a.correct).length} / {answers.length} 题
+                {isPass ? ` · 用时 ${config.timeLimit - timeLeft} 秒` : ''}
+              </p>
+              <p className="text-wall-text-muted text-xs mt-1">
+                要求：正确率 ≥ {config.targetAccuracy * 100}% 且 连续正确 ≥ {config.consecutiveRequired} 题
               </p>
             </div>
 
-            <div className="bg-wall-bg-deep rounded p-3 mb-4 space-y-2">
-              {answers.map((a, i) => {
-                const q = currentQuestions.find((q) => q.question_id === a.question_id)
+            <div className="bg-wall-bg-deep rounded p-3 mb-4 space-y-2 max-h-[200px] overflow-y-auto">
+              {answers.slice(0, 10).map((a, i) => {
+                const q = questions.find(q => q.id === a.question_id)
                 return (
                   <div key={i} className="flex items-center gap-2 text-sm">
                     {a.correct ? (
@@ -508,13 +538,16 @@ export default function CompetitionPage() {
                     ) : (
                       <XCircle size={14} className="text-wall-brick flex-shrink-0" />
                     )}
-                    <span className="text-wall-text-muted">{q?.content}</span>
+                    <span className="text-wall-text-muted truncate">{q?.content}</span>
                     <span className={a.correct ? 'text-wall-ink' : 'text-wall-brick'}>
-                      {a.student_answer} {a.correct ? '' : `(正确答案: ${q?.answer})`}
+                      {a.student_answer} {a.correct ? '' : `(正确答案: ${q?.answer}${q?.answer_remainder ? '...' + q.answer_remainder : ''})`}
                     </span>
                   </div>
                 )
               })}
+              {answers.length > 10 && (
+                <p className="text-wall-text-muted text-xs text-center">... 还有 {answers.length - 10} 题</p>
+              )}
             </div>
 
             <textarea

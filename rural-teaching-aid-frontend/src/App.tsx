@@ -78,6 +78,16 @@ function AppContent() {
           }
         />
         <Route
+          path="/teach/test/:category?"
+          element={
+            <ProtectedRoute>
+              <GradeGuard>
+                <TestTeachPage />
+              </GradeGuard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/teach/:mode"
           element={
             <ProtectedRoute>
@@ -93,16 +103,6 @@ function AppContent() {
             <ProtectedRoute>
               <GradeGuard>
                 <ContentTeachPage />
-              </GradeGuard>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/teach/test/:unitId"
-          element={
-            <ProtectedRoute>
-              <GradeGuard>
-                <TestTeachPage />
               </GradeGuard>
             </ProtectedRoute>
           }

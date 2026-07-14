@@ -14,6 +14,17 @@ export interface Unit {
   created_at: string
 }
 
+export interface VerticalLineItem {
+  type: 'text' | 'blank'
+  text?: string
+  id?: string
+  answer?: string
+}
+
+export interface VerticalContent {
+  lines: VerticalLineItem[][]
+}
+
 export interface Question {
   question_id: number
   unit_id: number
@@ -21,6 +32,19 @@ export interface Question {
   answer: string
   type: string | null
   difficulty: number | null
+  raw_content: VerticalContent | null
+  created_at: string
+}
+
+export interface CalcQuestion {
+  id: number
+  category: string
+  grade: string
+  content: string
+  raw_content: VerticalContent | null
+  answer: string
+  answer_remainder: string | null
+  type: string
   created_at: string
 }
 
@@ -28,7 +52,8 @@ export interface GameRecord {
   record_id: number
   teacher_id: string
   student_name: string
-  unit_id: number
+  unit_id: number | null
+  category: string | null
   score: number | null
   level: number | null
   answers_json: AnswerItem[]
@@ -51,16 +76,15 @@ export interface TestAnswer {
 }
 
 export interface GameState {
-  unitId: number | null
+  category: string | null
   currentLevel: number
   totalLevels: number
-  questions: Question[]
+  questions: CalcQuestion[]
   answers: AnswerItem[]
   startTime: number
   studentName: string
   isActive: boolean
 }
-
 export interface LevelConfig {
   timeLimit: number
   targetAccuracy: number

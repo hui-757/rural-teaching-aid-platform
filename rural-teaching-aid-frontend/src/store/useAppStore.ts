@@ -18,7 +18,7 @@ const savedGrade = localStorage.getItem(STORAGE_KEY)
 const initialGrade: string | null = savedGrade || null
 
 const defaultGameState: GameState = {
-  unitId: null,
+  category: null,
   currentLevel: 1,
   totalLevels: 10,
   questions: [],
