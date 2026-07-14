@@ -97,6 +97,13 @@ export default function CompetitionPage() {
   }, [categoryParam])
 
   useEffect(() => {
+    if (selectedCategory && user) {
+      loadCompletedLevels(selectedCategory)
+      fetchRankings(selectedCategory)
+    }
+  }, [selectedCategory, user])
+
+  useEffect(() => {
     if (!isPlaying || timeLeft <= 0) return
     const timer = setInterval(() => setTimeLeft(t => t - 1), 1000)
     return () => clearInterval(timer)
@@ -107,6 +114,26 @@ export default function CompetitionPage() {
       finishLevel(answers)
     }
   }, [isPlaying, timeLeft, answers])
+
+  const loadCompletedLevels = async (category: string) => {
+    if (!user) return
+    const { data } = await supabase
+      .from('record')
+      .select('level, score')
+      .eq('teacher_id', user.id)
+      .eq('category', category)
+
+    if (!data) return
+    const passedLevels = data
+      .filter((r) => {
+        const config = LEVEL_CONFIG[(r.level || 1) - 1]
+        return r.score >= (config?.targetAccuracy || 0.5) * 100
+      })
+      .map((r) => r.level as number)
+
+    const uniqueLevels = [...new Set(passedLevels)]
+    setCompletedLevels((prev) => ({ ...prev, [category]: uniqueLevels }))
+  }
 
   const loadQuestions = async (category: string) => {
     const { data } = await supabase.from('calc_question').select('*').eq('category', category)
