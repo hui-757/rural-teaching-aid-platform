@@ -3,15 +3,19 @@ import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuthStore } from '../store/useAuthStore'
 import { ScrollPanel } from '../components/ui/BrickCard'
-import { Users, ArrowLeft, Loader2, TrendingUp, Award, BookOpen } from 'lucide-react'
+import { Users, ArrowLeft, Loader2, TrendingUp, Award, BookOpen, MessageCircle, Trophy } from 'lucide-react'
 
-interface StudentSummary {
+interface PracticeStudent {
   student_number: string
-  practice_sessions: number
-  practice_questions: number
-  practice_correct: number
-  competition_count: number
-  competition_avg_score: number
+  sessions: number      // 参与课堂次数 (distinct session_id)
+  questions: number     // 总答题数
+  correct: number       // 正确数
+}
+
+interface CompetitionStudent {
+  student_name: string
+  count: number         // 闯关次数
+  avg_score: number     // 平均分
 }
 
 interface SessionRow {
@@ -24,7 +28,8 @@ interface SessionRow {
 export default function StudentAnalysisPage() {
   const navigate = useNavigate()
   const { user } = useAuthStore()
-  const [students, setStudents] = useState<StudentSummary[]>([])
+  const [practiceStudents, setPracticeStudents] = useState<PracticeStudent[]>([])
+  const [competitionStudents, setCompetitionStudents] = useState<CompetitionStudent[]>([])
   const [sessions, setSessions] = useState<SessionRow[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -35,18 +40,55 @@ export default function StudentAnalysisPage() {
   const loadData = async () => {
     setLoading(true)
 
-    // 1. Load aggregated student stats
-    const { data: statsData } = await supabase
-      .from('student_stats')
-      .select('*')
+    // 1. 一起练：拉取所有答题记录，前端按学号聚合
+    const { data: paData } = await supabase
+      .from('practice_answer')
+      .select('student_number, is_correct, session_id')
       .eq('teacher_id', user!.id)
-      .order('student_number')
 
-    if (statsData) {
-      setStudents(statsData as StudentSummary[])
+    if (paData) {
+      const map: Record<string, { sessions: Set<string>; questions: number; correct: number }> = {}
+      for (const row of paData) {
+        const num = row.student_number
+        if (!map[num]) map[num] = { sessions: new Set(), questions: 0, correct: 0 }
+        map[num].sessions.add(row.session_id)
+        map[num].questions++
+        if (row.is_correct) map[num].correct++
+      }
+      const list = Object.entries(map).map(([student_number, v]) => ({
+        student_number,
+        sessions: v.sessions.size,
+        questions: v.questions,
+        correct: v.correct,
+      }))
+      list.sort((a, b) => Number(a.student_number) - Number(b.student_number))
+      setPracticeStudents(list)
     }
 
-    // 2. Load recent practice sessions with unit names
+    // 2. 闯关：拉取所有记录，前端按姓名聚合
+    const { data: recordData } = await supabase
+      .from('record')
+      .select('student_name, score')
+      .eq('teacher_id', user!.id)
+
+    if (recordData) {
+      const map: Record<string, { count: number; total: number }> = {}
+      for (const row of recordData) {
+        const name = row.student_name || '匿名'
+        if (!map[name]) map[name] = { count: 0, total: 0 }
+        map[name].count++
+        map[name].total += row.score || 0
+      }
+      const list = Object.entries(map).map(([student_name, v]) => ({
+        student_name,
+        count: v.count,
+        avg_score: v.count > 0 ? v.total / v.count : 0,
+      }))
+      list.sort((a, b) => b.avg_score - a.avg_score)
+      setCompetitionStudents(list)
+    }
+
+    // 3. 课堂记录
     const { data: sessData } = await supabase
       .from('practice_session')
       .select('id, session_label, created_at, unit_id')
@@ -66,6 +108,15 @@ export default function StudentAnalysisPage() {
 
     setLoading(false)
   }
+
+  const overallPracticeRate =
+    practiceStudents.length > 0
+      ? (
+          (practiceStudents.reduce((s, st) => s + st.correct, 0) /
+            Math.max(practiceStudents.reduce((s, st) => s + st.questions, 0), 1)) *
+          100
+        ).toFixed(1)
+      : '0.0'
 
   if (loading) {
     return (
@@ -89,63 +140,55 @@ export default function StudentAnalysisPage() {
           <Users size={24} className="text-wall-brick" />
           <h1 className="text-2xl font-serif text-wall-text tracking-wider">学情分析</h1>
         </div>
-        <p className="text-wall-text-muted">微型用户系统：学生课堂参与度与闯关能力综合分析</p>
+        <p className="text-wall-text-muted">实时聚合学生课堂参与与闯关数据</p>
       </div>
 
-      {/* Stats overview */}
+      {/* Overview cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div className="bg-wall-paper border-2 border-wall-brick/30 rounded-lg p-4 text-center">
           <BookOpen size={20} className="mx-auto mb-2 text-wall-brick" />
-          <p className="text-2xl font-serif text-wall-text">{students.length}</p>
-          <p className="text-xs text-wall-text-muted">活跃学号</p>
+          <p className="text-2xl font-serif text-wall-text">{practiceStudents.length}</p>
+          <p className="text-xs text-wall-text-muted">一起练活跃学号</p>
         </div>
         <div className="bg-wall-paper border-2 border-wall-gold/30 rounded-lg p-4 text-center">
           <TrendingUp size={20} className="mx-auto mb-2 text-wall-gold" />
-          <p className="text-2xl font-serif text-wall-text">
-            {students.length > 0 ? (students.reduce((s, st) => s + st.practice_correct, 0) / Math.max(students.reduce((s, st) => s + st.practice_questions, 0), 1) * 100).toFixed(1) : 0}%
-          </p>
+          <p className="text-2xl font-serif text-wall-text">{overallPracticeRate}%</p>
           <p className="text-xs text-wall-text-muted">一起练平均正确率</p>
         </div>
         <div className="bg-wall-paper border-2 border-wall-ink/30 rounded-lg p-4 text-center">
-          <Award size={20} className="mx-auto mb-2 text-wall-ink" />
-          <p className="text-2xl font-serif text-wall-text">
-            {students.length > 0 ? (students.reduce((s, st) => s + (st.competition_avg_score || 0), 0) / students.length).toFixed(1) : 0}
-          </p>
-          <p className="text-xs text-wall-text-muted">闯关平均分</p>
+          <Trophy size={20} className="mx-auto mb-2 text-wall-ink" />
+          <p className="text-2xl font-serif text-wall-text">{competitionStudents.length}</p>
+          <p className="text-xs text-wall-text-muted">闯关参与人数</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Student detail table */}
-        <ScrollPanel title="学生综合数据">
-          {students.length > 0 ? (
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        {/* 一起练学情 */}
+        <ScrollPanel title="一起练 · 学号统计">
+          {practiceStudents.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-wall-border text-wall-text-muted font-serif">
                     <th className="text-left py-2 px-2">学号</th>
-                    <th className="text-center py-2 px-2">一起练次数</th>
+                    <th className="text-center py-2 px-2">参与课堂</th>
                     <th className="text-center py-2 px-2">答题数</th>
                     <th className="text-center py-2 px-2">正确率</th>
-                    <th className="text-center py-2 px-2">闯关次数</th>
-                    <th className="text-center py-2 px-2">闯关均分</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {students.map((s) => {
-                    const rate = s.practice_questions > 0 ? ((s.practice_correct / s.practice_questions) * 100).toFixed(1) : '0.0'
+                  {practiceStudents.map((s) => {
+                    const rate = s.questions > 0 ? ((s.correct / s.questions) * 100).toFixed(1) : '0.0'
                     return (
                       <tr key={s.student_number} className="border-b border-wall-border/50 hover:bg-wall-bg-deep/50">
                         <td className="py-2 px-2 font-medium text-wall-text">{s.student_number}号</td>
-                        <td className="py-2 px-2 text-center text-wall-text-soft">{s.practice_sessions}</td>
-                        <td className="py-2 px-2 text-center text-wall-text-soft">{s.practice_questions}</td>
+                        <td className="py-2 px-2 text-center text-wall-text-soft">{s.sessions}</td>
+                        <td className="py-2 px-2 text-center text-wall-text-soft">{s.questions}</td>
                         <td className="py-2 px-2 text-center">
                           <span className={`font-medium ${Number(rate) >= 80 ? 'text-green-600' : Number(rate) >= 60 ? 'text-wall-gold' : 'text-red-500'}`}>
                             {rate}%
                           </span>
                         </td>
-                        <td className="py-2 px-2 text-center text-wall-text-soft">{s.competition_count}</td>
-                        <td className="py-2 px-2 text-center text-wall-text-soft">{s.competition_avg_score?.toFixed(1) || '0.0'}</td>
                       </tr>
                     )
                   })}
@@ -153,26 +196,58 @@ export default function StudentAnalysisPage() {
               </table>
             </div>
           ) : (
-            <p className="text-wall-text-muted text-sm text-center py-4">暂无学生数据，请先在"一起练"或"闯关"中记录学号</p>
+            <p className="text-wall-text-muted text-sm text-center py-4">暂无一起练数据，请在课堂互动中记录学号答题</p>
           )}
         </ScrollPanel>
 
-        {/* Session history */}
-        <ScrollPanel title="一起练课堂记录">
-          {sessions.length > 0 ? (
-            <div className="space-y-2 max-h-[400px] overflow-y-auto pr-1">
-              {sessions.map((s) => (
-                <div key={s.id} className="bg-wall-paper border border-wall-border rounded p-3">
-                  <p className="font-serif text-wall-text text-sm">{s.session_label}</p>
-                  <p className="text-xs text-wall-text-muted mt-1">{s.unit_name}</p>
-                </div>
-              ))}
+        {/* 闯关统计 */}
+        <ScrollPanel title="闯关 · 学生统计">
+          {competitionStudents.length > 0 ? (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-wall-border text-wall-text-muted font-serif">
+                    <th className="text-left py-2 px-2">学生</th>
+                    <th className="text-center py-2 px-2">闯关次数</th>
+                    <th className="text-center py-2 px-2">平均分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {competitionStudents.map((s) => (
+                    <tr key={s.student_name} className="border-b border-wall-border/50 hover:bg-wall-bg-deep/50">
+                      <td className="py-2 px-2 font-medium text-wall-text">{s.student_name}</td>
+                      <td className="py-2 px-2 text-center text-wall-text-soft">{s.count}</td>
+                      <td className="py-2 px-2 text-center">
+                        <span className={`font-medium ${s.avg_score >= 80 ? 'text-green-600' : s.avg_score >= 60 ? 'text-wall-gold' : 'text-red-500'}`}>
+                          {s.avg_score.toFixed(1)}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           ) : (
-            <p className="text-wall-text-muted text-sm text-center py-4">暂无课堂记录</p>
+            <p className="text-wall-text-muted text-sm text-center py-4">暂无闯关数据</p>
           )}
         </ScrollPanel>
       </div>
+
+      {/* 课堂记录 */}
+      <ScrollPanel title="一起练课堂记录">
+        {sessions.length > 0 ? (
+          <div className="space-y-2 max-h-[400px] overflow-y-auto pr-1">
+            {sessions.map((s) => (
+              <div key={s.id} className="bg-wall-paper border border-wall-border rounded p-3">
+                <p className="font-serif text-wall-text text-sm">{s.session_label}</p>
+                <p className="text-xs text-wall-text-muted mt-1">{s.unit_name}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-wall-text-muted text-sm text-center py-4">暂无课堂记录</p>
+        )}
+      </ScrollPanel>
     </div>
   )
 }
