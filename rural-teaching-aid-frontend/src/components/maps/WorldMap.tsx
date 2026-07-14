@@ -107,28 +107,27 @@ export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMa
           }}
         >
           {/* 底图 */}
-          <img
-            src="/maps/map-base.jpg"
-            alt="取经之路"
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          />
+          <div className="absolute inset-0 bg-[#2c2416]">
+            <img
+              src="/maps/map-base.jpg"
+              alt="取经之路"
+              className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+            />
+          </div>
 
-          {/* 热区按钮 */}
+          {/* 热区按钮 — 全部解锁 */}
           {sortedUnits.map((unit, i) => {
             const node = WESTWARD_MAP[unit.unit_id]
             const pos = MAP_NODES[i] || { x: 50, y: 50 }
             const isCompleted = completedMaps.includes(unit.unit_id)
             const firstUncompletedIdx = sortedUnits.findIndex((u) => !completedMaps.includes(u.unit_id))
-            const isAccessible =
-              isCompleted || (firstUncompletedIdx === -1 && i === sortedUnits.length - 1) || i === firstUncompletedIdx || i === 0
-            const isCurrent = isAccessible && !isCompleted && firstUncompletedIdx !== -1
+            const isCurrent = !isCompleted && i === firstUncompletedIdx
             const isLast = i === sortedUnits.length - 1
 
             return (
               <button
                 key={unit.unit_id}
-                onClick={() => isAccessible && onSelectUnit(unit)}
-                disabled={!isAccessible}
+                onClick={() => onSelectUnit(unit)}
                 className="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:scale-125 focus:outline-none group z-20"
                 style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
                 title={node?.mapName || unit.unit_name}
@@ -145,14 +144,14 @@ export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMa
                   }}
                 >
                   <span
-                    className={`text-xl sm:text-2xl select-none ${!isAccessible ? 'grayscale opacity-30' : ''}`}
+                    className="text-xl sm:text-2xl select-none"
                     style={isLast ? { transform: 'rotate(-45deg)' } : undefined}
                   >
                     {node?.mapIcon || '📖'}
                   </span>
                 </div>
-                <span className={`block mt-1 px-1.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-serif tracking-wider whitespace-nowrap ${
-                  isCompleted ? 'bg-[#fff9c4]/80 text-[#8b6914]' : isCurrent ? 'bg-[#a0522d]/10 text-[#a0522d] font-bold' : 'bg-white/50 text-gray-400'
+                <span className={`block mt-1 px-1.5 py-0.5 rounded-full text-xs sm:text-sm font-bold font-serif tracking-wider whitespace-nowrap ${
+                  isCompleted ? 'bg-[#fff9c4]/80 text-[#8b6914]' : isCurrent ? 'bg-[#a0522d]/10 text-[#a0522d]' : 'bg-white/50 text-gray-600'
                 }`}>
                   {isCompleted && '✅'}{node?.mapName || unit.unit_name}
                 </span>
