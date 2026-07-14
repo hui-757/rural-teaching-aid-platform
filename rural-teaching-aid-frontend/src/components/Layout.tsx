@@ -28,9 +28,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Top Navigation - Great Wall style */}
       <header className="bg-wall-stone-dark border-b-4 border-wall-gold shadow-lg relative">
         <div className="absolute inset-x-0 top-0 h-1 bg-wall-gold-light opacity-30" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
+          {/* Logo — 固定左侧 */}
+          <Link to="/" className="flex items-center gap-3 group flex-shrink-0 w-[200px]">
             <div className="w-10 h-10 bg-wall-brick border-2 border-wall-gold rounded wall-texture flex items-center justify-center">
               <span className="text-wall-gold-light font-serif font-bold text-lg">教</span>
             </div>
@@ -42,9 +42,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </Link>
 
-          {/* Nav Links */}
+          {/* Nav Links — 真正居中 */}
           {user && !isHome && currentGrade && (
-            <nav className="hidden md:flex items-center gap-1">
+            <nav className="hidden md:flex items-center justify-center gap-1 flex-1">
               <Link
                 to="/"
                 className="px-4 py-2 text-wall-paper/80 hover:text-wall-gold-light font-serif tracking-wider text-sm transition-colors rounded hover:bg-white/5"
@@ -75,8 +75,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </nav>
           )}
 
-          {/* Right side: Grade Switch + User Menu */}
-          <div className="flex items-center gap-2">
+          {/* Right side — 固定右侧 */}
+          <div className="flex items-center justify-end gap-2 flex-shrink-0 w-[200px]">
             {/* Grade Switch — always visible when user logged in */}
             {user && (
               <button

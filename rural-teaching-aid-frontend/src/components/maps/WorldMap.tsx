@@ -8,17 +8,17 @@ interface WorldMapProps {
   onSelectUnit: (unit: Unit) => void
 }
 
-// 9 据点坐标（百分比，基于实际底图）
+// 9 据点坐标（百分比，基于实际底图）——取经路线从东南蜿蜒向西北
 const MAP_NODES = [
-  { x: 95.0, y: 68.9 },  // 1. 花果山
-  { x: 77.5, y: 25.6 },  // 2. 高老庄
-  { x: 52.8, y: 39.6 },  // 3. 流沙河
-  { x: 36.0, y: 21.8 },  // 4. 白虎岭
-  { x: 51.0, y: 92.2 },  // 5. 盘丝洞
-  { x: 27.1, y: 86.9 },  // 6. 火焰山
-  { x: 5.0,  y: 77.8 },  // 7. 通天河
-  { x: 8.5,  y: 42.2 },  // 8. 乌鸡国
-  { x: 10.7, y: 7.8  },  // 9. 大雷音寺
+  { x: 86.1, y: 70.6 },  // 1. 花果山（起点·东南）
+  { x: 74.2, y: 37.3 },  // 2. 高老庄
+  { x: 54.4, y: 53.9 },  // 3. 流沙河
+  { x: 33.7, y: 30.7 },  // 4. 白虎岭
+  { x: 54.1, y: 74.9 },  // 5. 盘丝洞
+  { x: 31.0, y: 63.1 },  // 6. 火焰山
+  { x: 11.1, y: 63.5 },  // 7. 通天河
+  { x: 21.5, y: 48.4 },  // 8. 乌鸡国
+  { x: 17.3, y: 25.0 },  // 9. 大雷音寺（终点·西北）
 ]
 
 export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMapProps) {
@@ -108,12 +108,61 @@ export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMa
         >
           {/* 底图 */}
           <div className="absolute inset-0 bg-[#2c2416]">
+            {/* 模糊填充层：cover 放大填满，消除黑边 */}
+            <img
+              src="/maps/map-base.jpg"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none blur opacity-50"
+              aria-hidden="true"
+            />
+            {/* 清晰显示层：contain 完整保留左右 */}
             <img
               src="/maps/map-base.jpg"
               alt="取经之路"
               className="absolute inset-0 w-full h-full object-contain pointer-events-none"
             />
           </div>
+
+          {/* SVG 连线层 — 取经路线 */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none z-10"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <marker id="arrow" markerWidth="2" markerHeight="2" refX="1.8" refY="1" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L2,1 L0,2 L0.6,1 Z" fill="#a0522d" />
+              </marker>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="0.6" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            {/* 主路径：虚线 + 光晕 + 箭头 */}
+            <path
+              d={`M ${MAP_NODES.map(n => `${n.x},${n.y}`).join(' L ')}`}
+              fill="none"
+              stroke="#a0522d"
+              strokeWidth="0.35"
+              strokeDasharray="1.2 0.8"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              markerEnd="url(#arrow)"
+            />
+            {/* 底部暗线，增强可读性 */}
+            <path
+              d={`M ${MAP_NODES.map(n => `${n.x},${n.y}`).join(' L ')}`}
+              fill="none"
+              stroke="#2c1810"
+              strokeWidth="0.7"
+              strokeDasharray="1.2 0.8"
+              strokeLinecap="round"
+              opacity="0.25"
+            />
+          </svg>
 
           {/* 热区按钮 — 全部解锁 */}
           {sortedUnits.map((unit, i) => {

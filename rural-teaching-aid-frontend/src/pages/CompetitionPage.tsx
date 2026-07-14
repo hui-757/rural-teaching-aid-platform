@@ -470,26 +470,31 @@ export default function CompetitionPage() {
   // WorldMap entry
   if (!selectedCategory) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-[calc(100vh-64px-88px)] flex flex-col">
-        <div className="mb-4 shrink-0">
-          <div className="flex items-center gap-3 mb-2">
+      <div className="h-[calc(100vh-64px-88px)] flex flex-col">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 shrink-0 w-full">
+          <div className="flex items-center gap-3 mb-1">
             <Trophy size={24} className="text-wall-gold" />
             <h1 className="text-2xl font-serif text-wall-text tracking-wider">闯关竞赛</h1>
           </div>
-          <p className="text-wall-text-muted">点击地界开始闯关</p>
+          <p className="text-wall-text-muted text-sm">点击地界开始闯关</p>
         </div>
-        <div className="relative flex-1 rounded-2xl overflow-hidden border-2 border-wall-border">
-          <WorldMap
-            units={mapUnits}
-            completedMaps={completedUnitIds}
-            onSelectUnit={(unit) => {
-              const cat = UNIT_TO_CATEGORY[unit.unit_id]
-              if (cat) {
-                setSelectedCategory(cat)
-                loadQuestions(cat)
-              }
-            }}
-          />
+        <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pb-4 overflow-hidden">
+          <div
+            className="relative w-full rounded-2xl overflow-hidden border-2 border-wall-border"
+            style={{ aspectRatio: '1920/823', maxHeight: '100%' }}
+          >
+            <WorldMap
+              units={mapUnits}
+              completedMaps={completedUnitIds}
+              onSelectUnit={(unit) => {
+                const cat = UNIT_TO_CATEGORY[unit.unit_id]
+                if (cat) {
+                  setSelectedCategory(cat)
+                  loadQuestions(cat)
+                }
+              }}
+            />
+          </div>
         </div>
       </div>
     )
