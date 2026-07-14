@@ -91,3 +91,14 @@ export interface LevelConfig {
   consecutiveRequired: number
   questionCount: number
 }
+
+export interface Material {
+  material_id: number
+  teacher_id: string
+  name: string
+  type: 'pdf' | 'image_group'
+  unit_id: number | null
+  files: string[]
+  created_at: string
+}
+

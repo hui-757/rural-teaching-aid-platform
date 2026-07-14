@@ -13,6 +13,7 @@ import TestTeachPage from './pages/TestTeachPage'
 import PracticePage from './pages/PracticePage'
 import StudentAnalysisPage from './pages/StudentAnalysisPage'
 import CompetitionPage from './pages/CompetitionPage'
+import MaterialManagePage from './pages/MaterialManagePage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuthStore()
@@ -113,6 +114,16 @@ function AppContent() {
             <ProtectedRoute>
               <GradeGuard>
                 <PracticePage />
+              </GradeGuard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teach/materials"
+          element={
+            <ProtectedRoute>
+              <GradeGuard>
+                <MaterialManagePage />
               </GradeGuard>
             </ProtectedRoute>
           }

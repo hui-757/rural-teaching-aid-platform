@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { BookOpen, Calculator, MessageCircle, Users } from 'lucide-react'
+import { BookOpen, Calculator, MessageCircle, Users, FolderOpen } from 'lucide-react'
 import { GreatWallDivider } from '../components/ui/BrickCard'
 import { SealButton } from '../components/ui/SealButton'
 import { useAuthStore } from '../store/useAuthStore'
@@ -37,6 +37,17 @@ export default function TeachHubPage() {
 
   return (
     <div className="min-h-[calc(100vh-64px-88px)] flex flex-col items-center justify-center px-4 py-12 relative">
+      {/* 快捷入口：资料管理 */}
+      <div className="absolute top-6 right-6 z-20">
+        <button
+          onClick={() => navigate('/teach/materials')}
+          className="flex items-center gap-2 px-4 py-2 bg-wall-paper border-2 border-wall-gold rounded-lg text-wall-gold font-serif text-sm hover:bg-wall-gold hover:text-wall-paper transition-colors shadow-sm"
+        >
+          <FolderOpen size={16} />
+          资料管理
+        </button>
+      </div>
+
       <div className="text-center mb-10 relative z-10">
         <h1 className="text-3xl md:text-4xl font-serif text-wall-text mb-3 tracking-widest">
           授课中心
