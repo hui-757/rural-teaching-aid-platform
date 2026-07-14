@@ -8,7 +8,7 @@ import { ScrollPanel } from '../components/ui/BrickCard'
 import { SealButton, SealBadge, GoldBadge } from '../components/ui/SealButton'
 import {
   Trophy, Lock, Unlock, Timer, ArrowRight, CheckCircle, XCircle,
-  Loader2, Crown, RotateCcw, ChevronLeft, Save, Calculator
+  Loader2, Crown, RotateCcw, ChevronLeft, Calculator
 } from 'lucide-react'
 
 const CALC_CATEGORIES = [
@@ -210,7 +210,7 @@ export default function CompetitionPage() {
     }
   }
 
-  const finishLevel = (finalAnswers: AnswerItem[]) => {
+  const finishLevel = async (finalAnswers: AnswerItem[]) => {
     if (finishedRef.current) return
     finishedRef.current = true
 
@@ -227,49 +227,35 @@ export default function CompetitionPage() {
         [selectedCategory]: [...new Set([...(prev[selectedCategory] || []), gameState.currentLevel])]
       }))
     }
-  }
 
-  const saveRecord = async () => {
-    if (!user || !selectedCategory || !currentGrade) return
-    setSaving(true)
+    // 自动保存记录
+    if (user && selectedCategory && currentGrade) {
+      const correctCount = finalAnswers.filter(a => a.correct).length
+      const score = finalAnswers.length > 0 ? Math.round((correctCount / finalAnswers.length) * 100) : 0
 
-    const correctCount = answers.filter(a => a.correct).length
-    const score = answers.length > 0 ? Math.round((correctCount / answers.length) * 100) : 0
+      const { data: inserted, error } = await supabase
+        .from('record')
+        .insert({
+          teacher_id: user.id,
+          student_name: studentName || '匿名',
+          category: selectedCategory,
+          grade: currentGrade,
+          level: gameState.currentLevel,
+          score,
+          answers_json: finalAnswers,
+        })
+        .select('record_id')
+        .single()
 
-    const { data: inserted, error } = await supabase
-      .from('record')
-      .insert({
-        teacher_id: user.id,
-        student_name: studentName || '匿名学生',
-        category: selectedCategory,
-        grade: currentGrade,
-        level: gameState.currentLevel,
-        score,
-        answers_json: answers,
-      })
-      .select('record_id')
-      .single()
+      if (!error && inserted && note.trim()) {
+        await supabase.from('note').insert({
+          record_id: inserted.record_id,
+          content: note.trim(),
+        })
+      }
 
-    if (!error && inserted && note.trim()) {
-      await supabase.from('note').insert({
-        record_id: inserted.record_id,
-        content: note.trim(),
-      })
+      fetchRankings(selectedCategory)
     }
-
-    if (isPass) {
-      setCompletedLevels(prev => ({
-        ...prev,
-        [selectedCategory]: [...new Set([...(prev[selectedCategory] || []), gameState.currentLevel])]
-      }))
-    }
-
-    setSaving(false)
-    setShowResult(false)
-    setShowNameInput(false)
-    setIsPlaying(false)
-    setNote('')
-    fetchRankings(selectedCategory)
   }
 
   const fetchRankings = async (category: string) => {
@@ -286,6 +272,7 @@ export default function CompetitionPage() {
 
   const resetLevelProgress = () => {
     if (!selectedCategory) return
+    if (!confirm('确定重置该类型的闯关进度？这将清除解锁状态，但历史记录仍保留。')) return
     setCompletedLevels(prev => ({ ...prev, [selectedCategory]: [] }))
   }
 
@@ -347,15 +334,15 @@ export default function CompetitionPage() {
           <ChevronLeft size={16} /> 返回类型选择
         </button>
         <div className="max-w-md mx-auto">
-          <ScrollPanel title="学生信息">
+          <ScrollPanel title="标识录入">
             <p className="text-wall-text-muted text-sm mb-4">
-              请填写参与闯关的学生姓名，以便记录成绩和排行。
+              请填写参与闯关的学生标识（如 01、test01），以便记录成绩和排行。
             </p>
             <input
               type="text"
               value={studentName}
               onChange={(e) => setStudentName(e.target.value)}
-              placeholder="请输入学生姓名"
+              placeholder="请输入学生标识"
               className="w-full px-4 py-3 bg-wall-paper border-2 border-wall-border rounded font-sans text-wall-text placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors mb-4"
             />
             <SealButton
@@ -364,7 +351,7 @@ export default function CompetitionPage() {
               className="w-full"
               onClick={() => {
                 if (!studentName.trim()) {
-                  alert('请输入学生姓名')
+                  alert('请输入学生标识')
                   return
                 }
                 setShowNameInput(false)
@@ -630,6 +617,7 @@ export default function CompetitionPage() {
                 onClick={() => {
                   setShowResult(false)
                   setIsPlaying(false)
+                  setNote('')
                 }}
               >
                 返回关卡
@@ -638,11 +626,13 @@ export default function CompetitionPage() {
                 variant="solid"
                 size="md"
                 className="flex-1"
-                onClick={saveRecord}
-                disabled={saving}
+                onClick={() => {
+                  setShowResult(false)
+                  setIsPlaying(false)
+                  setNote('')
+                }}
               >
-                <Save size={14} className="mr-1" />
-                {saving ? '保存中...' : '保存记录'}
+                确认
               </SealButton>
             </div>
           </div>
