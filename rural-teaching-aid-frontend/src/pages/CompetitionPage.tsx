@@ -47,6 +47,36 @@ const formatVertical = (raw: VerticalContent | null) => {
   ).join('\n')
 }
 
+// 检测是否是逐位 blank 格式（每个 blank.answer 都是单字符）
+const isPerDigitBlank = (raw: VerticalContent | null) => {
+  if (!raw) return false
+  let hasBlank = false
+  for (const line of raw.lines) {
+    for (const item of line) {
+      if (item.type === 'blank') {
+        hasBlank = true
+        const len = item.answer?.length || 0
+        if (len !== 1) return false
+      }
+    }
+  }
+  return hasBlank
+}
+
+// 提取所有 blank 的 answer
+const getBlankAnswers = (raw: VerticalContent | null): string[] => {
+  if (!raw) return []
+  const answers: string[] = []
+  for (const line of raw.lines) {
+    for (const item of line) {
+      if (item.type === 'blank') {
+        answers.push(item.answer || '')
+      }
+    }
+  }
+  return answers
+}
+
 const checkPass = (answers: AnswerItem[], config: typeof LEVEL_CONFIG[0]) => {
   if (answers.length < config.questionCount) return false
   const correctCount = answers.filter(a => a.correct).length
@@ -62,6 +92,53 @@ const checkPass = (answers: AnswerItem[], config: typeof LEVEL_CONFIG[0]) => {
     }
   }
   return accuracy >= config.targetAccuracy && maxConsecutive >= config.consecutiveRequired
+}
+
+// 交互式竖式组件：每个 blank 是一个输入框
+const VerticalInputs = ({
+  raw,
+  values,
+  onChange,
+}: {
+  raw: VerticalContent
+  values: string[]
+  onChange: (idx: number, val: string) => void
+}) => {
+  let blankIdx = 0
+  return (
+    <div className="flex flex-col items-center gap-0 font-mono text-2xl leading-relaxed py-8 select-none">
+      {raw.lines.map((line, li) => (
+        <div key={li} className="flex items-center h-10">
+          {line.map((item, ii) => {
+            if (item.type === 'text') {
+              return (
+                <span key={ii} className="whitespace-pre text-wall-text">
+                  {item.text}
+                </span>
+              )
+            }
+            if (item.type === 'blank') {
+              const idx = blankIdx++
+              return (
+                <input
+                  key={ii}
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={1}
+                  value={values[idx] || ''}
+                  onChange={(e) =>
+                    onChange(idx, e.target.value.replace(/[^0-9]/g, '').slice(0, 1))
+                  }
+                  className="w-8 h-9 mx-0.5 text-center border-b-2 border-wall-border bg-transparent text-wall-text focus:border-wall-gold outline-none transition-colors"
+                />
+              )
+            }
+            return null
+          })}
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default function CompetitionPage() {
@@ -83,19 +160,24 @@ export default function CompetitionPage() {
   const [note, setNote] = useState('')
   const [rankings, setRankings] = useState<Record<string, unknown>[]>([])
   const [loading, setLoading] = useState(true)
-  const [saving, setSaving] = useState(false)
   const [studentName, setStudentName] = useState('')
   const [showNameInput, setShowNameInput] = useState(false)
   const [completedLevels, setCompletedLevels] = useState<Record<string, number[]>>({})
+  const [blankValues, setBlankValues] = useState<string[]>([])
 
   const finishedRef = useRef(false)
   const answerInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    if (isPlaying) {
+    if (isPlaying && !isPerDigitBlank(getCurrentQuestion()?.raw_content || null)) {
       answerInputRef.current?.focus()
     }
   }, [currentQIndex, isPlaying])
+
+  // 切换题目时重置 blank 值
+  useEffect(() => {
+    setBlankValues([])
+  }, [currentQIndex])
 
   useEffect(() => {
     if (categoryParam) {
@@ -170,6 +252,7 @@ export default function CompetitionPage() {
     setCurrentAnswer('')
     setCurrentRemainder('')
     setAnswers([])
+    setBlankValues([])
     setTimeLeft(config.timeLimit)
     setIsPlaying(false)
     setShowResult(false)
@@ -182,10 +265,50 @@ export default function CompetitionPage() {
     return questions[currentQIndex % questions.length]
   }
 
+  const handleBlankChange = (idx: number, val: string) => {
+    setBlankValues((prev) => {
+      const next = [...prev]
+      next[idx] = val
+      return next
+    })
+  }
+
   const submitAnswer = () => {
     const q = getCurrentQuestion()
     if (!q) return
 
+    // 逐位 blank 竖式（乘法新版）
+    if (q.type === 'vertical' && isPerDigitBlank(q.raw_content)) {
+      const correctAnswers = getBlankAnswers(q.raw_content)
+      let allCorrect = true
+      for (let i = 0; i < correctAnswers.length; i++) {
+        if (blankValues[i] !== correctAnswers[i]) {
+          allCorrect = false
+          break
+        }
+      }
+
+      const studentAnswer = blankValues.join('')
+      const newAnswer: AnswerItem = {
+        question_id: q.id,
+        student_answer: studentAnswer,
+        correct: allCorrect,
+      }
+
+      const newAnswers = [...answers, newAnswer]
+      setAnswers(newAnswers)
+      setBlankValues([])
+
+      const config = LEVEL_CONFIG[gameState.currentLevel - 1] || LEVEL_CONFIG[0]
+      if (checkPass(newAnswers, config)) {
+        finishLevel(newAnswers)
+      } else {
+        setCurrentQIndex((prev) => prev + 1)
+      }
+      return
+    }
+
+    // 除法竖式（旧逻辑）或普通口算题
     let correct = currentAnswer.trim() === q.answer.trim()
     if (q.category === '笔算除法竖式' && q.answer_remainder) {
       correct = correct && currentRemainder.trim() === q.answer_remainder.trim()
@@ -206,7 +329,7 @@ export default function CompetitionPage() {
     if (checkPass(newAnswers, config)) {
       finishLevel(newAnswers)
     } else {
-      setCurrentQIndex(prev => prev + 1)
+      setCurrentQIndex((prev) => prev + 1)
     }
   }
 
@@ -222,15 +345,15 @@ export default function CompetitionPage() {
     setIsPlaying(false)
 
     if (passed && selectedCategory) {
-      setCompletedLevels(prev => ({
+      setCompletedLevels((prev) => ({
         ...prev,
-        [selectedCategory]: [...new Set([...(prev[selectedCategory] || []), gameState.currentLevel])]
+        [selectedCategory]: [...new Set([...(prev[selectedCategory] || []), gameState.currentLevel])],
       }))
     }
 
     // 自动保存记录
     if (user && selectedCategory && currentGrade) {
-      const correctCount = finalAnswers.filter(a => a.correct).length
+      const correctCount = finalAnswers.filter((a) => a.correct).length
       const score = finalAnswers.length > 0 ? Math.round((correctCount / finalAnswers.length) * 100) : 0
 
       const { data: inserted, error } = await supabase
@@ -273,7 +396,7 @@ export default function CompetitionPage() {
   const resetLevelProgress = () => {
     if (!selectedCategory) return
     if (!confirm('确定重置该类型的闯关进度？这将清除解锁状态，但历史记录仍保留。')) return
-    setCompletedLevels(prev => ({ ...prev, [selectedCategory]: [] }))
+    setCompletedLevels((prev) => ({ ...prev, [selectedCategory]: [] }))
   }
 
   if (loading) {
@@ -470,6 +593,9 @@ export default function CompetitionPage() {
   // Playing screen
   const currentQuestion = getCurrentQuestion()
   const isDivision = currentQuestion?.category === '笔算除法竖式'
+  const usePerDigitBlank = currentQuestion?.type === 'vertical' && isPerDigitBlank(currentQuestion.raw_content)
+  const blankAnswers = usePerDigitBlank ? getBlankAnswers(currentQuestion.raw_content) : []
+  const allBlanksFilled = blankValues.length === blankAnswers.length && blankValues.every((v) => v !== undefined && v !== '')
   const config = LEVEL_CONFIG[gameState.currentLevel - 1] || LEVEL_CONFIG[0]
 
   return (
@@ -507,7 +633,14 @@ export default function CompetitionPage() {
           <span className="text-wall-text-muted text-sm">第 {currentQIndex + 1} 题</span>
           <SealBadge>{selectedCategory}</SealBadge>
         </div>
-        {currentQuestion?.type === 'vertical' ? (
+
+        {usePerDigitBlank && currentQuestion?.raw_content ? (
+          <VerticalInputs
+            raw={currentQuestion.raw_content}
+            values={blankValues}
+            onChange={handleBlankChange}
+          />
+        ) : currentQuestion?.type === 'vertical' ? (
           <pre className="text-2xl font-mono text-wall-text text-center py-8 whitespace-pre-wrap">
             {formatVertical(currentQuestion.raw_content)}
           </pre>
@@ -516,43 +649,61 @@ export default function CompetitionPage() {
             {currentQuestion?.content || '加载中...'}
           </div>
         )}
+
+        {/* 逐位 blank 提交按钮 */}
+        {usePerDigitBlank && (
+          <div className="mt-4 text-center">
+            <SealButton
+              variant="gold"
+              size="md"
+              onClick={submitAnswer}
+              disabled={!allBlanksFilled}
+            >
+              <ArrowRight size={16} className="mr-1" />
+              提交答案
+            </SealButton>
+          </div>
+        )}
       </div>
 
-      <div className="flex gap-3 items-start">
-        <div className="flex-1 flex flex-col gap-3">
-          <input
-            ref={answerInputRef}
-            type="text"
-            value={currentAnswer}
-            onChange={(e) => setCurrentAnswer(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && currentAnswer.trim() && submitAnswer()}
-            placeholder={isDivision ? '请输入商' : '请输入答案'}
-            className="w-full px-4 py-3 bg-wall-paper border-2 border-wall-border rounded font-sans text-lg text-wall-text text-center placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors"
-          />
-          {isDivision && (
-            <div className="flex items-center gap-2">
-              <span className="text-wall-text-muted text-sm whitespace-nowrap">余数：</span>
-              <input
-                type="text"
-                value={currentRemainder}
-                onChange={(e) => setCurrentRemainder(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && currentAnswer.trim() && submitAnswer()}
-                placeholder="请输入余数（没有则填0）"
-                className="flex-1 px-4 py-2 bg-wall-paper border-2 border-wall-border rounded font-sans text-lg text-wall-text text-center placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors"
-              />
-            </div>
-          )}
+      {/* 除法或普通题的输入框 */}
+      {!usePerDigitBlank && (
+        <div className="flex gap-3 items-start">
+          <div className="flex-1 flex flex-col gap-3">
+            <input
+              ref={answerInputRef}
+              type="text"
+              value={currentAnswer}
+              onChange={(e) => setCurrentAnswer(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && currentAnswer.trim() && submitAnswer()}
+              placeholder={isDivision ? '请输入商' : '请输入答案'}
+              className="w-full px-4 py-3 bg-wall-paper border-2 border-wall-border rounded font-sans text-lg text-wall-text text-center placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors"
+            />
+            {isDivision && (
+              <div className="flex items-center gap-2">
+                <span className="text-wall-text-muted text-sm whitespace-nowrap">余数：</span>
+                <input
+                  type="text"
+                  value={currentRemainder}
+                  onChange={(e) => setCurrentRemainder(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && currentAnswer.trim() && submitAnswer()}
+                  placeholder="请输入余数（没有则填0）"
+                  className="flex-1 px-4 py-2 bg-wall-paper border-2 border-wall-border rounded font-sans text-lg text-wall-text text-center placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors"
+                />
+              </div>
+            )}
+          </div>
+          <SealButton
+            variant="gold"
+            size="md"
+            onClick={submitAnswer}
+            disabled={!currentAnswer.trim()}
+            className="self-start"
+          >
+            <ArrowRight size={18} />
+          </SealButton>
         </div>
-        <SealButton
-          variant="gold"
-          size="md"
-          onClick={submitAnswer}
-          disabled={!currentAnswer.trim()}
-          className="self-start"
-        >
-          <ArrowRight size={18} />
-        </SealButton>
-      </div>
+      )}
 
       {/* Result Modal */}
       {showResult && (
