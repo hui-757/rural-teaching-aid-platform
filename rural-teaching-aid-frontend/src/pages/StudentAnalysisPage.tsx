@@ -148,7 +148,7 @@ export default function StudentAnalysisPage() {
         <div className="bg-wall-paper border-2 border-wall-brick/30 rounded-lg p-4 text-center">
           <BookOpen size={20} className="mx-auto mb-2 text-wall-brick" />
           <p className="text-2xl font-serif text-wall-text">{practiceStudents.length}</p>
-          <p className="text-xs text-wall-text-muted">一起练活跃学号</p>
+          <p className="text-xs text-wall-text-muted">一起练活跃标识</p>
         </div>
         <div className="bg-wall-paper border-2 border-wall-gold/30 rounded-lg p-4 text-center">
           <TrendingUp size={20} className="mx-auto mb-2 text-wall-gold" />
@@ -164,13 +164,13 @@ export default function StudentAnalysisPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         {/* 一起练学情 */}
-        <ScrollPanel title="一起练 · 学号统计">
+        <ScrollPanel title="一起练 · 标识统计">
           {practiceStudents.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-wall-border text-wall-text-muted font-serif">
-                    <th className="text-left py-2 px-2">学号</th>
+                    <th className="text-left py-2 px-2">标识</th>
                     <th className="text-center py-2 px-2">参与课堂</th>
                     <th className="text-center py-2 px-2">答题数</th>
                     <th className="text-center py-2 px-2">正确率</th>
@@ -181,7 +181,7 @@ export default function StudentAnalysisPage() {
                     const rate = s.questions > 0 ? ((s.correct / s.questions) * 100).toFixed(1) : '0.0'
                     return (
                       <tr key={s.student_number} className="border-b border-wall-border/50 hover:bg-wall-bg-deep/50">
-                        <td className="py-2 px-2 font-medium text-wall-text">{s.student_number}号</td>
+                        <td className="py-2 px-2 font-medium text-wall-text">{s.student_number}</td>
                         <td className="py-2 px-2 text-center text-wall-text-soft">{s.sessions}</td>
                         <td className="py-2 px-2 text-center text-wall-text-soft">{s.questions}</td>
                         <td className="py-2 px-2 text-center">
@@ -196,18 +196,18 @@ export default function StudentAnalysisPage() {
               </table>
             </div>
           ) : (
-            <p className="text-wall-text-muted text-sm text-center py-4">暂无一起练数据，请在课堂互动中记录学号答题</p>
+            <p className="text-wall-text-muted text-sm text-center py-4">暂无一起练数据，请在课堂互动中记录标识答题</p>
           )}
         </ScrollPanel>
 
         {/* 闯关统计 */}
-        <ScrollPanel title="闯关 · 学生统计">
+        <ScrollPanel title="闯关 · 标识统计">
           {competitionStudents.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-wall-border text-wall-text-muted font-serif">
-                    <th className="text-left py-2 px-2">学生</th>
+                    <th className="text-left py-2 px-2">标识</th>
                     <th className="text-center py-2 px-2">闯关次数</th>
                     <th className="text-center py-2 px-2">平均分</th>
                   </tr>
