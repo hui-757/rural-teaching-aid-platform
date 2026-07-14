@@ -1,0 +1,10 @@
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "      □□", "type": "text"}], [{"text": "    21)313", "type": "text"}], [{"text": "      ----", "type": "text"}]]}' WHERE id = 376;
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "       □", "type": "text"}], [{"text": "    98)945", "type": "text"}], [{"text": "       ---", "type": "text"}]]}' WHERE id = 377;
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "       □", "type": "text"}], [{"text": "    85)539", "type": "text"}], [{"text": "       ---", "type": "text"}]]}' WHERE id = 378;
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "      □□", "type": "text"}], [{"text": "    70)758", "type": "text"}], [{"text": "      ----", "type": "text"}]]}' WHERE id = 379;
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "       □", "type": "text"}], [{"text": "    43)115", "type": "text"}], [{"text": "       ---", "type": "text"}]]}' WHERE id = 380;
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "      □□", "type": "text"}], [{"text": "    47)903", "type": "text"}], [{"text": "      ----", "type": "text"}]]}' WHERE id = 381;
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "      □□", "type": "text"}], [{"text": "    20)331", "type": "text"}], [{"text": "      ----", "type": "text"}]]}' WHERE id = 382;
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "      □□", "type": "text"}], [{"text": "   86)1027", "type": "text"}], [{"text": "      ----", "type": "text"}]]}' WHERE id = 383;
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "      □□", "type": "text"}], [{"text": "    65)708", "type": "text"}], [{"text": "      ----", "type": "text"}]]}' WHERE id = 384;
+UPDATE calc_question SET raw_content = '{"type": "division", "lines": [[{"text": "       □", "type": "text"}], [{"text": "    49)416", "type": "text"}], [{"text": "       ---", "type": "text"}]]}' WHERE id = 385;

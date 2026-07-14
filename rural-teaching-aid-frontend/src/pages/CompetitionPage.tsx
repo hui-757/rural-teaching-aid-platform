@@ -24,24 +24,26 @@ const CALC_CATEGORIES = [
 ]
 
 const LEVEL_CONFIG = [
-  { timeLimit: 60, targetAccuracy: 0.5, consecutiveRequired: 2, questionCount: 5 },
-  { timeLimit: 60, targetAccuracy: 0.6, consecutiveRequired: 2, questionCount: 5 },
-  { timeLimit: 60, targetAccuracy: 0.7, consecutiveRequired: 3, questionCount: 6 },
-  { timeLimit: 60, targetAccuracy: 0.7, consecutiveRequired: 3, questionCount: 6 },
-  { timeLimit: 60, targetAccuracy: 0.8, consecutiveRequired: 3, questionCount: 7 },
-  { timeLimit: 60, targetAccuracy: 0.8, consecutiveRequired: 4, questionCount: 7 },
-  { timeLimit: 60, targetAccuracy: 0.8, consecutiveRequired: 4, questionCount: 8 },
-  { timeLimit: 60, targetAccuracy: 0.9, consecutiveRequired: 4, questionCount: 8 },
-  { timeLimit: 60, targetAccuracy: 0.9, consecutiveRequired: 5, questionCount: 9 },
-  { timeLimit: 60, targetAccuracy: 1.0, consecutiveRequired: 5, questionCount: 10 },
+  { timeLimit: 60, targetAccuracy: 0.15, consecutiveRequired: 1, questionCount: 3 },
+  { timeLimit: 60, targetAccuracy: 0.175, consecutiveRequired: 1, questionCount: 3 },
+  { timeLimit: 60, targetAccuracy: 0.175, consecutiveRequired: 1, questionCount: 3 },
+  { timeLimit: 60, targetAccuracy: 0.2, consecutiveRequired: 2, questionCount: 3 },
+  { timeLimit: 60, targetAccuracy: 0.2, consecutiveRequired: 2, questionCount: 4 },
+  { timeLimit: 60, targetAccuracy: 0.225, consecutiveRequired: 2, questionCount: 4 },
+  { timeLimit: 60, targetAccuracy: 0.225, consecutiveRequired: 2, questionCount: 4 },
+  { timeLimit: 60, targetAccuracy: 0.25, consecutiveRequired: 2, questionCount: 4 },
+  { timeLimit: 60, targetAccuracy: 0.25, consecutiveRequired: 3, questionCount: 5 },
+  { timeLimit: 60, targetAccuracy: 0.275, consecutiveRequired: 3, questionCount: 5 },
 ]
 
 const formatVertical = (raw: VerticalContent | null) => {
   if (!raw) return ''
   return raw.lines.map(line =>
-    line.map(item =>
-      item.type === 'text' ? item.text : `(${item.answer || '?'})`
-    ).join('')
+    line.map(item => {
+      if (item.type === 'text') return item.text
+      if (item.type === 'blank') return '□'.repeat(item.answer?.length || 1)
+      return ''
+    }).join('')
   ).join('\n')
 }
 
@@ -87,6 +89,13 @@ export default function CompetitionPage() {
   const [completedLevels, setCompletedLevels] = useState<Record<string, number[]>>({})
 
   const finishedRef = useRef(false)
+  const answerInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (isPlaying) {
+      answerInputRef.current?.focus()
+    }
+  }, [currentQIndex, isPlaying])
 
   useEffect(() => {
     if (categoryParam) {
@@ -142,17 +151,17 @@ export default function CompetitionPage() {
     if (data) {
       const shuffled = [...data].sort(() => Math.random() - 0.5)
       setQuestions(shuffled as CalcQuestion[])
+      return shuffled.length > 0
     }
+    return false
   }
 
   const startLevel = async (level: number) => {
     if (!selectedCategory) return
     const config = LEVEL_CONFIG[level - 1] || LEVEL_CONFIG[0]
 
-    if (questions.length === 0) {
-      await loadQuestions(selectedCategory)
-    }
-    if (questions.length === 0) {
+    const hasQuestions = await loadQuestions(selectedCategory)
+    if (!hasQuestions) {
       alert('该类型暂无题目')
       return
     }
@@ -211,6 +220,13 @@ export default function CompetitionPage() {
     setIsPass(passed)
     setShowResult(true)
     setIsPlaying(false)
+
+    if (passed && selectedCategory) {
+      setCompletedLevels(prev => ({
+        ...prev,
+        [selectedCategory]: [...new Set([...(prev[selectedCategory] || []), gameState.currentLevel])]
+      }))
+    }
   }
 
   const saveRecord = async () => {
@@ -220,21 +236,31 @@ export default function CompetitionPage() {
     const correctCount = answers.filter(a => a.correct).length
     const score = answers.length > 0 ? Math.round((correctCount / answers.length) * 100) : 0
 
-    await supabase.from('record').insert({
-      teacher_id: user.id,
-      student_name: studentName || '匿名学生',
-      category: selectedCategory,
-      grade: currentGrade,
-      level: gameState.currentLevel,
-      score,
-      answers_json: answers,
-      note: note || '',
-    })
+    const { data: inserted, error } = await supabase
+      .from('record')
+      .insert({
+        teacher_id: user.id,
+        student_name: studentName || '匿名学生',
+        category: selectedCategory,
+        grade: currentGrade,
+        level: gameState.currentLevel,
+        score,
+        answers_json: answers,
+      })
+      .select('record_id')
+      .single()
+
+    if (!error && inserted && note.trim()) {
+      await supabase.from('note').insert({
+        record_id: inserted.record_id,
+        content: note.trim(),
+      })
+    }
 
     if (isPass) {
       setCompletedLevels(prev => ({
         ...prev,
-        [selectedCategory]: [...(prev[selectedCategory] || []), gameState.currentLevel]
+        [selectedCategory]: [...new Set([...(prev[selectedCategory] || []), gameState.currentLevel])]
       }))
     }
 
@@ -494,20 +520,26 @@ export default function CompetitionPage() {
           <span className="text-wall-text-muted text-sm">第 {currentQIndex + 1} 题</span>
           <SealBadge>{selectedCategory}</SealBadge>
         </div>
-        <div className={`text-2xl font-serif text-wall-text text-center py-8 ${currentQuestion?.type === 'vertical' ? 'font-mono whitespace-pre-wrap' : ''}`}>
-          {currentQuestion?.type === 'vertical' ? formatVertical(currentQuestion.raw_content) : currentQuestion?.content || '加载中...'}
-        </div>
+        {currentQuestion?.type === 'vertical' ? (
+          <pre className="text-2xl font-mono text-wall-text text-center py-8 whitespace-pre-wrap">
+            {formatVertical(currentQuestion.raw_content)}
+          </pre>
+        ) : (
+          <div className="text-2xl font-serif text-wall-text text-center py-8">
+            {currentQuestion?.content || '加载中...'}
+          </div>
+        )}
       </div>
 
       <div className="flex gap-3 items-start">
         <div className="flex-1 flex flex-col gap-3">
           <input
+            ref={answerInputRef}
             type="text"
             value={currentAnswer}
             onChange={(e) => setCurrentAnswer(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && currentAnswer.trim() && submitAnswer()}
             placeholder={isDivision ? '请输入商' : '请输入答案'}
-            autoFocus
             className="w-full px-4 py-3 bg-wall-paper border-2 border-wall-border rounded font-sans text-lg text-wall-text text-center placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors"
           />
           {isDivision && (

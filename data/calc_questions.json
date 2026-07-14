@@ -1,0 +1,9502 @@
+[
+  {
+    "id": 1,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "130×2 = ",
+    "answer": "260",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 2,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "180×5 = ",
+    "answer": "900",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 3,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "170×4 = ",
+    "answer": "680",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 4,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "130×3 = ",
+    "answer": "390",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 5,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "300×2 = ",
+    "answer": "600",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 6,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "100×3 = ",
+    "answer": "300",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 7,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "160×5 = ",
+    "answer": "800",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 8,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "450×2 = ",
+    "answer": "900",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 9,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "500×5 = ",
+    "answer": "2500",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 10,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "500×8 = ",
+    "answer": "4000",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 11,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "170×9 = ",
+    "answer": "1530",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 12,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "180×2 = ",
+    "answer": "360",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 13,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "150×8 = ",
+    "answer": "1200",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 14,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "200×6 = ",
+    "answer": "1200",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 15,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "140×5 = ",
+    "answer": "700",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 16,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "200×3 = ",
+    "answer": "600",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 17,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "120×8 = ",
+    "answer": "960",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 18,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "130×7 = ",
+    "answer": "910",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 19,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "220×6 = ",
+    "answer": "1320",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 20,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "110×9 = ",
+    "answer": "990",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 21,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "80×10 = ",
+    "answer": "800",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 22,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "60×10 = ",
+    "answer": "600",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 23,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "82×30 = ",
+    "answer": "2460",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 24,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "92×50 = ",
+    "answer": "4600",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 25,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "58×50 = ",
+    "answer": "2900",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 26,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "36×10 = ",
+    "answer": "360",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 27,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "17×20 = ",
+    "answer": "340",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 28,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "49×10 = ",
+    "answer": "490",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 29,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "41×10 = ",
+    "answer": "410",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 30,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "60×30 = ",
+    "answer": "1800",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 31,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "70×30 = ",
+    "answer": "2100",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 32,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "32×30 = ",
+    "answer": "960",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 33,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "57×20 = ",
+    "answer": "1140",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 34,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "97×30 = ",
+    "answer": "2910",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 35,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "99×10 = ",
+    "answer": "990",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 36,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "723×30 = ",
+    "answer": "21690",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 37,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "275×30 = ",
+    "answer": "8250",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 38,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "846×10 = ",
+    "answer": "8460",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 39,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "267×20 = ",
+    "answer": "5340",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 40,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "488×20 = ",
+    "answer": "9760",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 41,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "755×30 = ",
+    "answer": "22650",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 42,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "670×10 = ",
+    "answer": "6700",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 43,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "801×20 = ",
+    "answer": "16020",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 44,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "963×10 = ",
+    "answer": "9630",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 45,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "334×10 = ",
+    "answer": "3340",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 46,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "924×20 = ",
+    "answer": "18480",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 47,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "510×20 = ",
+    "answer": "10200",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 48,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "167×10 = ",
+    "answer": "1670",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 49,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "680×30 = ",
+    "answer": "20400",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 50,
+    "category": "口算乘法",
+    "grade": "四年级上",
+    "content": "422×10 = ",
+    "answer": "4220",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 51,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：44 × 41 = ",
+    "answer": "1804",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 52,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：22 × 33 = ",
+    "answer": "726",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 53,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：33 × 11 = ",
+    "answer": "363",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 54,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：31 × 11 = ",
+    "answer": "341",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  31"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 55,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：41 × 42 = ",
+    "answer": "1722",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 42"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 56,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：13 × 33 = ",
+    "answer": "429",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 57,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：31 × 13 = ",
+    "answer": "403",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  31"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 58,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：41 × 44 = ",
+    "answer": "1804",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 59,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：21 × 44 = ",
+    "answer": "924",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  21"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 60,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：22 × 32 = ",
+    "answer": "704",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 32"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 61,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：21 × 44 = ",
+    "answer": "924",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  21"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 62,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：32 × 21 = ",
+    "answer": "672",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  32"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 21"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 63,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：22 × 11 = ",
+    "answer": "242",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 64,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：41 × 14 = ",
+    "answer": "574",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 14"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 65,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：22 × 24 = ",
+    "answer": "528",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 24"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 66,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：13 × 31 = ",
+    "answer": "403",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 31"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 67,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：13 × 33 = ",
+    "answer": "429",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 68,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：42 × 22 = ",
+    "answer": "924",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  42"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 69,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：21 × 33 = ",
+    "answer": "693",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  21"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 70,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：41 × 11 = ",
+    "answer": "451",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 71,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：11 × 11 = ",
+    "answer": "121",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 72,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：22 × 33 = ",
+    "answer": "726",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 73,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：41 × 44 = ",
+    "answer": "1804",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 74,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：31 × 33 = ",
+    "answer": "1023",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  31"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 75,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：11 × 42 = ",
+    "answer": "462",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 42"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 76,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：33 × 32 = ",
+    "answer": "1056",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 32"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 77,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：11 × 44 = ",
+    "answer": "484",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 78,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：11 × 13 = ",
+    "answer": "143",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 79,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：24 × 24 = ",
+    "answer": "576",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  24"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 24"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 80,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：22 × 42 = ",
+    "answer": "924",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 42"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 81,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：33 × 11 = ",
+    "answer": "363",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 82,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：12 × 22 = ",
+    "answer": "264",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  12"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 83,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：21 × 12 = ",
+    "answer": "252",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  21"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 12"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 84,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：22 × 22 = ",
+    "answer": "484",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 85,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：42 × 24 = ",
+    "answer": "1008",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  42"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 24"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 86,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：14 × 44 = ",
+    "answer": "616",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  14"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 87,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：32 × 11 = ",
+    "answer": "352",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  32"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 88,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：31 × 11 = ",
+    "answer": "341",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  31"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 89,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：14 × 14 = ",
+    "answer": "196",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  14"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 14"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 90,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：21 × 41 = ",
+    "answer": "861",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  21"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 91,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：11 × 33 = ",
+    "answer": "363",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 92,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：23 × 23 = ",
+    "answer": "529",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  23"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 23"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 93,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：24 × 44 = ",
+    "answer": "1056",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  24"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 94,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：12 × 33 = ",
+    "answer": "396",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  12"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 95,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：13 × 13 = ",
+    "answer": "169",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 96,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：23 × 22 = ",
+    "answer": "506",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  23"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 97,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：32 × 33 = ",
+    "answer": "1056",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  32"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 33"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 98,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：13 × 11 = ",
+    "answer": "143",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 99,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：22 × 23 = ",
+    "answer": "506",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  22"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 23"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 100,
+    "category": "不进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：23 × 23 = ",
+    "answer": "529",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  23"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 23"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 101,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：76 × 74 = ",
+    "answer": "5624",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  76"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 74"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 102,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：44 × 18 = ",
+    "answer": "792",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 18"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 103,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：23 × 93 = ",
+    "answer": "2139",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  23"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 93"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 104,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：66 × 47 = ",
+    "answer": "3102",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  66"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 47"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 105,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：17 × 12 = ",
+    "answer": "204",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  17"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 12"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 106,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：54 × 28 = ",
+    "answer": "1512",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  54"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 28"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 107,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：93 × 45 = ",
+    "answer": "4185",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  93"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 45"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 108,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：32 × 68 = ",
+    "answer": "2176",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  32"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 68"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 109,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：82 × 66 = ",
+    "answer": "5412",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  82"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 66"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 110,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：83 × 13 = ",
+    "answer": "1079",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  83"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 111,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：26 × 21 = ",
+    "answer": "546",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  26"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 21"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 112,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：16 × 59 = ",
+    "answer": "944",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  16"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 59"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 113,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：86 × 82 = ",
+    "answer": "7052",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  86"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 82"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 114,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：30 × 67 = ",
+    "answer": "2010",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  30"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 67"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 115,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：28 × 17 = ",
+    "answer": "476",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  28"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 17"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 116,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：51 × 58 = ",
+    "answer": "2958",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  51"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 58"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 117,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：17 × 57 = ",
+    "answer": "969",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  17"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 57"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 118,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：38 × 99 = ",
+    "answer": "3762",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  38"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 99"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 119,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：43 × 97 = ",
+    "answer": "4171",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  43"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 97"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 120,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：25 × 57 = ",
+    "answer": "1425",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  25"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 57"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 121,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：83 × 64 = ",
+    "answer": "5312",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  83"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 64"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 122,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：34 × 64 = ",
+    "answer": "2176",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  34"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 64"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 123,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：15 × 34 = ",
+    "answer": "510",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  15"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 34"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 124,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：54 × 64 = ",
+    "answer": "3456",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  54"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 64"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 125,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：97 × 43 = ",
+    "answer": "4171",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  97"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 43"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 126,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：46 × 32 = ",
+    "answer": "1472",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  46"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 32"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 127,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：25 × 60 = ",
+    "answer": "1500",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  25"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 60"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 128,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：16 × 72 = ",
+    "answer": "1152",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  16"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 72"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 129,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：40 × 37 = ",
+    "answer": "1480",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  40"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 37"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 130,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：70 × 56 = ",
+    "answer": "3920",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  70"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 56"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 131,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：40 × 15 = ",
+    "answer": "600",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  40"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 15"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 132,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：96 × 36 = ",
+    "answer": "3456",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  96"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 36"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 133,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：63 × 54 = ",
+    "answer": "3402",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  63"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 54"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 134,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：47 × 20 = ",
+    "answer": "940",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  47"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 20"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 135,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：47 × 56 = ",
+    "answer": "2632",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  47"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 56"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 136,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：94 × 77 = ",
+    "answer": "7238",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  94"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 77"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 137,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：63 × 98 = ",
+    "answer": "6174",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  63"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 98"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 138,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：80 × 54 = ",
+    "answer": "4320",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  80"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 54"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 139,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：15 × 26 = ",
+    "answer": "390",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  15"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 26"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 140,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：45 × 34 = ",
+    "answer": "1530",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  45"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 34"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 141,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：86 × 45 = ",
+    "answer": "3870",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  86"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 45"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 142,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：16 × 25 = ",
+    "answer": "400",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  16"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 25"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 143,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：88 × 67 = ",
+    "answer": "5896",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  88"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 67"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 144,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：56 × 52 = ",
+    "answer": "2912",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  56"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 52"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 145,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：67 × 89 = ",
+    "answer": "5963",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  67"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 89"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 146,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：77 × 26 = ",
+    "answer": "2002",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  77"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 26"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 147,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：61 × 85 = ",
+    "answer": "5185",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  61"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 85"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 148,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：36 × 44 = ",
+    "answer": "1584",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  36"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 44"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 149,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：17 × 67 = ",
+    "answer": "1139",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  17"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 67"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 150,
+    "category": "连续进位笔算乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：12 × 78 = ",
+    "answer": "936",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  12"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 78"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 151,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：904 × 57 = ",
+    "answer": "51528",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  904"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 57"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 152,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：702 × 96 = ",
+    "answer": "67392",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  702"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 96"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 153,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：606 × 95 = ",
+    "answer": "57570",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  606"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 95"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 154,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：205 × 75 = ",
+    "answer": "15375",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  205"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 75"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 155,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：507 × 52 = ",
+    "answer": "26364",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  507"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 52"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 156,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：705 × 81 = ",
+    "answer": "57105",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  705"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 81"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 157,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：304 × 64 = ",
+    "answer": "19456",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  304"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 64"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 158,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：703 × 89 = ",
+    "answer": "62567",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  703"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 89"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 159,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：507 × 81 = ",
+    "answer": "41067",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  507"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 81"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 160,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：105 × 47 = ",
+    "answer": "4935",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  105"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 47"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 161,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：407 × 85 = ",
+    "answer": "34595",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  407"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 85"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 162,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：608 × 67 = ",
+    "answer": "40736",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  608"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 67"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 163,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：804 × 76 = ",
+    "answer": "61104",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  804"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 76"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 164,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：803 × 95 = ",
+    "answer": "76285",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  803"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 95"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 165,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：205 × 76 = ",
+    "answer": "15580",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  205"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 76"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 166,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：602 × 41 = ",
+    "answer": "24682",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  602"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 167,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：504 × 36 = ",
+    "answer": "18144",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  504"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 36"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 168,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：301 × 16 = ",
+    "answer": "4816",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  301"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 16"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 169,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：408 × 89 = ",
+    "answer": "36312",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  408"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 89"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 170,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：208 × 64 = ",
+    "answer": "13312",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  208"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 64"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 171,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：407 × 74 = ",
+    "answer": "30118",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  407"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 74"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 172,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：704 × 29 = ",
+    "answer": "20416",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  704"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 29"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 173,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：102 × 65 = ",
+    "answer": "6630",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  102"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 65"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 174,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：403 × 77 = ",
+    "answer": "31031",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  403"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 77"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 175,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：801 × 82 = ",
+    "answer": "65682",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  801"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 82"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 176,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：402 × 69 = ",
+    "answer": "27738",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  402"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 69"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 177,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：308 × 96 = ",
+    "answer": "29568",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  308"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 96"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 178,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：909 × 87 = ",
+    "answer": "79083",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  909"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 87"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 179,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：608 × 89 = ",
+    "answer": "54112",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  608"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 89"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 180,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：907 × 81 = ",
+    "answer": "73467",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  907"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 81"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 181,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：803 × 71 = ",
+    "answer": "57013",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  803"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 71"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 182,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：805 × 42 = ",
+    "answer": "33810",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  805"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 42"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 183,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：509 × 73 = ",
+    "answer": "37157",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  509"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 73"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 184,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：405 × 67 = ",
+    "answer": "27135",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  405"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 67"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 185,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：205 × 41 = ",
+    "answer": "8405",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  205"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 186,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：506 × 51 = ",
+    "answer": "25806",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  506"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 51"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 187,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：902 × 28 = ",
+    "answer": "25256",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  902"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 28"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 188,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：304 × 60 = ",
+    "answer": "18240",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  304"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 60"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 189,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：304 × 19 = ",
+    "answer": "5776",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  304"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 19"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 190,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：707 × 53 = ",
+    "answer": "37471",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  707"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 53"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 191,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：908 × 64 = ",
+    "answer": "58112",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  908"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 64"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 192,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：104 × 64 = ",
+    "answer": "6656",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  104"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 64"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 193,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：701 × 84 = ",
+    "answer": "58884",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  701"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 84"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 194,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：708 × 11 = ",
+    "answer": "7788",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  708"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 11"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 195,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：605 × 60 = ",
+    "answer": "36300",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  605"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 60"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 196,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：709 × 80 = ",
+    "answer": "56720",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  709"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 80"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 197,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：408 × 39 = ",
+    "answer": "15912",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  408"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 39"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 198,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：507 × 73 = ",
+    "answer": "37011",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  507"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 73"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 199,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：107 × 54 = ",
+    "answer": "5778",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  107"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 54"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 200,
+    "category": "中间有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：703 × 70 = ",
+    "answer": "49210",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  703"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 70"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 201,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：180 × 90 = ",
+    "answer": "16200",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  180"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 90"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 202,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：450 × 14 = ",
+    "answer": "6300",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  450"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 14"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 203,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：350 × 86 = ",
+    "answer": "30100",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  350"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 86"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 204,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：500 × 95 = ",
+    "answer": "47500",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  500"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 95"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 205,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：120 × 21 = ",
+    "answer": "2520",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  120"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 21"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 206,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：520 × 65 = ",
+    "answer": "33800",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  520"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 65"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 207,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：180 × 70 = ",
+    "answer": "12600",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  180"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 70"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 208,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：180 × 17 = ",
+    "answer": "3060",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  180"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 17"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 209,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：260 × 59 = ",
+    "answer": "15340",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  260"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 59"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 210,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：300 × 38 = ",
+    "answer": "11400",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  300"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 38"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 211,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：400 × 52 = ",
+    "answer": "20800",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  400"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 52"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 212,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：300 × 59 = ",
+    "answer": "17700",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  300"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 59"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 213,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：260 × 64 = ",
+    "answer": "16640",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  260"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 64"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 214,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：260 × 21 = ",
+    "answer": "5460",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  260"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 21"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 215,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：400 × 13 = ",
+    "answer": "5200",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  400"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 13"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 216,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：600 × 80 = ",
+    "answer": "48000",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  600"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 80"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 217,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：120 × 55 = ",
+    "answer": "6600",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  120"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 55"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 218,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：220 × 94 = ",
+    "answer": "20680",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  220"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 94"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 219,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：150 × 94 = ",
+    "answer": "14100",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  150"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 94"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 220,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：120 × 14 = ",
+    "answer": "1680",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  120"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 14"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 221,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：220 × 36 = ",
+    "answer": "7920",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  220"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 36"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 222,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：120 × 90 = ",
+    "answer": "10800",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  120"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 90"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 223,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：180 × 41 = ",
+    "answer": "7380",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  180"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 41"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 224,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：180 × 71 = ",
+    "answer": "12780",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  180"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 71"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 225,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：520 × 25 = ",
+    "answer": "13000",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  520"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 25"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 226,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：500 × 38 = ",
+    "answer": "19000",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  500"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 38"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 227,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：400 × 43 = ",
+    "answer": "17200",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  400"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 43"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 228,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：300 × 32 = ",
+    "answer": "9600",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  300"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 32"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 229,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：500 × 88 = ",
+    "answer": "44000",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  500"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 88"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 230,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：600 × 25 = ",
+    "answer": "15000",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  600"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 25"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 231,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：180 × 50 = ",
+    "answer": "9000",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  180"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 50"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 232,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：150 × 85 = ",
+    "answer": "12750",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  150"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 85"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 233,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：120 × 50 = ",
+    "answer": "6000",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  120"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 50"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 234,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：500 × 97 = ",
+    "answer": "48500",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  500"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 97"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 235,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：350 × 61 = ",
+    "answer": "21350",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  350"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 61"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 236,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：600 × 36 = ",
+    "answer": "21600",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  600"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 36"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 237,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：150 × 86 = ",
+    "answer": "12900",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  150"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 86"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 238,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：600 × 91 = ",
+    "answer": "54600",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  600"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 91"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 239,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：220 × 24 = ",
+    "answer": "5280",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  220"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 24"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 240,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：600 × 49 = ",
+    "answer": "29400",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  600"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 49"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 241,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：520 × 87 = ",
+    "answer": "45240",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  520"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 87"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 242,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：150 × 83 = ",
+    "answer": "12450",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  150"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 83"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 243,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：120 × 55 = ",
+    "answer": "6600",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  120"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 55"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 244,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：450 × 65 = ",
+    "answer": "29250",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  450"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 65"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 245,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：520 × 58 = ",
+    "answer": "30160",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  520"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 58"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 246,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：150 × 75 = ",
+    "answer": "11250",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  150"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 75"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 247,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：520 × 54 = ",
+    "answer": "28080",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  520"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 54"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 248,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：120 × 64 = ",
+    "answer": "7680",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  120"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 64"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 249,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：400 × 24 = ",
+    "answer": "9600",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  400"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 24"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 250,
+    "category": "末尾有0的乘法",
+    "grade": "四年级上",
+    "content": "用竖式计算：350 × 57 = ",
+    "answer": "19950",
+    "answer_remainder": null,
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "  350"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "× 57"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "----"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 251,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 9×4 = 36，则 9×160 = ",
+    "answer": "1440",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 252,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 6×9 = 54，则 6×360 = ",
+    "answer": "2160",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 253,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "6×7 = 42，那么 6×140 = ",
+    "answer": "840",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 254,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 3×6 = 18，则 3×240 = ",
+    "answer": "720",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 255,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 9×8 = 72，则 9×240 = ",
+    "answer": "2160",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 256,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 7×4 = 28，则 7×160 = ",
+    "answer": "1120",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 257,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "6×7 = 42，那么 6×210 = ",
+    "answer": "1260",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 258,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "6×2 = 12，那么 6×100 = ",
+    "answer": "600",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 259,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 3×5 = 15，则 3×500 = ",
+    "answer": "1500",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 260,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "5×9 = 45，那么 5×900 = ",
+    "answer": "4500",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 261,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 9×2 = 18，则 9×20 = ",
+    "answer": "180",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 262,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "8×5 = 40，那么 8×150 = ",
+    "answer": "1200",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 263,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "7×9 = 63，那么 7×450 = ",
+    "answer": "3150",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 264,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "8×7 = 56，那么 8×210 = ",
+    "answer": "1680",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 265,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 6×6 = 36，则 6×180 = ",
+    "answer": "1080",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 266,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "5×7 = 35，那么 5×70 = ",
+    "answer": "350",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 267,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "4×5 = 20，那么 4×100 = ",
+    "answer": "400",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 268,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "6×6 = 36，那么 6×60 = ",
+    "answer": "360",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 269,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 6×5 = 30，则 6×150 = ",
+    "answer": "900",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 270,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 2×4 = 8，则 2×120 = ",
+    "answer": "240",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 271,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "2×6 = 12，那么 2×600 = ",
+    "answer": "1200",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 272,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "9×3 = 27，那么 9×30 = ",
+    "answer": "270",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 273,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 9×9 = 81，则 9×360 = ",
+    "answer": "3240",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 274,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 2×6 = 12，则 2×240 = ",
+    "answer": "480",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 275,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 3×8 = 24，则 3×320 = ",
+    "answer": "960",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 276,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "2×4 = 8，那么 2×80 = ",
+    "answer": "160",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 277,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 6×3 = 18，则 6×60 = ",
+    "answer": "360",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 278,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 8×5 = 40，则 8×250 = ",
+    "answer": "2000",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 279,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "9×6 = 54，那么 9×300 = ",
+    "answer": "2700",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 280,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "6×2 = 12，那么 6×100 = ",
+    "answer": "600",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 281,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 3×5 = 15，则 3×500 = ",
+    "answer": "1500",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 282,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 3×4 = 12，则 3×80 = ",
+    "answer": "240",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 283,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 3×4 = 12，则 3×40 = ",
+    "answer": "120",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 284,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 9×6 = 54，则 9×60 = ",
+    "answer": "540",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 285,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "6×9 = 54，那么 6×90 = ",
+    "answer": "540",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 286,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 6×5 = 30，则 6×200 = ",
+    "answer": "1200",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 287,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "5×4 = 20，那么 5×120 = ",
+    "answer": "600",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 288,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "3×2 = 6，那么 3×40 = ",
+    "answer": "120",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 289,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "已知 6×9 = 54，则 6×90 = ",
+    "answer": "540",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 290,
+    "category": "积的变化规律",
+    "grade": "四年级上",
+    "content": "6×8 = 48，那么 6×240 = ",
+    "answer": "1440",
+    "answer_remainder": null,
+    "type": "pattern",
+    "raw_content": null
+  },
+  {
+    "id": 291,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书144元，买31本，大约需要多少钱？ ≈ ",
+    "answer": "4200",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 292,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有171间教室，每间约5平方米，总面积大约是多少？ ≈ ",
+    "answer": "0",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 293,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每千克苹果100元，买41千克，大约需要多少钱？ ≈ ",
+    "answer": "4000",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 294,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：一个书包24元，买8个，大约需要多少钱？ ≈ ",
+    "answer": "200",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 295,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书190元，买39本，大约需要多少钱？ ≈ ",
+    "answer": "7600",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 296,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书190元，买20本，大约需要多少钱？ ≈ ",
+    "answer": "3800",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 297,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有62间教室，每间约33平方米，总面积大约是多少？ ≈ ",
+    "answer": "1800",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 298,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有89间教室，每间约14平方米，总面积大约是多少？ ≈ ",
+    "answer": "900",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 299,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书180元，买34本，大约需要多少钱？ ≈ ",
+    "answer": "5400",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 300,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有138间教室，每间约25平方米，总面积大约是多少？ ≈ ",
+    "answer": "2800",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 301,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书103元，买23本，大约需要多少钱？ ≈ ",
+    "answer": "2000",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 302,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有59间教室，每间约24平方米，总面积大约是多少？ ≈ ",
+    "answer": "1200",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 303,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每千克苹果195元，买34千克，大约需要多少钱？ ≈ ",
+    "answer": "6000",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 304,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书187元，买28本，大约需要多少钱？ ≈ ",
+    "answer": "5700",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 305,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每千克苹果134元，买8千克，大约需要多少钱？ ≈ ",
+    "answer": "1300",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 306,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书82元，买23本，大约需要多少钱？ ≈ ",
+    "answer": "1600",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 307,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书121元，买35本，大约需要多少钱？ ≈ ",
+    "answer": "4800",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 308,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有186间教室，每间约37平方米，总面积大约是多少？ ≈ ",
+    "answer": "7600",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 309,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：一个书包123元，买6个，大约需要多少钱？ ≈ ",
+    "answer": "1200",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 310,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有150间教室，每间约26平方米，总面积大约是多少？ ≈ ",
+    "answer": "4500",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 311,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书178元，买31本，大约需要多少钱？ ≈ ",
+    "answer": "5400",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 312,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：一个书包70元，买20个，大约需要多少钱？ ≈ ",
+    "answer": "1400",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 313,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有91间教室，每间约31平方米，总面积大约是多少？ ≈ ",
+    "answer": "2700",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 314,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：一个书包49元，买4个，大约需要多少钱？ ≈ ",
+    "answer": "0",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 315,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书58元，买22本，大约需要多少钱？ ≈ ",
+    "answer": "1200",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 316,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每本故事书159元，买29本，大约需要多少钱？ ≈ ",
+    "answer": "4800",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 317,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有75间教室，每间约10平方米，总面积大约是多少？ ≈ ",
+    "answer": "800",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 318,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：一个书包48元，买44个，大约需要多少钱？ ≈ ",
+    "answer": "2000",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 319,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：每千克苹果145元，买21千克，大约需要多少钱？ ≈ ",
+    "answer": "2800",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 320,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "估算：学校有124间教室，每间约33平方米，总面积大约是多少？ ≈ ",
+    "answer": "3600",
+    "answer_remainder": null,
+    "type": "estimate",
+    "raw_content": null
+  },
+  {
+    "id": 321,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "用铺地锦的方法计算 23 × 14 = ",
+    "answer": "322",
+    "answer_remainder": null,
+    "type": "culture",
+    "raw_content": null
+  },
+  {
+    "id": 322,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "用铺地锦的方法计算 35 × 26 = ",
+    "answer": "910",
+    "answer_remainder": null,
+    "type": "culture",
+    "raw_content": null
+  },
+  {
+    "id": 323,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "用铺地锦的方法计算 42 × 18 = ",
+    "answer": "756",
+    "answer_remainder": null,
+    "type": "culture",
+    "raw_content": null
+  },
+  {
+    "id": 324,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "《铺地锦》是我国古代的一种乘法计算方法。请用铺地锦计算 56 × 34 = ",
+    "answer": "1904",
+    "answer_remainder": null,
+    "type": "culture",
+    "raw_content": null
+  },
+  {
+    "id": 325,
+    "category": "乘法估算与数学文化",
+    "grade": "四年级上",
+    "content": "请用铺地锦计算 67 × 45 = ",
+    "answer": "3015",
+    "answer_remainder": null,
+    "type": "culture",
+    "raw_content": null
+  },
+  {
+    "id": 326,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "320÷20 = ",
+    "answer": "16",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 327,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "300÷50 = ",
+    "answer": "6",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 328,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "320÷40 = ",
+    "answer": "8",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 329,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "900÷50 = ",
+    "answer": "18",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 330,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "80÷20 = ",
+    "answer": "4",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 331,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "450÷30 = ",
+    "answer": "15",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 332,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "540÷30 = ",
+    "answer": "18",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 333,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "60÷30 = ",
+    "answer": "2",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 334,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "330÷30 = ",
+    "answer": "11",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 335,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "1000÷50 = ",
+    "answer": "20",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 336,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "240÷40 = ",
+    "answer": "6",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 337,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "760÷40 = ",
+    "answer": "19",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 338,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "520÷40 = ",
+    "answer": "13",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 339,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "570÷30 = ",
+    "answer": "19",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 340,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "700÷50 = ",
+    "answer": "14",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 341,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "480÷40 = ",
+    "answer": "12",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 342,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "180÷20 = ",
+    "answer": "9",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 343,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "700÷50 = ",
+    "answer": "14",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 344,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "300÷20 = ",
+    "answer": "15",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 345,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "120÷10 = ",
+    "answer": "12",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 346,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "560÷40 = ",
+    "answer": "14",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 347,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "240÷40 = ",
+    "answer": "6",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 348,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "120÷40 = ",
+    "answer": "3",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 349,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "360÷20 = ",
+    "answer": "18",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 350,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "600÷50 = ",
+    "answer": "12",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 351,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "160÷10 = ",
+    "answer": "16",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 352,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "180÷10 = ",
+    "answer": "18",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 353,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "80÷40 = ",
+    "answer": "2",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 354,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "300÷20 = ",
+    "answer": "15",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 355,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "80÷20 = ",
+    "answer": "4",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 356,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "400÷40 = ",
+    "answer": "10",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 357,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "420÷30 = ",
+    "answer": "14",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 358,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "120÷10 = ",
+    "answer": "12",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 359,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "700÷50 = ",
+    "answer": "14",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 360,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "510÷30 = ",
+    "answer": "17",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 361,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "150÷50 = ",
+    "answer": "3",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 362,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "200÷50 = ",
+    "answer": "4",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 363,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "220÷20 = ",
+    "answer": "11",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 364,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "80÷20 = ",
+    "answer": "4",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 365,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "200÷40 = ",
+    "answer": "5",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 366,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "160÷10 = ",
+    "answer": "16",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 367,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "220÷20 = ",
+    "answer": "11",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 368,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "30÷10 = ",
+    "answer": "3",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 369,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "90÷30 = ",
+    "answer": "3",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 370,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "390÷30 = ",
+    "answer": "13",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 371,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "450÷30 = ",
+    "answer": "15",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 372,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "180÷20 = ",
+    "answer": "9",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 373,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "750÷50 = ",
+    "answer": "15",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 374,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "350÷50 = ",
+    "answer": "7",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 375,
+    "category": "口算除法",
+    "grade": "四年级上",
+    "content": "140÷20 = ",
+    "answer": "7",
+    "answer_remainder": null,
+    "type": "oral",
+    "raw_content": null
+  },
+  {
+    "id": 376,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：313 ÷ 21 = ",
+    "answer": "14",
+    "answer_remainder": "19",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "21)313"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 377,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：945 ÷ 98 = ",
+    "answer": "9",
+    "answer_remainder": "63",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "98)945"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 378,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：539 ÷ 85 = ",
+    "answer": "6",
+    "answer_remainder": "29",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "85)539"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 379,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：758 ÷ 70 = ",
+    "answer": "10",
+    "answer_remainder": "58",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "70)758"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 380,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：115 ÷ 43 = ",
+    "answer": "2",
+    "answer_remainder": "29",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "43)115"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 381,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：903 ÷ 47 = ",
+    "answer": "19",
+    "answer_remainder": "10",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "47)903"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 382,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：331 ÷ 20 = ",
+    "answer": "16",
+    "answer_remainder": "11",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "20)331"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 383,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：1027 ÷ 86 = ",
+    "answer": "11",
+    "answer_remainder": "81",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "86)1027"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 384,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：708 ÷ 65 = ",
+    "answer": "10",
+    "answer_remainder": "58",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "65)708"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 385,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：416 ÷ 49 = ",
+    "answer": "8",
+    "answer_remainder": "24",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "49)416"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 386,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：390 ÷ 72 = ",
+    "answer": "5",
+    "answer_remainder": "30",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "72)390"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 387,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：1202 ÷ 59 = ",
+    "answer": "20",
+    "answer_remainder": "22",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "59)1202"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 388,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：961 ÷ 84 = ",
+    "answer": "11",
+    "answer_remainder": "37",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "84)961"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 389,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：186 ÷ 13 = ",
+    "answer": "14",
+    "answer_remainder": "4",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "13)186"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 390,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：250 ÷ 12 = ",
+    "answer": "20",
+    "answer_remainder": "10",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "12)250"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 391,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：298 ÷ 17 = ",
+    "answer": "17",
+    "answer_remainder": "9",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "17)298"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 392,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：534 ÷ 40 = ",
+    "answer": "13",
+    "answer_remainder": "14",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "40)534"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 393,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：815 ÷ 92 = ",
+    "answer": "8",
+    "answer_remainder": "79",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "92)815"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 394,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：298 ÷ 43 = ",
+    "answer": "6",
+    "answer_remainder": "40",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "43)298"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 395,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：78 ÷ 23 = ",
+    "answer": "3",
+    "answer_remainder": "9",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "23)78"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 396,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：247 ÷ 67 = ",
+    "answer": "3",
+    "answer_remainder": "46",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "67)247"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 397,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：117 ÷ 27 = ",
+    "answer": "4",
+    "answer_remainder": "9",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "27)117"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 398,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：791 ÷ 52 = ",
+    "answer": "15",
+    "answer_remainder": "11",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "52)791"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 399,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：250 ÷ 36 = ",
+    "answer": "6",
+    "answer_remainder": "34",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "36)250"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 400,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：1058 ÷ 57 = ",
+    "answer": "18",
+    "answer_remainder": "32",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "57)1058"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 401,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：331 ÷ 45 = ",
+    "answer": "7",
+    "answer_remainder": "16",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "45)331"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 402,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：835 ÷ 72 = ",
+    "answer": "11",
+    "answer_remainder": "43",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "72)835"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 403,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：402 ÷ 25 = ",
+    "answer": "16",
+    "answer_remainder": "2",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "25)402"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 404,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：288 ÷ 29 = ",
+    "answer": "9",
+    "answer_remainder": "27",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "29)288"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 405,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：1429 ÷ 97 = ",
+    "answer": "14",
+    "answer_remainder": "71",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "97)1429"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 406,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：278 ÷ 57 = ",
+    "answer": "4",
+    "answer_remainder": "50",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "57)278"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 407,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：138 ÷ 61 = ",
+    "answer": "2",
+    "answer_remainder": "16",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "61)138"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 408,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：453 ÷ 79 = ",
+    "answer": "5",
+    "answer_remainder": "58",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "79)453"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 409,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：617 ÷ 58 = ",
+    "answer": "10",
+    "answer_remainder": "37",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "58)617"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 410,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：773 ÷ 59 = ",
+    "answer": "13",
+    "answer_remainder": "6",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "59)773"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 411,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：933 ÷ 97 = ",
+    "answer": "9",
+    "answer_remainder": "60",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "97)933"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 412,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：271 ÷ 14 = ",
+    "answer": "19",
+    "answer_remainder": "5",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "14)271"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 413,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：883 ÷ 89 = ",
+    "answer": "9",
+    "answer_remainder": "82",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "89)883"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 414,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：313 ÷ 19 = ",
+    "answer": "16",
+    "answer_remainder": "9",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "19)313"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 415,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：1424 ÷ 94 = ",
+    "answer": "15",
+    "answer_remainder": "14",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "94)1424"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 416,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：85 ÷ 28 = ",
+    "answer": "3",
+    "answer_remainder": "1",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "28)85"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 417,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：840 ÷ 49 = ",
+    "answer": "17",
+    "answer_remainder": "7",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "49)840"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 418,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：224 ÷ 23 = ",
+    "answer": "9",
+    "answer_remainder": "17",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "23)224"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 419,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：406 ÷ 28 = ",
+    "answer": "14",
+    "answer_remainder": "14",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "28)406"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 420,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：1128 ÷ 58 = ",
+    "answer": "19",
+    "answer_remainder": "26",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "58)1128"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 421,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：569 ÷ 86 = ",
+    "answer": "6",
+    "answer_remainder": "53",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "86)569"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 422,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：532 ÷ 94 = ",
+    "answer": "5",
+    "answer_remainder": "62",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "94)532"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 423,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：1370 ÷ 89 = ",
+    "answer": "15",
+    "answer_remainder": "35",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "89)1370"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 424,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：198 ÷ 15 = ",
+    "answer": "13",
+    "answer_remainder": "3",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "15)198"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": 425,
+    "category": "笔算除法竖式",
+    "grade": "四年级上",
+    "content": "用竖式计算：1102 ÷ 67 = ",
+    "answer": "16",
+    "answer_remainder": "30",
+    "type": "vertical",
+    "raw_content": {
+      "lines": [
+        [
+          {
+            "type": "text",
+            "text": "    ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "  -----"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "67)1102"
+          }
+        ]
+      ]
+    }
+  }
+]

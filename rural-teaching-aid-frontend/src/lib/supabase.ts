@@ -22,57 +22,93 @@ export type Database = {
         Row: {
           id: string
           nickname: string
+          grade_selected: string | null
           created_at: string
         }
       }
       unit: {
         Row: {
-          id: number
-          grade: number
-          unit_number: number
-          title: string
-          description: string
-          has_calculations: boolean
+          unit_id: number
+          unit_name: string
+          unit_desc: string | null
+          grade: string
+          has_test: boolean | null
           created_at: string
         }
       }
-      question: {
+      calc_question: {
         Row: {
           id: number
-          unit_id: number
-          type: string
+          category: string
+          grade: string
           content: string
+          raw_content: unknown
           answer: string
-          difficulty: number
+          answer_remainder: string | null
+          type: string
           created_at: string
         }
       }
       record: {
         Row: {
-          id: number
+          record_id: number
           teacher_id: string
           student_name: string
-          unit_id: number
-          level: number
-          score: number
+          unit_id: number | null
+          category: string | null
+          grade: string | null
+          level: number | null
+          score: number | null
           answers_json: unknown
-          note: string
+          note: string | null
           created_at: string
+        }
+      }
+      practice_session: {
+        Row: {
+          id: string
+          teacher_id: string
+          unit_id: number
+          session_label: string
+          created_at: string
+        }
+      }
+      practice_answer: {
+        Row: {
+          id: string
+          session_id: string
+          student_number: string
+          question_id: number
+          is_correct: boolean
+          answered_at: string
+        }
+      }
+      student_stats: {
+        Row: {
+          id: string
+          teacher_id: string
+          student_number: string
+          practice_sessions: number
+          practice_questions: number
+          practice_correct: number
+          competition_count: number
+          competition_avg_score: number
         }
       }
       test_answer: {
         Row: {
-          id: number
+          answer_id: number
           teacher_id: string
           unit_id: number
-          test_number: number
+          test_no: number
           answers_json: unknown
           created_at: string
         }
       }
-      announcement: {
+      note: {
         Row: {
-          id: number
+          note_id: number
+          record_id: number
           content: string
           created_at: string
         }
