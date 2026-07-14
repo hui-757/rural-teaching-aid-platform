@@ -92,6 +92,24 @@ export interface LevelConfig {
   questionCount: number
 }
 
+// 西游取经 — 地界（对应单元）
+export interface MapNode {
+  unitId: number
+  mapName: string
+  mapIcon: string
+  mapOrder: number
+}
+
+// 西游取经 — 妖怪（对应关卡）
+export interface MonsterInfo {
+  level: number
+  name: string
+  emoji: string
+  tier: 'minion' | 'chief' | 'king' | 'general' | 'boss'
+}
+
+export type MonsterTier = 'minion' | 'chief' | 'king' | 'general' | 'boss'
+
 export interface Material {
   material_id: number
   teacher_id: string

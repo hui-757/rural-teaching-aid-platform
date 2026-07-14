@@ -187,3 +187,22 @@
 .animate-fade-in-up {
   animation: fadeInUp 0.5s ease forwards;
 }
+
+/* Westward Journey animations */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes breatheRing {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.03); }
+}
+
+.animate-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+.animate-breathe-ring {
+  animation: breatheRing 2s ease-in-out infinite;
+}
