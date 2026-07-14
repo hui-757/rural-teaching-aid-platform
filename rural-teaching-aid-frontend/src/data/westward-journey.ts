@@ -1,19 +1,21 @@
 import type { MapNode, MonsterInfo } from '../types'
 
-/** 取经路线：单元 ID → 地界 */
+/** 取经路线：单元 ID → 地界（9 个，按顺序） */
 export const WESTWARD_MAP: Record<number, MapNode> = {
-  2: { unitId: 2, mapName: '花果山', mapIcon: '🏔️', mapOrder: 1 },
-  3: { unitId: 3, mapName: '高老庄', mapIcon: '🏘️', mapOrder: 2 },
-  4: { unitId: 4, mapName: '流沙河', mapIcon: '🌊', mapOrder: 3 },
-  5: { unitId: 5, mapName: '白虎岭', mapIcon: '💀', mapOrder: 4 },
-  6: { unitId: 6, mapName: '火焰山', mapIcon: '🔥', mapOrder: 5 },
-  7: { unitId: 7, mapName: '乌鸡国', mapIcon: '👑', mapOrder: 6 },
-  8: { unitId: 8, mapName: '大雷音寺', mapIcon: '🛕', mapOrder: 7 },
+  1: { unitId: 1, mapName: '花果山', mapIcon: '🏔️', mapOrder: 1 },
+  2: { unitId: 2, mapName: '高老庄', mapIcon: '🏘️', mapOrder: 2 },
+  3: { unitId: 3, mapName: '流沙河', mapIcon: '🌊', mapOrder: 3 },
+  4: { unitId: 4, mapName: '白虎岭', mapIcon: '💀', mapOrder: 4 },
+  5: { unitId: 5, mapName: '盘丝洞', mapIcon: '🕸️', mapOrder: 5 },
+  6: { unitId: 6, mapName: '火焰山', mapIcon: '🔥', mapOrder: 6 },
+  7: { unitId: 7, mapName: '通天河', mapIcon: '🌊', mapOrder: 7 },
+  8: { unitId: 8, mapName: '乌鸡国', mapIcon: '👑', mapOrder: 8 },
+  9: { unitId: 9, mapName: '大雷音寺', mapIcon: '🛕', mapOrder: 9 },
 }
 
 /** 各单元妖怪谱（10 关） */
 export const MONSTER_BOOK: Record<number, MonsterInfo[]> = {
-  2: [
+  1: [
     { level: 1, name: '巡山小妖', emoji: '🐒', tier: 'minion' },
     { level: 2, name: '赤尻马猴', emoji: '🐵', tier: 'minion' },
     { level: 3, name: '通臂猿猴', emoji: '🦍', tier: 'chief' },
@@ -25,7 +27,7 @@ export const MONSTER_BOOK: Record<number, MonsterInfo[]> = {
     { level: 9, name: '独角兕大王', emoji: '🦏', tier: 'boss' },
     { level: 10, name: '大力牛魔王', emoji: '🐂', tier: 'boss' },
   ],
-  3: [
+  2: [
     { level: 1, name: '猪刚鬣', emoji: '🐷', tier: 'minion' },
     { level: 2, name: '黄风小妖', emoji: '🐭', tier: 'minion' },
     { level: 3, name: '虎先锋', emoji: '🐯', tier: 'chief' },
@@ -37,7 +39,7 @@ export const MONSTER_BOOK: Record<number, MonsterInfo[]> = {
     { level: 9, name: '青毛狮子', emoji: '🦁', tier: 'boss' },
     { level: 10, name: '黄眉老佛', emoji: '🧘', tier: 'boss' },
   ],
-  4: [
+  3: [
     { level: 1, name: '沙悟净', emoji: '🧔', tier: 'minion' },
     { level: 2, name: '奔波儿灞', emoji: '🐸', tier: 'minion' },
     { level: 3, name: '巡海夜叉', emoji: '🦀', tier: 'chief' },
@@ -49,7 +51,7 @@ export const MONSTER_BOOK: Record<number, MonsterInfo[]> = {
     { level: 9, name: '金翅大鹏', emoji: '🦅', tier: 'boss' },
     { level: 10, name: '如来的考验', emoji: '☀️', tier: 'boss' },
   ],
-  5: [
+  4: [
     { level: 1, name: '白骨小妖', emoji: '💀', tier: 'minion' },
     { level: 2, name: '骷髅兵', emoji: '🦴', tier: 'minion' },
     { level: 3, name: '化身村姑', emoji: '👩', tier: 'chief' },
@@ -60,6 +62,18 @@ export const MONSTER_BOOK: Record<number, MonsterInfo[]> = {
     { level: 8, name: '蜘蛛精', emoji: '🕷️', tier: 'general' },
     { level: 9, name: '狮驼王', emoji: '🦁', tier: 'boss' },
     { level: 10, name: '大鹏金翅雕', emoji: '🦅', tier: 'boss' },
+  ],
+  5: [
+    { level: 1, name: '小蜘蛛精', emoji: '🕷️', tier: 'minion' },
+    { level: 2, name: '织网小妖', emoji: '🕸️', tier: 'minion' },
+    { level: 3, name: '毒蛛精', emoji: '🦂', tier: 'chief' },
+    { level: 4, name: '百眼魔君', emoji: '👁️', tier: 'chief' },
+    { level: 5, name: '盘丝大仙', emoji: '☠️', tier: 'king' },
+    { level: 6, name: '蜈蚣精', emoji: '🐛', tier: 'king' },
+    { level: 7, name: '金蛛娘娘', emoji: '👸', tier: 'general' },
+    { level: 8, name: '银蛛娘娘', emoji: '🧚', tier: 'general' },
+    { level: 9, name: '蜘蛛精首领', emoji: '🕷️', tier: 'boss' },
+    { level: 10, name: '千眼魔君', emoji: '👁️', tier: 'boss' },
   ],
   6: [
     { level: 1, name: '火云童子', emoji: '🔥', tier: 'minion' },
@@ -74,6 +88,18 @@ export const MONSTER_BOOK: Record<number, MonsterInfo[]> = {
     { level: 10, name: '太乙天尊考验', emoji: '⚡', tier: 'boss' },
   ],
   7: [
+    { level: 1, name: '巡河小妖', emoji: '🐟', tier: 'minion' },
+    { level: 2, name: '水鬼', emoji: '👻', tier: 'minion' },
+    { level: 3, name: '虾兵', emoji: '🦐', tier: 'chief' },
+    { level: 4, name: '蟹将', emoji: '🦀', tier: 'chief' },
+    { level: 5, name: '灵感大王', emoji: '🐡', tier: 'king' },
+    { level: 6, name: '鼍龙怪', emoji: '🐊', tier: 'king' },
+    { level: 7, name: '通天河神', emoji: '🧜', tier: 'general' },
+    { level: 8, name: '鲤鱼精', emoji: '🐟', tier: 'general' },
+    { level: 9, name: '老鼋', emoji: '🐢', tier: 'boss' },
+    { level: 10, name: '通天河主', emoji: '🌊', tier: 'boss' },
+  ],
+  8: [
     { level: 1, name: '假侍卫', emoji: '🗡️', tier: 'minion' },
     { level: 2, name: '乌鸡小兵', emoji: '🪖', tier: 'minion' },
     { level: 3, name: '假国师', emoji: '🧙', tier: 'chief' },
@@ -85,7 +111,7 @@ export const MONSTER_BOOK: Record<number, MonsterInfo[]> = {
     { level: 9, name: '孔雀明王', emoji: '🦚', tier: 'boss' },
     { level: 10, name: '如来法阵', emoji: '🔮', tier: 'boss' },
   ],
-  8: [
+  9: [
     { level: 1, name: '经书守卫', emoji: '⚔️', tier: 'minion' },
     { level: 2, name: '佛前童子', emoji: '👦', tier: 'minion' },
     { level: 3, name: '金刚护法', emoji: '💪', tier: 'chief' },
@@ -109,33 +135,40 @@ export interface MonsterPosition {
 
 /** 各地界妖怪在地图上的坐标位置（百分比） */
 export const MONSTER_POSITIONS: Record<number, MonsterPosition[]> = {
-  2: [
+  1: [
     { level: 1, x: 12, y: 61 },  { level: 2, x: 26, y: 40 },
     { level: 3, x: 38, y: 32 },  { level: 4, x: 52, y: 52 },
     { level: 5, x: 35, y: 70 },  { level: 6, x: 65, y: 40 },
     { level: 7, x: 55, y: 75 },  { level: 8, x: 78, y: 60 },
     { level: 9, x: 82, y: 35 },  { level: 10, x: 88, y: 78 },
   ],
-  3: [
+  2: [
     { level: 1, x: 12, y: 55 },  { level: 2, x: 22, y: 40 },
     { level: 3, x: 35, y: 65 },  { level: 4, x: 48, y: 38 },
     { level: 5, x: 58, y: 70 },  { level: 6, x: 42, y: 50 },
     { level: 7, x: 70, y: 42 },  { level: 8, x: 82, y: 58 },
     { level: 9, x: 88, y: 35 },  { level: 10, x: 92, y: 72 },
   ],
-  4: [
+  3: [
     { level: 1, x: 10, y: 40 },  { level: 2, x: 20, y: 65 },
     { level: 3, x: 32, y: 30 },  { level: 4, x: 45, y: 60 },
     { level: 5, x: 38, y: 48 },  { level: 6, x: 58, y: 35 },
     { level: 7, x: 55, y: 72 },  { level: 8, x: 72, y: 50 },
     { level: 9, x: 82, y: 68 },  { level: 10, x: 90, y: 30 },
   ],
-  5: [
+  4: [
     { level: 1, x: 15, y: 48 },  { level: 2, x: 28, y: 68 },
     { level: 3, x: 22, y: 32 },  { level: 4, x: 40, y: 52 },
     { level: 5, x: 52, y: 28 },  { level: 6, x: 48, y: 70 },
     { level: 7, x: 65, y: 42 },  { level: 8, x: 75, y: 62 },
     { level: 9, x: 82, y: 35 },  { level: 10, x: 92, y: 55 },
+  ],
+  5: [
+    { level: 1, x: 14, y: 50 },  { level: 2, x: 26, y: 38 },
+    { level: 3, x: 34, y: 62 },  { level: 4, x: 46, y: 48 },
+    { level: 5, x: 54, y: 30 },  { level: 6, x: 50, y: 68 },
+    { level: 7, x: 66, y: 40 },  { level: 8, x: 76, y: 58 },
+    { level: 9, x: 84, y: 34 },  { level: 10, x: 90, y: 56 },
   ],
   6: [
     { level: 1, x: 12, y: 50 },  { level: 2, x: 28, y: 35 },
@@ -145,13 +178,20 @@ export const MONSTER_POSITIONS: Record<number, MonsterPosition[]> = {
     { level: 9, x: 85, y: 68 },  { level: 10, x: 92, y: 38 },
   ],
   7: [
+    { level: 1, x: 12, y: 55 },  { level: 2, x: 24, y: 40 },
+    { level: 3, x: 34, y: 66 },  { level: 4, x: 46, y: 48 },
+    { level: 5, x: 56, y: 30 },  { level: 6, x: 48, y: 68 },
+    { level: 7, x: 66, y: 42 },  { level: 8, x: 76, y: 58 },
+    { level: 9, x: 84, y: 34 },  { level: 10, x: 92, y: 56 },
+  ],
+  8: [
     { level: 1, x: 15, y: 58 },  { level: 2, x: 28, y: 42 },
     { level: 3, x: 38, y: 35 },  { level: 4, x: 52, y: 55 },
     { level: 5, x: 45, y: 25 },  { level: 6, x: 62, y: 68 },
     { level: 7, x: 72, y: 38 },  { level: 8, x: 82, y: 55 },
     { level: 9, x: 88, y: 30 },  { level: 10, x: 92, y: 62 },
   ],
-  8: [
+  9: [
     { level: 1, x: 12, y: 55 },  { level: 2, x: 25, y: 35 },
     { level: 3, x: 38, y: 50 },  { level: 4, x: 50, y: 32 },
     { level: 5, x: 48, y: 65 },  { level: 6, x: 62, y: 42 },

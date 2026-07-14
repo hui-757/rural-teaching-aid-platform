@@ -1,15 +1,29 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAppStore } from '../store/useAppStore'
 import { useAuthStore } from '../store/useAuthStore'
-import type { CalcQuestion, AnswerItem, VerticalContent } from '../types'
+import type { CalcQuestion, AnswerItem, VerticalContent, Unit } from '../types'
 import { ScrollPanel } from '../components/ui/BrickCard'
+import WorldMap from '../components/maps/WorldMap'
 import { SealButton, SealBadge, GoldBadge } from '../components/ui/SealButton'
 import {
   Trophy, Lock, Unlock, Timer, ArrowRight, CheckCircle, XCircle,
-  Loader2, Crown, RotateCcw, ChevronLeft, Calculator
+  Loader2, Crown, RotateCcw, ChevronLeft, Calculator,
 } from 'lucide-react'
+
+/** 9 个地界 → 9 个计算题分类（按取经顺序） */
+const UNIT_TO_CATEGORY: Record<number, string> = {
+  1: '口算乘法',
+  2: '不进位笔算乘法',
+  3: '连续进位笔算乘法',
+  4: '中间有0的乘法',
+  5: '末尾有0的乘法',
+  6: '积的变化规律',
+  7: '乘法估算与数学文化',
+  8: '口算除法',
+  9: '笔算除法竖式',
+}
 
 const CALC_CATEGORIES = [
   '口算乘法',
@@ -185,6 +199,30 @@ export default function CompetitionPage() {
 
   const finishedRef = useRef(false)
   const answerInputRef = useRef<HTMLInputElement>(null)
+
+  // 虚拟地图单元（9 个地界）
+  const mapUnits = useMemo<Unit[]>(() => [
+    { unit_id: 1, unit_name: '花果山', unit_desc: null, grade: currentGrade || '四年级上', has_test: false, created_at: '' },
+    { unit_id: 2, unit_name: '高老庄', unit_desc: null, grade: currentGrade || '四年级上', has_test: false, created_at: '' },
+    { unit_id: 3, unit_name: '流沙河', unit_desc: null, grade: currentGrade || '四年级上', has_test: false, created_at: '' },
+    { unit_id: 4, unit_name: '白虎岭', unit_desc: null, grade: currentGrade || '四年级上', has_test: false, created_at: '' },
+    { unit_id: 5, unit_name: '盘丝洞', unit_desc: null, grade: currentGrade || '四年级上', has_test: false, created_at: '' },
+    { unit_id: 6, unit_name: '火焰山', unit_desc: null, grade: currentGrade || '四年级上', has_test: false, created_at: '' },
+    { unit_id: 7, unit_name: '通天河', unit_desc: null, grade: currentGrade || '四年级上', has_test: false, created_at: '' },
+    { unit_id: 8, unit_name: '乌鸡国', unit_desc: null, grade: currentGrade || '四年级上', has_test: false, created_at: '' },
+    { unit_id: 9, unit_name: '大雷音寺', unit_desc: null, grade: currentGrade || '四年级上', has_test: false, created_at: '' },
+  ], [currentGrade])
+
+  // 已通关地界 unit_id（该分类所有 10 关全部通过）
+  const completedUnitIds = useMemo(() => {
+    const result: number[] = []
+    Object.entries(UNIT_TO_CATEGORY).forEach(([unitIdStr, category]) => {
+      const passedLevels = completedLevels[category] || []
+      const allPassed = Array.from({ length: 10 }, (_, i) => i + 1).every(l => passedLevels.includes(l))
+      if (allPassed) result.push(parseInt(unitIdStr))
+    })
+    return result
+  }, [completedLevels])
 
   useEffect(() => {
     const q = getCurrentQuestion()
@@ -429,37 +467,29 @@ export default function CompetitionPage() {
     )
   }
 
-  // Category selection
+  // WorldMap entry
   if (!selectedCategory) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-[calc(100vh-64px-88px)] flex flex-col">
+        <div className="mb-4 shrink-0">
           <div className="flex items-center gap-3 mb-2">
             <Trophy size={24} className="text-wall-gold" />
             <h1 className="text-2xl font-serif text-wall-text tracking-wider">闯关竞赛</h1>
           </div>
-          <p className="text-wall-text-muted">请选择计算题类型进行闯关</p>
+          <p className="text-wall-text-muted">点击地界开始闯关</p>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {CALC_CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => {
+        <div className="relative flex-1 rounded-2xl overflow-hidden border-2 border-wall-border">
+          <WorldMap
+            units={mapUnits}
+            completedMaps={completedUnitIds}
+            onSelectUnit={(unit) => {
+              const cat = UNIT_TO_CATEGORY[unit.unit_id]
+              if (cat) {
                 setSelectedCategory(cat)
                 loadQuestions(cat)
-              }}
-              className="group bg-wall-paper border-2 border-wall-border rounded-lg p-6 hover:border-wall-gold transition-all duration-300 text-left"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 bg-wall-gold/10 border border-wall-gold rounded flex items-center justify-center">
-                  <Calculator size={20} className="text-wall-gold" />
-                </div>
-                <h3 className="font-serif text-lg text-wall-text">{cat}</h3>
-              </div>
-              <p className="text-wall-text-muted text-sm">点击开始闯关</p>
-            </button>
-          ))}
+              }
+            }}
+          />
         </div>
       </div>
     )
