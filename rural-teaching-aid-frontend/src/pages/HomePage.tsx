@@ -59,7 +59,7 @@ export default function HomePage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full relative z-10">
         {/* Teach Entry */}
         <div
-          onClick={() => currentGrade ? navigate('/units') : navigate('/select-grade')}
+          onClick={() => currentGrade ? navigate('/teach') : navigate('/select-grade')}
           className="group cursor-pointer bg-wall-paper border-2 border-wall-border rounded-lg p-8 brick-pattern hover:border-wall-brick transition-all duration-300 hover:shadow-xl hover:-translate-y-2 relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-wall-brick" />
@@ -71,7 +71,7 @@ export default function HomePage() {
             <p className="text-wall-text-soft text-sm mb-4">
               教材内容讲述 · 基础测试生成 · 课堂互动练习
             </p>
-            <SealButton variant="outline" size="sm" onClick={(e) => { e.stopPropagation(); currentGrade ? navigate('/units') : navigate('/select-grade') }}>
+            <SealButton variant="outline" size="sm" onClick={(e) => { e.stopPropagation(); currentGrade ? navigate('/teach') : navigate('/select-grade') }}>
               {currentGrade ? '进入授课' : '先选择年级'}
             </SealButton>
           </div>

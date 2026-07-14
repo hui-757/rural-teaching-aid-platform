@@ -6,8 +6,12 @@ import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import GradeSelectPage from './pages/GradeSelectPage'
+import TeachHubPage from './pages/TeachHubPage'
 import UnitSelectPage from './pages/UnitSelectPage'
-import TeachPage from './pages/TeachPage'
+import ContentTeachPage from './pages/ContentTeachPage'
+import TestTeachPage from './pages/TestTeachPage'
+import PracticePage from './pages/PracticePage'
+import StudentAnalysisPage from './pages/StudentAnalysisPage'
 import CompetitionPage from './pages/CompetitionPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -55,16 +59,26 @@ function GradeGuard({ children }: { children: React.ReactNode }) {
 }
 
 function AppContent() {
-  // store 初始化时已经自动恢复 session，无需额外 useEffect 调用 fetchUser
-  // 避免与 store 初始化竞态
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/select-grade" element={<GradeSelectPage />} />
+
+        {/* 授课中心 & 功能选择 */}
         <Route
-          path="/units"
+          path="/teach"
+          element={
+            <ProtectedRoute>
+              <GradeGuard>
+                <TeachHubPage />
+              </GradeGuard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teach/:mode"
           element={
             <ProtectedRoute>
               <GradeGuard>
@@ -74,15 +88,49 @@ function AppContent() {
           }
         />
         <Route
-          path="/teach/:unitId"
+          path="/teach/content/:unitId"
           element={
             <ProtectedRoute>
               <GradeGuard>
-                <TeachPage />
+                <ContentTeachPage />
               </GradeGuard>
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/teach/test/:unitId"
+          element={
+            <ProtectedRoute>
+              <GradeGuard>
+                <TestTeachPage />
+              </GradeGuard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teach/practice/:unitId"
+          element={
+            <ProtectedRoute>
+              <GradeGuard>
+                <PracticePage />
+              </GradeGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* 学情分析 */}
+        <Route
+          path="/students"
+          element={
+            <ProtectedRoute>
+              <GradeGuard>
+                <StudentAnalysisPage />
+              </GradeGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* 竞赛闯关 */}
         <Route
           path="/competition"
           element={
@@ -93,6 +141,11 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
+
+        {/* 旧路由兼容跳转 */}
+        <Route path="/units" element={<Navigate to="/teach" replace />} />
+        <Route path="/teach/:unitId" element={<Navigate to="/teach" replace />} />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>

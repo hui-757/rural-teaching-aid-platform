@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/useAuthStore'
 import { useAppStore } from '../store/useAppStore'
-import { BookOpen, Trophy, User, LogOut, ChevronDown, GraduationCap } from 'lucide-react'
+import { BookOpen, Trophy, User, LogOut, ChevronDown, GraduationCap, Users } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -52,7 +52,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 首页
               </Link>
               <Link
-                to="/units"
+                to="/teach"
                 className="px-4 py-2 text-wall-paper/80 hover:text-wall-gold-light font-serif tracking-wider text-sm transition-colors rounded hover:bg-white/5 flex items-center gap-1"
               >
                 <BookOpen size={14} />
@@ -64,6 +64,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               >
                 <Trophy size={14} />
                 竞赛
+              </Link>
+              <Link
+                to="/students"
+                className="px-4 py-2 text-wall-paper/80 hover:text-wall-gold-light font-serif tracking-wider text-sm transition-colors rounded hover:bg-white/5 flex items-center gap-1"
+              >
+                <Users size={14} />
+                学情分析
               </Link>
             </nav>
           )}
