@@ -36,6 +36,7 @@ export default function PracticePage() {
   const [answers, setAnswers] = useState<Record<string, { student_number: string; is_correct: boolean; question_id: number }[]>>({})
   const [loading, setLoading] = useState(true)
   const [creating, setCreating] = useState(false)
+  const [showAnswer, setShowAnswer] = useState(false)
 
   useEffect(() => {
     if (unitId) {
@@ -43,6 +44,10 @@ export default function PracticePage() {
       loadQuestions()
     }
   }, [unitId])
+
+  useEffect(() => {
+    setShowAnswer(false)
+  }, [currentIdx])
 
   const fetchUnit = async () => {
     const id = Number(unitId)
@@ -218,9 +223,20 @@ export default function PracticePage() {
               ) : (
                 <p className="text-3xl md:text-4xl font-serif text-wall-text mb-6">{currentQ.content}</p>
               )}
-              <p className="text-wall-text-muted text-sm">
-                答案：{currentQ.answer}
-              </p>
+              <div className="mt-4">
+                {showAnswer && (
+                  <p className="text-wall-text-muted text-sm">
+                    答案：{currentQ.answer}
+                  </p>
+                )}
+                <SealButton
+                  variant="outline"
+                  onClick={() => setShowAnswer(!showAnswer)}
+                  className="mt-2"
+                >
+                  {showAnswer ? '隐藏答案' : '显示答案'}
+                </SealButton>
+              </div>
             </div>
             <div className="flex gap-3 mt-8">
               <button
