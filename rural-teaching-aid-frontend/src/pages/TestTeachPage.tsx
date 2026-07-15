@@ -52,20 +52,54 @@ export default function TestTeachPage() {
     const html = `
       <html><head><title>基础测试 - ${selectedCategory}</title>
       <style>
-        body{font-family:serif;max-width:800px;margin:40px auto;line-height:2}
-        h1{text-align:center;margin-bottom:8px}
-        .subtitle{text-align:center;color:#666;margin-bottom:24px}
-        .q{margin:16px 0;font-size:16px}
-        .q-num{display:inline-block;width:32px;font-weight:bold}
+        @page { size: A4; margin: 18mm 12mm; }
+        body{font-family:serif;max-width:800px;margin:0 auto;line-height:1.5}
+        h1{text-align:center;margin-bottom:6px;font-size:20px}
+        .subtitle{text-align:center;color:#666;margin-bottom:18px;font-size:12px}
+        .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 32px}
+        .q-wrapper{page-break-inside:avoid;margin-bottom:4px}
+        .q-text{font-size:14px;margin-bottom:6px}
+        .q-num{display:inline-block;width:24px;font-weight:bold}
+        .vertical-space{
+          height:120px;
+          border:1.5px dashed #ccc;
+          border-radius:4px;
+          background:repeating-linear-gradient(
+            to bottom,
+            transparent,
+            transparent 23px,
+            #e5e5e5 23px,
+            #e5e5e5 24px
+          );
+          padding:6px 10px;
+          position:relative;
+        }
+        .vertical-space::before{
+          content:"竖式计算区";
+          position:absolute;
+          top:3px;right:6px;
+          font-size:10px;color:#bbb;
+          font-family:sans-serif;
+        }
         .page-break{page-break-after:always}
-        .answer-sheet{margin-top:40px}
-        .answer-row{display:flex;gap:40px;margin:8px 0}
-        @media print{body{margin:20px}}
+        .answer-sheet{margin-top:30px}
+        .answer-row{display:flex;gap:40px;margin:5px 0;font-size:13px}
+        @media print{
+          body{margin:0}
+          .grid{gap:16px 28px}
+        }
       </style>
       </head><body>
       <h1>四年级上册 · ${selectedCategory} · 基础测试</h1>
       <p class="subtitle">共 ${questions.length} 题 · 生成时间：${new Date().toLocaleString()}</p>
-      ${questions.map((q, i) => `<div class="q"><span class="q-num">${i + 1}.</span>${q.content}</div>`).join('')}
+      <div class="grid">
+        ${questions.map((q, i) => `
+          <div class="q-wrapper">
+            <div class="q-text"><span class="q-num">${i + 1}.</span>${q.content}</div>
+            <div class="vertical-space"></div>
+          </div>
+        `).join('')}
+      </div>
       <div class="page-break"></div>
       <h1>参考答案</h1>
       <div class="answer-sheet">
