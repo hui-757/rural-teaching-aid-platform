@@ -131,7 +131,16 @@ export default function LoginPage() {
           </form>
 
           {/* Toggle */}
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center space-y-2">
+            {!isRegister && (
+              <button
+                type="button"
+                onClick={() => navigate('/forgot-password')}
+                className="block mx-auto text-wall-text-muted hover:text-wall-brick text-sm font-serif underline underline-offset-4 transition-colors"
+              >
+                忘记密码？
+              </button>
+            )}
             <button
               type="button"
               onClick={() => { setIsRegister(!isRegister); setError('') }}

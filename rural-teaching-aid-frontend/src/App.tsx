@@ -5,6 +5,8 @@ import { useAppStore } from './store/useAppStore'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage'
+import ResetPasswordPage from './pages/ResetPasswordPage'
 import GradeSelectPage from './pages/GradeSelectPage'
 import TeachHubPage from './pages/TeachHubPage'
 import UnitSelectPage from './pages/UnitSelectPage'
@@ -65,6 +67,8 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/select-grade" element={<GradeSelectPage />} />
 
         {/* 授课中心 & 功能选择 */}
