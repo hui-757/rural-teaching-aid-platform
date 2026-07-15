@@ -188,7 +188,7 @@ export default function ContentTeachPage() {
         {/* Textbook group */}
         {textbookUrl && (
           <div
-            onClick={() => setViewing('textbook')}
+            onClick={() => window.open(textbookUrl, '_blank')}
             className="group cursor-pointer bg-wall-paper border-2 border-wall-brick rounded-lg p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
             <div className="flex items-center gap-3 mb-3">
@@ -200,7 +200,7 @@ export default function ContentTeachPage() {
                 <p className="text-wall-text-muted text-xs">默认教材 PDF</p>
               </div>
             </div>
-            <p className="text-wall-text-muted text-sm line-clamp-2">点击查看教材内容</p>
+            <p className="text-wall-text-muted text-sm line-clamp-2">点击在新窗口查看教材内容</p>
           </div>
         )}
 
