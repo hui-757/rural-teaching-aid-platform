@@ -6,15 +6,7 @@ import { GreatWallDivider, ScrollPanel } from '../components/ui/BrickCard'
 import { SealButton, SealBadge } from '../components/ui/SealButton'
 import { BookOpen, FileText, Download, ArrowLeft, Loader2, FolderOpen, Image, ChevronLeft, ChevronRight, X } from 'lucide-react'
 
-const TEXTBOOK_MAP: Record<number, string> = {
-  2: '/textbook/一_万以上数的认识.pdf',
-  3: '/textbook/二_角的度量.pdf',
-  4: '/textbook/三_多位数乘两位数.pdf',
-  5: '/textbook/四_加法模型和乘法模型.pdf',
-  6: '/textbook/五_平行四边形和梯形.pdf',
-  7: '/textbook/六_条形统计图.pdf',
-  8: '/textbook/七_复习与关联.pdf',
-}
+const TEXTBOOK_MAP: Record<number, string> = {}
 
 export default function ContentTeachPage() {
   const { unitId } = useParams<{ unitId: string }>()
