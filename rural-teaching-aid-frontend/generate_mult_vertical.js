@@ -34,7 +34,7 @@ function generateVertical(a, b) {
 
     const line = [{ type: 'text', text: pad }]
     for (const d of partialStr) {
-      line.push({ type: 'blank', answer: d })
+      line.push({ type: 'text', text: '□' })
     }
     lines.push(line)
   }

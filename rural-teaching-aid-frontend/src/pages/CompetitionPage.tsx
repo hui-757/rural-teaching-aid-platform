@@ -9,7 +9,7 @@ import WorldMap from '../components/maps/WorldMap'
 import { SealButton, SealBadge, GoldBadge } from '../components/ui/SealButton'
 import {
   Trophy, Lock, Unlock, Timer, ArrowRight, CheckCircle, XCircle,
-  Loader2, Crown, RotateCcw, ChevronLeft, Calculator,
+  Loader2, Crown, RotateCcw, ChevronLeft, 
 } from 'lucide-react'
 
 /** 9 个地界 → 9 个计算题分类（按取经顺序） */
@@ -25,17 +25,6 @@ const UNIT_TO_CATEGORY: Record<number, string> = {
   9: '笔算除法竖式',
 }
 
-const CALC_CATEGORIES = [
-  '口算乘法',
-  '不进位笔算乘法',
-  '连续进位笔算乘法',
-  '中间有0的乘法',
-  '末尾有0的乘法',
-  '积的变化规律',
-  '乘法估算与数学文化',
-  '口算除法',
-  '笔算除法竖式',
-]
 
 const LEVEL_CONFIG = [
   { timeLimit: 60, targetAccuracy: 0.15, consecutiveRequired: 1, questionCount: 3 },
@@ -61,11 +50,19 @@ const formatVertical = (raw: VerticalContent | null) => {
   ).join('\n')
 }
 
-// 提取所有 blank 的 answer
+// 提取最终结果行的 blank answer（只收集最后一行含 blank 的行）
 const getBlankAnswers = (raw: VerticalContent | null): string[] => {
   if (!raw) return []
   const answers: string[] = []
-  for (const line of raw.lines) {
+
+  // 找到最后一个包含 blank 的行的索引（最终结果行）
+  const lastBlankLineIndex = raw.lines.reduce((lastIdx, line, idx) => {
+    return line.some(item => item.type === 'blank') ? idx : lastIdx
+  }, -1)
+
+  for (let li = 0; li < raw.lines.length; li++) {
+    const line = raw.lines[li]
+    if (li !== lastBlankLineIndex) continue
     for (const item of line) {
       if (item.type === 'blank') {
         answers.push(item.answer || '')
@@ -93,6 +90,7 @@ const checkPass = (answers: AnswerItem[], config: typeof LEVEL_CONFIG[0]) => {
 }
 
 // 交互式竖式组件：blank 可含多位数字，按 answer 长度跨格对齐
+// 中间过程（部分积）显示为 □ 占位符，只保留最终结果行可输入
 const VerticalInputs = ({
   raw,
   values,
@@ -102,10 +100,15 @@ const VerticalInputs = ({
   values: string[]
   onChange: (idx: number, val: string) => void
 }) => {
+  // 找到最后一个包含 blank 的行的索引（最终结果行）
+  const lastBlankLineIndex = raw.lines.reduce((lastIdx, line, idx) => {
+    return line.some(item => item.type === 'blank') ? idx : lastIdx
+  }, -1)
+
   // 从第一行推导总列数（text 字符数 + blank 占用格数 = answer 长度）
   const firstLine = raw.lines[0] || []
   const totalCols = firstLine.reduce((sum, item) => {
-    if (item.type === 'text') return sum + item.text.length
+    if (item.type === 'text') return sum + (item.text?.length || 0)
     if (item.type === 'blank') return sum + (item.answer?.length || 1)
     return sum
   }, 0)
@@ -117,10 +120,11 @@ const VerticalInputs = ({
       {raw.lines.map((line, li) => {
         const cells: React.ReactNode[] = []
         let colCount = 0
+        const isFinalAnswerLine = li === lastBlankLineIndex
 
         line.forEach((item, ii) => {
           if (item.type === 'text') {
-            const chars = item.text.split('')
+            const chars = (item.text || '').split('')
             chars.forEach((ch, ci) => {
               cells.push(
                 <div key={`t-${li}-${ii}-${ci}`} className="w-8 h-8 flex items-center justify-center">
@@ -132,23 +136,33 @@ const VerticalInputs = ({
               colCount++
             })
           } else if (item.type === 'blank') {
-            const idx = blankIdx++
             const len = item.answer?.length || 1
-            cells.push(
-              <div key={`b-${li}-${ii}`} className="h-8 flex items-center justify-center" style={{ width: `${len * 32}px` }}>
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  maxLength={len}
-                  value={values[idx] || ''}
-                  onChange={(e) =>
-                    onChange(idx, e.target.value.replace(/[^0-9]/g, '').slice(0, len))
-                  }
-                  className="h-7 text-center border-b-2 border-wall-border bg-transparent text-wall-text focus:border-wall-gold outline-none transition-colors"
-                  style={{ width: `${len * 32 - 8}px` }}
-                />
-              </div>
-            )
+            if (isFinalAnswerLine) {
+              // 最终结果行：显示可输入框
+              const idx = blankIdx++
+              cells.push(
+                <div key={`b-${li}-${ii}`} className="h-8 flex items-center justify-center" style={{ width: `${len * 32}px` }}>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    maxLength={len}
+                    value={values[idx] || ''}
+                    onChange={(e) =>
+                      onChange(idx, e.target.value.replace(/[^0-9]/g, '').slice(0, len))
+                    }
+                    className="h-7 text-center border-b-2 border-wall-border bg-transparent text-wall-text focus:border-wall-gold outline-none transition-colors"
+                    style={{ width: `${len * 32 - 8}px` }}
+                  />
+                </div>
+              )
+            } else {
+              // 中间过程（部分积）：显示 □ 占位符（不可输入）
+              cells.push(
+                <div key={`b-${li}-${ii}`} className="h-8 flex items-center justify-center text-wall-text-muted" style={{ width: `${len * 32}px` }}>
+                  {'□'.repeat(len)}
+                </div>
+              )
+            }
             colCount += len
           }
         })
