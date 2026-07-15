@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuthStore } from '../store/useAuthStore'
+import { supabase } from '../lib/supabase'
 import { SealButton } from '../components/ui/SealButton'
 import { ScrollPanel } from '../components/ui/BrickCard'
 import { Lock, Eye, EyeOff, ArrowLeft, CheckCircle } from 'lucide-react'
 
 export default function ResetPasswordPage() {
   const navigate = useNavigate()
-  const { updatePassword } = useAuthStore()
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -16,11 +15,24 @@ export default function ResetPasswordPage() {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    // 检查 URL 中是否有 access_token（来自邮件链接）
+    // 从邮件链接的 hash 中提取 token 并建立 session
     const hash = window.location.hash
-    if (!hash.includes('access_token') && !hash.includes('type=recovery')) {
-      // 如果没有 token，可能是直接访问，不做处理
-      // 实际重置时 Supabase 会自动从 hash 中解析 token
+    const params = new URLSearchParams(hash.replace('#', ''))
+    const accessToken = params.get('access_token')
+    const refreshToken = params.get('refresh_token')
+    const type = params.get('type')
+
+    if (accessToken) {
+      supabase.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken || '',
+      }).then(({ error }) => {
+        if (error) {
+          setError('验证链接已过期或无效，请重新申请重置密码')
+        }
+      })
+    } else if (type !== 'recovery') {
+      setError('无效的密码重置链接，请从邮件中重新点击')
     }
   }, [])
 
@@ -39,11 +51,13 @@ export default function ResetPasswordPage() {
     }
 
     setLoading(true)
-    const { error } = await updatePassword(password)
+    const { error } = await supabase.auth.updateUser({ password })
     if (error) {
       setError(error.message)
     } else {
       setSuccess(true)
+      // 更新成功后清除 session，避免自动登录
+      await supabase.auth.signOut()
     }
     setLoading(false)
   }
