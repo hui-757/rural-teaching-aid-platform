@@ -225,7 +225,7 @@ export default function PracticePage() {
               )}
               <div className="mt-4">
                 {showAnswer && (
-                  <p className="text-wall-text-muted text-sm">
+                  <p className="text-wall-text-muted text-xl font-medium">
                     答案：{currentQ.answer}
                   </p>
                 )}
