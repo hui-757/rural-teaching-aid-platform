@@ -21,25 +21,43 @@ export default function ResetPasswordPage() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    // 从邮件链接的 hash 中提取 token 并建立 session
-    const hash = window.location.hash
-    const params = new URLSearchParams(hash.replace('#', ''))
-    const accessToken = params.get('access_token')
-    const refreshToken = params.get('refresh_token')
+    // 同时支持两种 session 建立方式：
+    // 1. PKCE 流程：URL query 中的 code（推荐，不会被邮件客户端截断）
+    // 2. 旧版：URL hash 中的 access_token
 
-    if (accessToken) {
-      supabase.auth.setSession({
-        access_token: accessToken,
-        refresh_token: refreshToken || '',
-      }).then(({ error }) => {
+    const hash = window.location.hash
+    const hashParams = new URLSearchParams(hash.replace('#', ''))
+    const accessToken = hashParams.get('access_token')
+    const refreshToken = hashParams.get('refresh_token')
+
+    const searchParams = new URLSearchParams(window.location.search)
+    const code = searchParams.get('code')
+
+    const establishSession = async () => {
+      if (code) {
+        // PKCE 流程：code 在 URL query 中，不会被邮件客户端截断
+        const { error } = await supabase.auth.exchangeCodeForSession(code)
         if (error) {
-          setError('验证链接已过期或无效')
+          setError('验证链接已过期或无效，请重新申请')
         } else {
           setMode('hasToken')
         }
-      })
+      } else if (accessToken) {
+        // 旧版：access_token 在 hash 中，可能被邮件客户端截断
+        const { error } = await supabase.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken || '',
+        })
+        if (error) {
+          setError('验证链接已过期或无效，请重新申请')
+        } else {
+          setMode('hasToken')
+        }
+      }
+      // 如果都没有，mode 保持 'noToken'，显示邮箱输入表单
     }
-    // 如果没有 token，mode 保持 'noToken'，显示邮箱输入表单
+
+    establishSession()
   }, [])
 
   const handleSendEmail = async (e: React.FormEvent) => {
