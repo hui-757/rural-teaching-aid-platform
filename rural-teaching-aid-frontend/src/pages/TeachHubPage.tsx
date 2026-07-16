@@ -48,12 +48,9 @@ export default function TeachHubPage() {
         </button>
       </div>
 
-      <div className="text-center mb-10 relative z-10">
-        <h1 className="text-3xl md:text-4xl font-serif text-wall-text mb-3 tracking-widest">
-          授课中心
-        </h1>
-        <GreatWallDivider className="max-w-sm mx-auto" />
-        <p className="text-wall-text-soft mt-3 font-serif">选择功能后进入单元</p>
+      <div className="text-center mb-2 relative z-10">
+        <h1 className="text-lg md:text-xl font-serif text-wall-text tracking-widest">📖 授课中心</h1>
+        <p className="text-wall-text-muted text-[10px] font-serif mt-0.5">选择功能 · 进入单元 · 开始教学</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full relative z-10">

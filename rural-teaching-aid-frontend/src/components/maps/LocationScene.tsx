@@ -1,5 +1,6 @@
 import type { Unit, MonsterInfo } from '../../types'
 import { WESTWARD_MAP, MONSTER_BOOK, MONSTER_POSITIONS } from '../../data/westward-journey'
+import { useAudioCtx } from '../../hooks/AudioContext'
 
 interface LocationSceneProps {
   unit: Unit
@@ -8,23 +9,25 @@ interface LocationSceneProps {
   studentName?: string
 }
 
-/** unit_id → 场景图文件名 */
+/** unit_id → 场景图文件名（新版：1=花果山） */
 const SCENE_IMAGES: Record<number, string> = {
-  2: '/maps/scenes/huaguoshan.png',
+  1: '/maps/scenes/huaguoshan.png',
 }
 
 /** 妖怪节点 */
 function MonsterNode({
-  monster, status, position, onClick,
+  monster, status, position, onClick, onHover,
 }: {
   monster: MonsterInfo
   status: 'locked' | 'available' | 'passed'
   position: { x: number; y: number }
   onClick: () => void
+  onHover: () => void
 }) {
   return (
     <button
       onClick={status !== 'locked' ? onClick : undefined}
+      onMouseEnter={status !== 'locked' ? onHover : undefined}
       disabled={status === 'locked'}
       className="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:scale-125 focus:outline-none group z-10"
       style={{ left: `${position.x}%`, top: `${position.y}%` }}
@@ -65,6 +68,7 @@ function MonsterNode({
 
 export default function LocationScene({ unit, completedLevels, onSelectLevel }: LocationSceneProps) {
   const mapNode = WESTWARD_MAP[unit.unit_id]
+  const { playSfx } = useAudioCtx()
   const monsters = MONSTER_BOOK[unit.unit_id] || []
   const positions = MONSTER_POSITIONS[unit.unit_id] || []
   const sceneImg = SCENE_IMAGES[unit.unit_id]
@@ -95,7 +99,8 @@ export default function LocationScene({ unit, completedLevels, onSelectLevel }: 
           <MonsterNode key={monster.level} monster={monster}
             status={isCompleted ? 'passed' : isAvailable ? 'available' : 'locked'}
             position={pos}
-            onClick={() => { if (isCompleted || isAvailable) onSelectLevel(monster.level) }} />
+            onClick={() => { playSfx('battleStart'); onSelectLevel(monster.level) }}
+            onHover={() => playSfx('hover')} />
         )
       })}
     </div>

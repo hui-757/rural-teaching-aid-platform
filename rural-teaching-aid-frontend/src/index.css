@@ -206,3 +206,43 @@
 .animate-breathe-ring {
   animation: breatheRing 2s ease-in-out infinite;
 }
+
+@keyframes roadGlow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+
+.animate-road-glow {
+  animation: roadGlow 2s ease-in-out infinite;
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(20px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes cloudDriftReverse {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-16px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes bounceInline {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+  60% { transform: translateY(0); }
+  80% { transform: translateY(-3px); }
+}
+
+.animate-cloud-drift {
+  animation: cloudDrift 8s ease-in-out infinite;
+}
+
+.animate-cloud-drift-reverse {
+  animation: cloudDriftReverse 10s ease-in-out infinite;
+}
+
+.animate-bounce-inline {
+  animation: bounceInline 2.5s ease-in-out infinite;
+}

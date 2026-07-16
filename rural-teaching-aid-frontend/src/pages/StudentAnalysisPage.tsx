@@ -135,12 +135,9 @@ export default function StudentAnalysisPage() {
         <ArrowLeft size={14} /> 返回授课中心
       </button>
 
-      <div className="mb-6">
-        <div className="flex items-center gap-3 mb-2">
-          <Users size={24} className="text-wall-brick" />
-          <h1 className="text-2xl font-serif text-wall-text tracking-wider">学情分析</h1>
-        </div>
-        <p className="text-wall-text-muted">实时聚合学生课堂参与与闯关数据</p>
+      <div className="text-center mb-6">
+        <h1 className="text-lg md:text-xl font-serif text-wall-text tracking-widest">📊 学情分析</h1>
+        <p className="text-wall-text-muted text-[10px] font-serif mt-0.5">学生课堂参与 · 闯关数据聚合</p>
       </div>
 
       {/* Overview cards */}

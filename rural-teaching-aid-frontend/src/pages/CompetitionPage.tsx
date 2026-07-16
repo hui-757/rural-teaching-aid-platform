@@ -3,13 +3,16 @@ import { useSearchParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAppStore } from '../store/useAppStore'
 import { useAuthStore } from '../store/useAuthStore'
-import type { CalcQuestion, AnswerItem, VerticalContent, Unit } from '../types'
+import type { CalcQuestion, AnswerItem, VerticalContent, Unit, MonsterInfo } from '../types'
 import { ScrollPanel } from '../components/ui/BrickCard'
 import WorldMap from '../components/maps/WorldMap'
+import LocationScene from '../components/maps/LocationScene'
 import { SealButton, SealBadge, GoldBadge } from '../components/ui/SealButton'
+import { useAudioCtx } from '../hooks/AudioContext'
+import { WESTWARD_MAP, MONSTER_BOOK, MONSTER_LINES } from '../data/westward-journey'
 import {
-  Trophy, Lock, Unlock, Timer, ArrowRight, CheckCircle, XCircle,
-  Loader2, Crown, RotateCcw, ChevronLeft, 
+  Trophy, Timer, ArrowRight, CheckCircle, XCircle,
+  Loader2, RotateCcw, ChevronLeft, Swords,
 } from 'lucide-react'
 
 /** 9 个地界 → 9 个计算题分类（按取经顺序） */
@@ -25,6 +28,10 @@ const UNIT_TO_CATEGORY: Record<number, string> = {
   9: '笔算除法竖式',
 }
 
+/** 计算题分类 → unit_id（反向查找） */
+const CATEGORY_TO_UNIT_ID: Record<string, number> = Object.fromEntries(
+  Object.entries(UNIT_TO_CATEGORY).map(([k, v]) => [v, parseInt(k)])
+)
 
 const LEVEL_CONFIG = [
   { timeLimit: 60, targetAccuracy: 0.15, consecutiveRequired: 1, questionCount: 3 },
@@ -210,6 +217,9 @@ export default function CompetitionPage() {
   const [showNameInput, setShowNameInput] = useState(false)
   const [completedLevels, setCompletedLevels] = useState<Record<string, number[]>>({})
   const [blankValues, setBlankValues] = useState<string[]>([])
+  const [showIntro, setShowIntro] = useState(false)
+  const [introLine, setIntroLine] = useState('')
+  const { playSfx, playBgm, stopBgm, speak } = useAudioCtx()
 
   const finishedRef = useRef(false)
   const answerInputRef = useRef<HTMLInputElement>(null)
@@ -267,7 +277,10 @@ export default function CompetitionPage() {
 
   useEffect(() => {
     if (!isPlaying || timeLeft <= 0) return
-    const timer = setInterval(() => setTimeLeft(t => t - 1), 1000)
+    const timer = setInterval(() => setTimeLeft(t => {
+      if (t <= 11 && t > 0) playSfx('tick')
+      return t - 1
+    }), 1000)
     return () => clearInterval(timer)
   }, [isPlaying, timeLeft])
 
@@ -366,6 +379,7 @@ export default function CompetitionPage() {
         correct: allCorrect,
       }
 
+      playSfx(allCorrect ? 'correct' : 'wrong')
       const newAnswers = [...answers, newAnswer]
       setAnswers(newAnswers)
       setBlankValues([])
@@ -385,6 +399,7 @@ export default function CompetitionPage() {
       correct = correct && currentRemainder.trim() === q.answer_remainder.trim()
     }
 
+    playSfx(correct ? 'correct' : 'wrong')
     const newAnswer: AnswerItem = {
       question_id: q.id,
       student_answer: currentAnswer.trim() + (q.answer_remainder ? `...${currentRemainder.trim()}` : ''),
@@ -411,6 +426,10 @@ export default function CompetitionPage() {
     const config = LEVEL_CONFIG[gameState.currentLevel - 1] || LEVEL_CONFIG[0]
     const passed = checkPass(finalAnswers, config)
 
+    playSfx(passed ? 'victory' : 'fail')
+    if (passed) playSfx('unlock')
+    stopBgm()
+    playBgm('huaguoshan')
     setIsPass(passed)
     setShowResult(true)
     setIsPlaying(false)
@@ -470,6 +489,59 @@ export default function CompetitionPage() {
     setCompletedLevels((prev) => ({ ...prev, [selectedCategory]: [] }))
   }
 
+  // =========== 离开页面时停止 BGM ===========
+  useEffect(() => {
+    return () => { try { stopBgm() } catch (_) {} }
+  }, [])
+
+  // 世界地图首次点击激活 BGM（仅一次）
+  const bgmInited = useRef(false)
+  const initBgm = () => {
+    if (!bgmInited.current) {
+      bgmInited.current = true
+      playBgm('worldMap')
+    }
+  }
+
+  // =========== 妖怪点击 → 标识录入 ===========
+  const handleMonsterClick = async (level: number) => {
+    if (!selectedCategory) return
+    setGameState({ category: selectedCategory, currentLevel: level })
+    await loadQuestions(selectedCategory)
+    const config = LEVEL_CONFIG[level - 1] || LEVEL_CONFIG[0]
+    setCurrentQIndex(0)
+    setCurrentAnswer('')
+    setCurrentRemainder('')
+    setAnswers([])
+    setBlankValues([])
+    setTimeLeft(config.timeLimit)
+    setIsPlaying(false)
+    setShowResult(false)
+    setShowNameInput(true)
+    finishedRef.current = false
+  }
+
+  // =========== 标识录入完成 → 台词气泡 → 开战 ===========
+  const startBattleAfterName = () => {
+    if (!selectedCategory) return
+    stopBgm()
+    playBgm('battle')
+    const unitId = CATEGORY_TO_UNIT_ID[selectedCategory]
+    const lvl = gameState.currentLevel
+    const line = unitId ? MONSTER_LINES[unitId]?.[lvl] : undefined
+    if (line) {
+      setIntroLine(line)
+      setShowIntro(true)
+      setIsPlaying(true)
+      speak(line, lvl).then(async () => {
+        await new Promise(r => setTimeout(r, 800))
+        setShowIntro(false)
+      })
+    }
+    setShowNameInput(false)
+    setIsPlaying(true)
+  }
+
   if (loading) {
     return (
       <div className="min-h-[calc(100vh-64px-88px)] flex items-center justify-center">
@@ -481,60 +553,77 @@ export default function CompetitionPage() {
     )
   }
 
-  // WorldMap entry
+  // 🗺️ 取经世界地图
   if (!selectedCategory) {
     return (
-      <div className="h-[calc(100vh-64px-88px)] flex flex-col">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 shrink-0 w-full">
-          <div className="flex items-center gap-3 mb-1">
-            <Trophy size={24} className="text-wall-gold" />
-            <h1 className="text-2xl font-serif text-wall-text tracking-wider">闯关竞赛</h1>
-          </div>
-          <p className="text-wall-text-muted text-sm">点击地界开始闯关</p>
+      <div className="h-[calc(100vh-64px-88px)] flex flex-col justify-center px-2 sm:px-4 py-2">
+        <div className="text-center mb-2 shrink-0">
+          <h1 className="text-lg md:text-xl font-serif text-wall-text tracking-widest">
+            🗺️ 取经之路
+          </h1>
+          <p className="text-wall-text-muted text-[10px] font-serif">
+            择一地界降妖 · 滚轮缩放 · 拖拽平移
+          </p>
         </div>
-        <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pb-4 overflow-hidden">
-          <div
-            className="relative w-full rounded-2xl overflow-hidden border-2 border-wall-border"
-            style={{ aspectRatio: '1920/823', maxHeight: '100%' }}
-          >
-            <WorldMap
-              units={mapUnits}
-              completedMaps={completedUnitIds}
-              onSelectUnit={(unit) => {
-                const cat = UNIT_TO_CATEGORY[unit.unit_id]
-                if (cat) {
-                  setSelectedCategory(cat)
-                  loadQuestions(cat)
-                }
-              }}
-            />
-          </div>
+
+        {/* 世界地图 */}
+        <div
+          className="relative w-full max-w-6xl mx-auto rounded-2xl overflow-hidden border-2 border-wall-border shadow-2xl"
+          style={{ aspectRatio: '20 / 9', maxHeight: 'calc(100vh - 160px)' }}
+          onClick={initBgm}
+        >
+          <WorldMap
+            units={mapUnits}
+            completedMaps={completedUnitIds}
+            onSelectUnit={(unit) => {
+              const cat = UNIT_TO_CATEGORY[unit.unit_id]
+              if (cat) {
+                setSelectedCategory(cat)
+                loadQuestions(cat)
+                playBgm('huaguoshan')
+              }
+            }}
+          />
         </div>
+
+        {mapUnits.length === 0 && (
+          <div className="text-center py-20">
+            <p className="text-wall-text-muted font-serif">取经路尚未开辟，请联系师父（管理员）</p>
+          </div>
+        )}
       </div>
     )
   }
 
-  // Name input
+  // 大圣报名 — 标识录入（在妖怪台词气泡之前）
   if (showNameInput && !isPlaying) {
+    const unitId = CATEGORY_TO_UNIT_ID[selectedCategory || '']
+    const monsters: MonsterInfo[] = unitId ? (MONSTER_BOOK[unitId] || []) : []
+    const monster = monsters[gameState.currentLevel - 1]
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <button
-          onClick={() => setSelectedCategory(null)}
-          className="flex items-center gap-1 text-wall-text-muted hover:text-wall-text mb-4 text-sm"
+          onClick={() => { stopBgm(); setSelectedCategory(null); setShowNameInput(false); playBgm('worldMap') }}
+          className="flex items-center gap-1 text-wall-text-muted hover:text-wall-brick-dark font-serif text-sm mb-6 transition-colors"
         >
-          <ChevronLeft size={16} /> 返回类型选择
+          <ChevronLeft size={16} /> 返回取经地图
         </button>
+
         <div className="max-w-md mx-auto">
-          <ScrollPanel title="标识录入">
-            <p className="text-wall-text-muted text-sm mb-4">
-              请填写参与闯关的学生标识（如 01、test01），以便记录成绩和排行。
-            </p>
+          <ScrollPanel title="大圣报名">
+            <div className="text-center mb-4">
+              <span className="text-5xl block mb-2">🐵</span>
+              <p className="text-wall-text-muted text-sm">
+                悟空变身上阵！留下你的名号，前去降服
+                <span className="text-wall-brick-dark font-bold mx-1">{monster?.name || '妖怪'}</span>
+              </p>
+            </div>
             <input
               type="text"
               value={studentName}
               onChange={(e) => setStudentName(e.target.value)}
-              placeholder="请输入学生标识"
-              className="w-full px-4 py-3 bg-wall-paper border-2 border-wall-border rounded font-sans text-wall-text placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors mb-4"
+              placeholder="在此留下大圣名号"
+              className="w-full px-4 py-3 bg-wall-paper border-2 border-wall-border rounded font-sans text-wall-text text-center placeholder:text-wall-text-muted/50 focus:outline-none focus:border-wall-gold transition-colors mb-4"
             />
             <SealButton
               variant="gold"
@@ -542,15 +631,14 @@ export default function CompetitionPage() {
               className="w-full"
               onClick={() => {
                 if (!studentName.trim()) {
-                  alert('请输入学生标识')
+                  alert('请留下大圣名号')
                   return
                 }
-                setShowNameInput(false)
-                setIsPlaying(true)
+                startBattleAfterName()
               }}
             >
-              <ArrowRight size={16} className="mr-2" />
-              开始闯关
+              <Swords size={16} className="mr-2" />
+              迎战妖怪
             </SealButton>
           </ScrollPanel>
         </div>
@@ -558,102 +646,71 @@ export default function CompetitionPage() {
     )
   }
 
-  // Level selection
+  // Level selection — 地界场景地图（妖怪热区交互）
   if (!isPlaying && !showResult) {
-    const catLevels = completedLevels[selectedCategory] || []
+    const unitId = CATEGORY_TO_UNIT_ID[selectedCategory || '']
+    const catLevels = completedLevels[selectedCategory || ''] || []
+    const mapNode = unitId ? WESTWARD_MAP[unitId] : null
+
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <button
-          onClick={() => setSelectedCategory(null)}
-          className="flex items-center gap-1 text-wall-text-muted hover:text-wall-text mb-4 text-sm"
+          onClick={() => { stopBgm(); setSelectedCategory(null); playBgm('worldMap') }}
+          className="flex items-center gap-1 text-wall-text-muted hover:text-wall-brick-dark font-serif text-sm mb-3 transition-colors"
         >
-          <ChevronLeft size={16} /> 返回类型选择
+          <ChevronLeft size={16} /> 返回取经地图
         </button>
 
-        <div className="mb-6">
-          <div className="flex items-center gap-3 mb-2">
-            <Trophy size={24} className="text-wall-gold" />
-            <h1 className="text-2xl font-serif text-wall-text tracking-wider">{selectedCategory} - 闯关</h1>
-          </div>
+        {/* 地界场景地图 — 20:9 比例 */}
+        <div className="relative w-full mb-4" style={{ aspectRatio: '20 / 9' }}>
+          <LocationScene
+            unit={mapUnits.find(u => u.unit_id === unitId) || mapUnits[0]}
+            completedLevels={catLevels}
+            onSelectLevel={handleMonsterClick}
+            studentName={studentName}
+          />
+        </div>
+
+        {/* 操作栏 */}
+        <div className="flex items-center justify-between mt-4">
           <div className="flex items-center gap-2">
-            <GoldBadge>计算题闯关</GoldBadge>
-            <SealButton variant="outline" size="sm" onClick={resetLevelProgress}>
-              <RotateCcw size={12} className="mr-1" />
-              重置进度
-            </SealButton>
+            <GoldBadge>{mapNode?.mapName || selectedCategory}</GoldBadge>
+            <span className="text-xs text-wall-text-muted">已降服 {catLevels.length}/10 妖</span>
           </div>
+          <SealButton variant="outline" size="sm" onClick={resetLevelProgress}>
+            <RotateCcw size={12} className="mr-1" />
+            重置进度
+          </SealButton>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
-          {Array.from({ length: 10 }, (_, i) => i + 1).map((level) => {
-            const isCompleted = catLevels.includes(level)
-            const isAvailable = level === 1 || catLevels.includes(level - 1)
-            const config = LEVEL_CONFIG[level - 1]
-
-            return (
-              <button
-                key={level}
-                disabled={!isAvailable}
-                onClick={() => {
-                  setGameState({ category: selectedCategory, currentLevel: level })
-                  startLevel(level)
-                }}
-                className={`relative p-4 rounded-lg border-2 transition-all duration-200 ${
-                  isCompleted
-                    ? 'bg-wall-gold/10 border-wall-gold cursor-pointer hover:bg-wall-gold/20'
-                    : isAvailable
-                    ? 'bg-wall-paper border-wall-brick cursor-pointer hover:bg-wall-brick/5 hover:-translate-y-1 hover:shadow-lg'
-                    : 'bg-wall-bg-deep border-wall-border opacity-50 cursor-not-allowed'
-                }`}
-              >
-                <div className="text-center">
-                  {isCompleted ? (
-                    <Crown size={24} className="mx-auto mb-1 text-wall-gold" />
-                  ) : isAvailable ? (
-                    <Unlock size={24} className="mx-auto mb-1 text-wall-brick" />
-                  ) : (
-                    <Lock size={24} className="mx-auto mb-1 text-wall-text-muted" />
-                  )}
-                  <p className="font-serif font-bold text-lg text-wall-text">第 {level} 关</p>
-                  <p className="text-xs text-wall-text-muted mt-1">
-                    {config?.timeLimit}秒 · 正确率{config?.targetAccuracy * 100}%
-                  </p>
-                </div>
-              </button>
-            )
-          })}
+        {/* 排行榜 */}
+        <div className="mt-4">
+          <ScrollPanel title="🏆 降妖排行榜">
+            {rankings.length > 0 ? (
+              <div className="space-y-2">
+                {rankings.map((r, i) => (
+                  <div key={r.record_id as number} className="flex items-center justify-between p-3 bg-wall-bg-deep rounded">
+                    <div className="flex items-center gap-3">
+                      <span className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm ${
+                        i === 0 ? 'bg-wall-gold text-wall-paper' :
+                        i === 1 ? 'bg-wall-stone text-wall-paper' :
+                        i === 2 ? 'bg-wall-brick text-wall-paper' :
+                        'bg-wall-border text-wall-text-muted'
+                      }`}>{i + 1}</span>
+                      <span className="font-serif text-wall-text">{r.student_name as string}</span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <span className="text-wall-text-muted text-sm">第 {r.level as number} 关</span>
+                      <span className="font-serif font-bold text-wall-brick">{r.score as number} 分</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-wall-text-muted py-4">暂无降妖记录，率先出征！</p>
+            )}
+          </ScrollPanel>
         </div>
-
-        <ScrollPanel title="闯关排行榜">
-          {rankings.length > 0 ? (
-            <div className="space-y-2">
-              {rankings.map((r, i) => (
-                <div
-                  key={r.record_id as number}
-                  className="flex items-center justify-between p-3 bg-wall-bg-deep rounded border border-wall-border"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className={`w-7 h-7 rounded flex items-center justify-center font-bold text-sm ${
-                      i === 0 ? 'bg-wall-gold text-wall-paper' :
-                      i === 1 ? 'bg-wall-stone text-wall-paper' :
-                      i === 2 ? 'bg-wall-brick text-wall-paper' :
-                      'bg-wall-border text-wall-text-muted'
-                    }`}>
-                      {i + 1}
-                    </span>
-                    <span className="font-serif text-wall-text">{r.student_name as string}</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="text-wall-text-muted text-sm">第 {r.level as number} 关</span>
-                    <span className="font-serif font-bold text-wall-brick">{r.score as number} 分</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-center text-wall-text-muted py-4">暂无闯关记录</p>
-          )}
-        </ScrollPanel>
       </div>
     )
   }
@@ -665,24 +722,50 @@ export default function CompetitionPage() {
   const blankAnswers = useVerticalInputs ? getBlankAnswers(currentQuestion.raw_content) : []
   const allBlanksFilled = blankValues.length === blankAnswers.length && blankValues.every((v) => v !== undefined && v !== '')
   const config = LEVEL_CONFIG[gameState.currentLevel - 1] || LEVEL_CONFIG[0]
+  const unitId = CATEGORY_TO_UNIT_ID[selectedCategory || '']
+  const monsters: MonsterInfo[] = unitId ? (MONSTER_BOOK[unitId] || []) : []
+  const currentMonster = monsters[gameState.currentLevel - 1]
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
+      {/* 战场头部 — 妖怪信息 */}
       <div className="bg-wall-stone-dark text-wall-paper rounded-lg p-4 mb-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <SealBadge className="bg-wall-gold/20 text-wall-gold-light border-wall-gold/30">
-            第 {gameState.currentLevel} 关
-          </SealBadge>
-          <span className="font-serif text-sm">{studentName}</span>
-          <span className="text-wall-text-muted text-xs">{selectedCategory}</span>
+          <span className="text-2xl">{currentMonster?.emoji || '👹'}</span>
+          <div>
+            <div className="flex items-center gap-2">
+              <SealBadge className="bg-wall-gold/20 text-wall-gold-light border-wall-gold/30 text-xs">
+                第 {gameState.currentLevel} 关
+              </SealBadge>
+              <span className="text-wall-gold-light font-serif text-sm">{currentMonster?.name || '妖怪'}</span>
+            </div>
+            <span className="font-serif text-xs text-wall-paper/60">{studentName || '孙悟空'}</span>
+          </div>
         </div>
         <div className={`flex items-center gap-2 font-mono text-lg font-bold ${
-          timeLeft <= 10 ? 'text-red-400' : 'text-wall-gold-light'
+          timeLeft <= 10 ? 'text-red-400 animate-pulse' : 'text-wall-gold-light'
         }`}>
           <Timer size={18} />
           {timeLeft}秒
         </div>
       </div>
+
+      {/* 🗣️ 妖怪台词气泡 */}
+      {showIntro && (
+        <div className="flex flex-col items-center justify-center py-16 animate-fade-in-up">
+          <span className="text-6xl mb-4">{currentMonster?.emoji || '👹'}</span>
+          <div className="relative bg-wall-paper border-2 border-wall-brick rounded-2xl px-8 py-6 max-w-md shadow-xl">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-wall-brick" />
+            <p className="font-serif text-xl text-wall-text text-center tracking-wider leading-relaxed">
+              「{introLine}」
+            </p>
+          </div>
+          <p className="text-wall-text-muted text-sm mt-4 animate-pulse">🗣️ 妖怪放话中...</p>
+        </div>
+      )}
+
+      {/* 题目区域 — 台词播放期间隐藏 */}
+      {!showIntro && <>
 
       <div className="mb-4 flex gap-1">
         {answers.map((a, i) => (
@@ -772,6 +855,7 @@ export default function CompetitionPage() {
           </SealButton>
         </div>
       )}
+      </>}
 
       {/* Result Modal */}
       {showResult && (
@@ -780,13 +864,13 @@ export default function CompetitionPage() {
             <div className="text-center mb-4">
               {isPass ? (
                 <>
-                  <Crown size={48} className="mx-auto text-wall-gold mb-2" />
-                  <h2 className="text-2xl font-serif text-wall-gold font-bold">闯关成功</h2>
+                  <span className="text-5xl block mb-2">{currentMonster?.emoji || '👹'}</span>
+                  <h2 className="text-2xl font-serif text-wall-gold font-bold">🎉 妖怪降服！取经又进一步</h2>
                 </>
               ) : (
                 <>
-                  <XCircle size={48} className="mx-auto text-wall-brick mb-2" />
-                  <h2 className="text-2xl font-serif text-wall-brick font-bold">闯关失败</h2>
+                  <span className="text-5xl block mb-2">💨</span>
+                  <h2 className="text-2xl font-serif text-wall-brick font-bold">妖怪脱逃... 再修炼修炼</h2>
                 </>
               )}
               <p className="text-wall-text-muted mt-2">
@@ -839,7 +923,7 @@ export default function CompetitionPage() {
                   setNote('')
                 }}
               >
-                返回关卡
+                返回降妖谱
               </SealButton>
               <SealButton
                 variant="solid"

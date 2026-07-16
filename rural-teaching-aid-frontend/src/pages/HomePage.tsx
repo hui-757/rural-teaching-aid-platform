@@ -15,17 +15,11 @@ export default function HomePage() {
     : '未选择年级'
 
   return (
-    <div className="min-h-[calc(100vh-64px-88px)] flex flex-col items-center justify-center px-4 py-12 relative">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-32 h-32 border-2 border-wall-brick/10 rounded-full" />
-        <div className="absolute bottom-20 right-10 w-48 h-48 border-2 border-wall-gold/10 rounded-full" />
-        <div className="absolute top-1/3 right-1/4 w-24 h-24 border-2 border-wall-ink/10 rounded-full" />
-      </div>
+    <div className="min-h-[calc(100vh-64px-88px)] flex flex-col items-center justify-center px-4 py-12">
 
       {/* Hero Section */}
-      <div className="text-center mb-12 relative z-10 animate-fade-in-up">
-        <div className="inline-flex items-center gap-2 mb-4">
+      <div className="text-center mb-10 relative z-10 animate-fade-in-up">
+        <div className="inline-flex items-center gap-2 mb-3">
           {currentGrade ? (
             <GoldBadge>{gradeLabel} · 数学</GoldBadge>
           ) : (
@@ -41,18 +35,10 @@ export default function HomePage() {
           <GoldBadge>人教版</GoldBadge>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-serif text-wall-text mb-4 tracking-widest">
-          乡村教学辅助平台
-        </h1>
-
-        <GreatWallDivider className="max-w-md mx-auto" />
-
-        <p className="text-wall-text-soft text-lg mt-4 font-serif tracking-wide">
-          教材辅助 · 基础练习 · 课堂互动 · 闯关游戏
-        </p>
-        <p className="text-wall-text-muted text-sm mt-2">
-          助力乡村教师，激发学生兴趣
-        </p>
+        <div className="text-center mb-2">
+          <h1 className="text-lg md:text-xl font-serif text-wall-text tracking-widest">🏫 乡村教学辅助平台</h1>
+          <p className="text-wall-text-muted text-[10px] font-serif mt-0.5">教材辅助 · 基础练习 · 课堂互动 · 闯关游戏</p>
+        </div>
       </div>
 
       {/* Main Entry Cards */}

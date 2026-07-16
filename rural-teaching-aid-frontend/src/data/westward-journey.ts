@@ -199,3 +199,28 @@ export const MONSTER_POSITIONS: Record<number, MonsterPosition[]> = {
     { level: 9, x: 88, y: 50 },  { level: 10, x: 92, y: 32 },
   ],
 }
+
+/** 妖怪台词 */
+export const MONSTER_LINES: Record<number, Record<number, string>> = {
+  1: {
+    1: '站住！想过花果山，先过俺这一关！',
+    2: '哼哼，前面那个是废物，俺可不一样！',
+    3: '看你有没有本事接我三招！',
+    4: '这片山头归我管，识相的快滚！',
+    5: '嗷呜——尝尝我的狼牙棒！',
+    6: '桀桀桀，又来一个送经验的！',
+    7: '我叫你一声，你敢答应吗？',
+    8: '紫金葫芦在此，还不快投降！',
+    9: '能走到我这里，算你有几分本事……',
+    10: '俺老牛在此！想过这关，除非踏过俺的尸体！',
+  },
+}
+
+/** 妖怪等级视觉配置 */
+export const TIER_CONFIG: Record<string, { label: string; borderColor: string; bgColor: string; textColor: string; badge: string }> = {
+  minion:    { label: '小妖喽啰', borderColor: 'border-green-400',  bgColor: 'bg-green-50',   textColor: 'text-green-700',  badge: '🟢' },
+  chief:     { label: '妖怪头目', borderColor: 'border-blue-400',   bgColor: 'bg-blue-50',    textColor: 'text-blue-700',   badge: '🔵' },
+  king:      { label: '一方妖王', borderColor: 'border-purple-400', bgColor: 'bg-purple-50',  textColor: 'text-purple-700', badge: '🟣' },
+  general:   { label: '大魔统领', borderColor: 'border-orange-400', bgColor: 'bg-orange-50',  textColor: 'text-orange-700', badge: '🟠' },
+  boss:      { label: '终极BOSS', borderColor: 'border-red-500',    bgColor: 'bg-red-50',     textColor: 'text-red-700',    badge: '🔴' },
+}

@@ -30,21 +30,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="absolute inset-x-0 top-0 h-1 bg-wall-gold-light opacity-30" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
           {/* Logo — 固定左侧 */}
-          <Link to="/" className="flex items-center gap-3 group flex-shrink-0 w-[200px]">
+          <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
             <div className="w-10 h-10 bg-wall-brick border-2 border-wall-gold rounded wall-texture flex items-center justify-center">
               <span className="text-wall-gold-light font-serif font-bold text-lg">教</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-wall-paper font-serif text-lg tracking-widest">乡村教学辅助平台</h1>
+              <h1 className="text-wall-paper font-serif text-lg tracking-wider whitespace-nowrap">乡村教学辅助平台</h1>
               <p className="text-wall-gold-light text-xs tracking-wider -mt-1">
                 {currentGrade ? `${gradeLabel} · 数学` : '请选择年级'}
               </p>
             </div>
           </Link>
 
+          {/* 占位撑开左中右结构 */}
+          <div className="flex-1" />
+
           {/* Nav Links — 真正居中 */}
           {user && !isHome && currentGrade && (
-            <nav className="hidden md:flex items-center justify-center gap-1 flex-1">
+            <nav className="hidden md:flex items-center justify-center gap-1 absolute left-1/2 -translate-x-1/2">
               <Link
                 to="/"
                 className="px-4 py-2 text-wall-paper/80 hover:text-wall-gold-light font-serif tracking-wider text-sm transition-colors rounded hover:bg-white/5"
@@ -76,7 +79,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           )}
 
           {/* Right side — 固定右侧 */}
-          <div className="flex items-center justify-end gap-2 flex-shrink-0 w-[200px]">
+          <div className="flex items-center justify-end gap-2 flex-shrink-0">
             {/* Grade Switch — always visible when user logged in */}
             {user && (
               <button

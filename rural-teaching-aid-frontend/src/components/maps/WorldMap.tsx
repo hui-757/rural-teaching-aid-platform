@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useMemo, useEffect } from 'react'
 import type { Unit } from '../../types'
 import { WESTWARD_MAP } from '../../data/westward-journey'
+import { useAudioCtx } from '../../hooks/AudioContext'
 
 interface WorldMapProps {
   units: Unit[]
@@ -8,22 +9,36 @@ interface WorldMapProps {
   onSelectUnit: (unit: Unit) => void
 }
 
+/** 地界 → 知识点 */
+const CATEGORY_LABELS: Record<number, string> = {
+  1: '口算乘法',
+  2: '不进位笔算乘法',
+  3: '连续进位笔算乘法',
+  4: '中间有0的乘法',
+  5: '末尾有0的乘法',
+  6: '积的变化规律',
+  7: '乘法估算与数学文化',
+  8: '口算除法',
+  9: '笔算除法竖式',
+}
+
 // 9 据点坐标（百分比，基于实际底图）——取经路线从东南蜿蜒向西北
 const MAP_NODES = [
-  { x: 86.1, y: 70.6 },  // 1. 花果山（起点·东南）
-  { x: 74.2, y: 37.3 },  // 2. 高老庄
-  { x: 54.4, y: 53.9 },  // 3. 流沙河
-  { x: 33.7, y: 30.7 },  // 4. 白虎岭
-  { x: 54.1, y: 74.9 },  // 5. 盘丝洞
-  { x: 31.0, y: 63.1 },  // 6. 火焰山
-  { x: 11.1, y: 63.5 },  // 7. 通天河
-  { x: 21.5, y: 48.4 },  // 8. 乌鸡国
-  { x: 17.3, y: 25.0 },  // 9. 大雷音寺（终点·西北）
+  { x: 86.1, y: 70.6, unitId: 1 },  // 1. 花果山（起点·东南）
+  { x: 74.2, y: 37.3, unitId: 2 },  // 2. 高老庄
+  { x: 54.4, y: 53.9, unitId: 3 },  // 3. 流沙河
+  { x: 33.7, y: 30.7, unitId: 4 },  // 4. 白虎岭
+  { x: 54.1, y: 74.9, unitId: 5 },  // 5. 盘丝洞
+  { x: 31.0, y: 63.1, unitId: 6 },  // 6. 火焰山
+  { x: 11.1, y: 63.5, unitId: 7 },  // 7. 通天河
+  { x: 21.5, y: 48.4, unitId: 8 },  // 8. 乌鸡国
+  { x: 17.3, y: 25.0, unitId: 9 },  // 9. 大雷音寺（终点·西北）
 ]
 
 export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMapProps) {
   const sortedUnits = useMemo(() => [...units].sort((a, b) => a.unit_id - b.unit_id), [units])
   const containerRef = useRef<HTMLDivElement>(null)
+  const { playSfx } = useAudioCtx()
   const [scale, setScale] = useState(1)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const [dragging, setDragging] = useState(false)
@@ -79,6 +94,15 @@ export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMa
 
   const resetView = useCallback(() => { setScale(1); setOffset({ x: 0, y: 0 }) }, [])
 
+  // ==================== Tooltip ====================
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; name: string; category: string } | null>(null)
+  const showTooltip = useCallback((e: React.MouseEvent, unitId: number) => {
+    const node = WESTWARD_MAP[unitId]
+    if (!node) return
+    setTooltip({ x: e.clientX, y: e.clientY, name: node.mapName, category: CATEGORY_LABELS[unitId] || '' })
+  }, [])
+  const hideTooltip = useCallback(() => setTooltip(null), [])
+
   return (
     <div className="absolute inset-0 flex flex-col">
       {/* 工具栏 */}
@@ -107,23 +131,13 @@ export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMa
           }}
         >
           {/* 底图 */}
-          <div className="absolute inset-0 bg-[#2c2416]">
-            {/* 模糊填充层：cover 放大填满，消除黑边 */}
-            <img
-              src="/maps/map-base.jpg"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none blur opacity-50"
-              aria-hidden="true"
-            />
-            {/* 清晰显示层：contain 完整保留左右 */}
-            <img
-              src="/maps/map-base.jpg"
-              alt="取经之路"
-              className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-            />
-          </div>
+          <img
+            src="/maps/map-base.jpg"
+            alt="取经之路"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          />
 
-          {/* SVG 连线层 — 取经路线 */}
+          {/* SVG 取经路线 */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none z-10"
             viewBox="0 0 100 100"
@@ -141,7 +155,6 @@ export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMa
                 </feMerge>
               </filter>
             </defs>
-            {/* 主路径：虚线 + 光晕 + 箭头 */}
             <path
               d={`M ${MAP_NODES.map(n => `${n.x},${n.y}`).join(' L ')}`}
               fill="none"
@@ -152,7 +165,6 @@ export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMa
               filter="url(#glow)"
               markerEnd="url(#arrow)"
             />
-            {/* 底部暗线，增强可读性 */}
             <path
               d={`M ${MAP_NODES.map(n => `${n.x},${n.y}`).join(' L ')}`}
               fill="none"
@@ -164,48 +176,52 @@ export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMa
             />
           </svg>
 
-          {/* 热区按钮 — 全部解锁 */}
-          {sortedUnits.map((unit, i) => {
-            const node = WESTWARD_MAP[unit.unit_id]
-            const pos = MAP_NODES[i] || { x: 50, y: 50 }
-            const isCompleted = completedMaps.includes(unit.unit_id)
-            const firstUncompletedIdx = sortedUnits.findIndex((u) => !completedMaps.includes(u.unit_id))
-            const isCurrent = !isCompleted && i === firstUncompletedIdx
-            const isLast = i === sortedUnits.length - 1
+          {/* 热区 —— 地形圆窗（从底图裁剪放大） */}
+          {MAP_NODES.map((loc, i) => {
+            const node = WESTWARD_MAP[loc.unitId]
+            const unit = sortedUnits.find(u => u.unit_id === loc.unitId)
+            const isCompleted = completedMaps.includes(loc.unitId)
+            const firstUncompletedIdx = MAP_NODES.findIndex(l => !completedMaps.includes(l.unitId))
+            const isAccessible = isCompleted || firstUncompletedIdx === i || i === 0
+            const isCurrent = isAccessible && !isCompleted
+            const isLast = i === MAP_NODES.length - 1
 
             return (
               <button
-                key={unit.unit_id}
-                onClick={() => onSelectUnit(unit)}
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:scale-125 focus:outline-none group z-20"
-                style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
-                title={node?.mapName || unit.unit_name}
+                key={loc.unitId}
+                onMouseEnter={(e) => { if (isAccessible) playSfx('hover'); showTooltip(e, loc.unitId) }}
+                onMouseMove={(e) => showTooltip(e, loc.unitId)}
+                onMouseLeave={hideTooltip}
+                onClick={() => { if (isAccessible && unit) { playSfx('enter'); onSelectUnit(unit) } }}
+                style={{ left: `${loc.x}%`, top: `${loc.y}%`, cursor: isAccessible && unit ? 'pointer' : 'default' }}
+                className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 focus:outline-none group z-20 ${
+                  isAccessible ? 'hover:scale-[2.6]' : 'hover:scale-[1.3]'
+                }`}
+                style={{ left: `${loc.x}%`, top: `${loc.y}%` }}
               >
+                {/* 地形圆窗 —— 从底图裁剪 */}
                 <div
-                  className={`mx-auto flex items-center justify-center transition-all duration-300 shadow-md ${
-                    isLast ? 'w-12 h-12 sm:w-14 sm:h-14 rounded-[28%]' : 'w-10 h-10 sm:w-12 sm:h-12 rounded-full'
-                  }`}
+                  className="mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-xl transition-all"
                   style={{
-                    background: isCompleted ? '#fff9c4' : isCurrent ? '#fff' : 'rgba(255,255,255,0.7)',
+                    backgroundImage: 'url(/maps/map-base.jpg)',
+                    backgroundSize: '400% 400%',
+                    backgroundPosition: `${loc.x}% ${loc.y}%`,
                     border: isLast ? '3px solid #f4c542' : isCompleted ? '2.5px solid #e8b84b' : isCurrent ? '2.5px solid #a0522d' : '2px solid rgba(180,160,130,0.4)',
-                    transform: isLast ? 'rotate(45deg)' : 'none',
-                    boxShadow: isCurrent ? '0 3px 12px rgba(160,82,45,0.25)' : isCompleted ? '0 2px 6px rgba(180,160,40,0.2)' : '0 1px 3px rgba(0,0,0,0.08)',
                   }}
-                >
-                  <span
-                    className="text-xl sm:text-2xl select-none"
-                    style={isLast ? { transform: 'rotate(-45deg)' } : undefined}
-                  >
-                    {node?.mapIcon || '📖'}
-                  </span>
-                </div>
-                <span className={`block mt-1 px-1.5 py-0.5 rounded-full text-xs sm:text-sm font-bold font-serif tracking-wider whitespace-nowrap ${
-                  isCompleted ? 'bg-[#fff9c4]/80 text-[#8b6914]' : isCurrent ? 'bg-[#a0522d]/10 text-[#a0522d]' : 'bg-white/50 text-gray-600'
-                }`}>
-                  {isCompleted && '✅'}{node?.mapName || unit.unit_name}
-                </span>
+                />
+
+                {/* 未解锁：锁链遮罩 */}
+                {!isAccessible && (
+                  <>
+                    <div className="absolute inset-0 rounded-full bg-black/40 pointer-events-none" style={{ margin: '-2px' }} />
+                    <div className="absolute -inset-1 rounded-full border-2 border-dashed border-white/30 pointer-events-none" />
+                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-3xl drop-shadow-lg pointer-events-none">🔒</span>
+                  </>
+                )}
+
+                {/* 进行中：呼吸光环 */}
                 {isCurrent && (
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%+16px)] h-[calc(100%+16px)] rounded-full border-2 border-[#a0522d]/20 animate-breathe-ring pointer-events-none" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%+20px)] h-[calc(100%+20px)] rounded-full border-1.5 border-[#a0522d]/20 animate-breathe-ring pointer-events-none" />
                 )}
               </button>
             )
@@ -213,12 +229,16 @@ export default function WorldMap({ units, completedMaps, onSelectUnit }: WorldMa
         </div>
       </div>
 
-      {/* 图例 */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4 text-[10px] sm:text-xs bg-black/30 rounded-full px-4 py-1.5 backdrop-blur pointer-events-none">
-        <span className="flex items-center gap-1 text-white/80"><span className="w-2 h-2 rounded-full bg-[#e8b84b]" /> 已通关</span>
-        <span className="flex items-center gap-1 text-white/80"><span className="w-2 h-2 rounded-full bg-[#a0522d] animate-pulse" /> 进行中</span>
-        <span className="flex items-center gap-1 text-white/60"><span className="w-2 h-2 rounded-full bg-white/30" /> 未解锁</span>
-      </div>
+      {/* 悬停浮窗 */}
+      {tooltip && (
+        <div
+          className="fixed z-50 pointer-events-none bg-black/85 backdrop-blur text-wall-paper rounded-xl px-5 py-3 shadow-2xl border border-wall-gold/40"
+          style={{ left: tooltip.x + 16, top: tooltip.y - 60, transform: 'translateY(-100%)' }}
+        >
+          <p className="font-serif text-lg tracking-wider text-wall-gold-light whitespace-nowrap">{tooltip.name}</p>
+          <p className="text-xs text-wall-text-muted mt-0.5 whitespace-nowrap">{tooltip.category}</p>
+        </div>
+      )}
     </div>
   )
 }
